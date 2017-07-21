@@ -353,7 +353,7 @@
  \def\adviser{\if \@projadviser *\@thadviser \else \@projadviser\fi}
  \def\coadviser{\if \@coprojadviser *\@cothadviser\else \@coprojadviser\fi}
  \def\cocoadviser{\if \@cocoprojadviser *\@cocothadviser\else \@cocoprojadviser\fi}
-% \def\memberchair#1{\gdef\@memberchair{#1}}
+ %\def\memberchair#1{\gdef\@memberchair{#1}}
  \def\memberone#1{\gdef\@memberone{#1}}
  \def\membertwo#1{\gdef\@membertwo{#1}}
  \def\memberthree#1{\gdef\@memberthree{#1}}
@@ -371,18 +371,18 @@
       \leftline{Examining Committee:\hfil}
       \vskip 28pt \vfil
       \hrule width 2.8in \hfil \vskip -3pt
-      \leftline{\adviser, \doctype Adviser\hfil}
+      \leftline{\adviser, \doctype Adviser, Committee Chair\hfil}
       \advance \numcount by -1
       \if \coadviser * \else % there's a co-adviser
         \vskip 19pt\vfil\hrule width 2.8in\hfil\vskip -3pt
         \leftline{\coadviser, \doctype Adviser\hfil}
         \advance \numcount by -1
       \fi
-%      \if \memberchair * \else % there's a different committee chair
-%        \vskip 19pt\vfil\hrule width 2.8in\hfil\vskip -3pt
-%        \leftline{\@memberchair, Committee Chair\hfil}
-%        \advance \numcount by -1
-%      \fi
+    %   \if \memberchair * \else % there's a different committee chair
+    %     \vskip 19pt\vfil\hrule width 2.8in\hfil\vskip -3pt
+    %     \leftline{\@memberchair, Committee Chair\hfil}
+    %     \advance \numcount by -1
+    %   \fi
       \ifnum\numcount > 0 %
       \vskip 19pt\vfil\hrule width 2.8in\hfil\vskip -3pt
       \leftline{\@memberone, Member\hfil} \fi %

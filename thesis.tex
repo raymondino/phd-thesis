@@ -5,18 +5,37 @@
 % prevent orphan lines
 \usepackage[all]{nowidow}
 
-%% Some Useful Packages
-\usepackage{url} % pretty urls
-\usepackage{hyperref} % links within the document
-\usepackage{graphicx} % insert graphical files
-
-%% ADD OTHER PACKAGES HERE
-
+%% ADD PACKAGES HERE
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e} 
+\usepackage{enumitem}
+\usepackage{wrapfig} % to wrap text around the image
+\usepackage[flushleft]{threeparttable} % to add table notes
+%\usepackage{booktabs,caption,fixltx2e}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage[nointegrals]{wasysym}
+\usepackage{latexsym}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{hhline}
+\usepackage{makecell}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{fdsymbol}
+\usepackage{url}
 % ------------------------
 % Attribution of previously published work
 %
 % Use the after title and before the first sentence of the chapter
-% Example: \blfootnote{This work perviously appeared as: \bibentry{mypaper2015}
+% Example: \blfootnote{This work previously appeared as: \bibentry{mypaper2015}
 \makeatletter
 \def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
 \makeatother
@@ -32,14 +51,18 @@
 
 \begin{document}
 
-\include{pages/title}
-\include{pages/ack}
-\include{pages/abstract}
-\include{chapters/intro}
-\include{chapters/background}
-\include{chapters/publication1}
-\include{chapters/conclusions}
+% \include{pages/title}
+% \include{pages/ack}
+% \include{pages/abs}
+% \include{chapters/1-intro}
+% \include{chapters/2-relatedwork}
+% \include{chapters/3-si}
+% \include{chapters/4-ssra}
+% \include{chapters/5-usecase}
+% \include{chapters/6-evaluation}
+% \include{chapters/7-conclusion}
 \include{pages/bib}
-%\include{pages/appendix}
+\include{pages/app}
+\include{pages/app1}
 
 \end{document}

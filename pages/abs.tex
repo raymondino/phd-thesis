@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%                                                                 %
+%                            ABSTRACT                             %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\specialhead{ABSTRACT}
+Stream reasoning aims to bring semantic reasoning into stream processing. 
+The requirement to extract the hidden information out of the data stream is rising, 
+however, pure stream processing systems cannot meet this requirement as they are not designed to do so.  
+An example is to predict highway traffic jam, given the explicit sensor data streams of cars' number and speed.
+It is a lot easier for humans to observe then tell a traffic congestion.
+This is because humans know that a bigger car number and slower car speed usually means a traffic jam. 
+Unfortunately, machines do not.
+What they know is solely a sequence of numbers, possibly separated by commas.
+
+Streaming data is boundless, enormous, and heterogeneous.
+This adds extra dimensions to the challenges of realizing stream reasoning systems, other than the time constraints.
+A classical stream processing method is to leverage a window, and isolate the most recent streaming portion. 
+This snapshot, mostly managed with a first in first out (FIFO) strategy, is all that a window can ``see'' about the stream, 
+which unavoidably provides limited information during the processing under the popular silent assumption that the most recent data is the most important.
+However, modeling the importance of the data is not necessarily based on pure recency timestamps. 
+If the most recent data does not convey the necessary information to answer the query, there is no need to do anything other than evicting it. 
+
+Streaming data intrinsically has many different orderings, such as temporarily, precision, provenance, and trust, etc.
+If diverse data orderings can be utilized as a way to model the data importance, stream reasoning systems can be benefited by being data-discriminative: 
+they are able to understand the concept of importance so as to identify, and leverage more important data that are crucial to the query answering.
+This can improve the overall system performance.
+The notion that models the data importance is named as ``semantic importance''.
+It is an umbrella-like concept with multiple branches, such that each branch models one aspect of data importance.
+The different combinations of different branches can compose and enable different window management strategies, each of which can manage data differently. 
+This enables smart and flexible window managements that are previously dominated and limited by FIFO.
+
+Generally speaking, this dissertation delivers a concept model, and a set of infrastructure that can facilitate the general application of the conceptual model in stream reasoning settings. 
+Specifically, the first contribution is an innovative notion called semantic importance, which models the data importance from various data orderings.
+It is embodied in a priority vector, and works with carefully extend window semantics. 
+The second contribution introduces a general sequential stream reasoning architecture, with the purpose of both showing how semantic importance can be used in stream reasoning systems, and providing pragmatic performance metrics to configure stream reasoning systems for different scale scenarios. 
+Two example real-life use cases are implemented and evaluated based on this architecture and semantic importance. 
+The third contribution proposes a generalization and benchmark framework for semantic importance. 
+This part focuses on how to reuse and benchmark semantic importance in a generic and quantitative way.
+The semantic importance is generalized by connecting itself with the state of the art stream reasoning techniques, as well as being encoded in a formal ontology. 
+This framework also provides a benchmark interface for a wide range of continuous queries, ontologies, data streams, and a set of built-in data-aware window management strategies enabled by different combinations of semantic importance. 
+The key performance indicators recorded for the benchmark includes precision, response time, memory consumption and throughput. 
+The results are analyzed and visualized so as to facilitate decision-making on how to compose and deploy the suitable semantic importance in real use cases. 
+
+% Humans are efficient, and one of the reasons is that we could explicitly manage what to remember based on ``importance''.
+% we know things about the world, so we know things that are important and unimportant. 
+% Nonetheless, it is not that easy for machines to do so. 
+% The overall contribution in this dissertation is to pour the idea of remembering and forgetting into the idea of importance, in order to enable machines' data-discriminate memory by remembering things that are more recent, more useful to answer questions, more semantically related to tasks, more likely to be true and/or with better provenance. 
+% Machines' order-aware data management is also enabled via ranking mathematical priority vectors whose elements are either one or some of the above-mentioned aspects.
+% Each data item is associated with one priority vector, and following the rule that the higher the data is ranked, the more important the data is. 
+
+% This idea of importance, which is characterized as the notion of \textit{semantic importance}, is demonstrated in a stream reasoning context. 
+% What stream reasoning is doing is a level deeper than stream processing \cite{stephens1997survey}, 
+% i.e. to not only explicitly manipulate the data streams, but also extract hidden information in real-time. 
+% Nonetheless, the problem that can hinder the timeliness requirement is that reasoning is a stagnant process. 
+% If a stream reasoning system is able to maintain a window consisting of only the necessary data for question-answering over the time, 
+% the processing and reasoning time can be optimized, as well as the storage and computational complexity. 
