@@ -6,18 +6,18 @@
  
 \specialhead{ABSTRACT}
 The requirement to extract the hidden information out of the data stream is rising, 
-however, pure stream processing systems cannot meet this requirement as they are not designed to do so.  
-This gives birth to stream reasoning that aims to bring semantic reasoning into stream processing.
+however, traditional stream processing systems cannot meet this requirement as they are not designed to do so.  
+This gives birth to the new research domain of stream reasoning that aims to bring semantic reasoning into stream processing.
 An example is to predict highway traffic jam, given the explicit sensor data streams of cars' number and speed.
-It is a lot easier for humans to observe then tell a traffic congestion.
+It is very easy for humans to observe the traffic then forecast a traffic congestion.
 This is because humans know that a bigger car number and slower car speed can usually lead to a traffic jam. 
 Unfortunately, machines do not.
-What they can ``see'' is probably a sequence of numbers that are separated by commas.
+What they can ``see'' is probably a sequence of numerical numbers that are separated by commas.
 
 Streaming data is boundless, enormous, and heterogeneous, which adds extra dimensions to the challenges of realizing the vision of stream reasoning, in addition to temporal constraints.
 A widely-adopted way to process the streams is via leveraging a window that isolates the latest streaming portion. 
-This snapshot, mostly managed with the first in first out (FIFO) strategy under the popular silent assumption that the most recent data is the most important, is all that a window can know about the stream, 
-which inevitably provides only limited information during the processing.
+This snapshot, mostly managed by the first in first out (FIFO) strategy under a popular silent assumption that the latest data is the most important, is all that a window can know about the stream.
+This inevitably provides only limited information during the processing.
 However, modeling the importance of the data is not necessarily based on pure arrival timestamps. 
 If the latest data does not convey the necessary information to answer the query, there is surely no need to do anything other than evicting it. 
 
@@ -26,17 +26,17 @@ If diverse data orderings can be utilized to model the data importance, stream r
 It is able to understand the concept of importance so as to identify, and leverage more important data that are crucial to the query answering, which can improve the system performance.
 The notion that models the data importance is named as semantic importance.
 It is an umbrella-like concept with multiple branches, such that each branch models one aspect of currently included data orderings.
-The combinations of different branches describe the data importance, and enable various smart and flexible window managements that are previously dominated and limited by FIFO.
+The combinations of different branches describe the data importance, and enable various smart and flexible window management strategies that are previously dominated and limited by FIFO.
 
 Generally speaking, this dissertation delivers a conceptual model, and a set of infrastructure that can facilitate its general application in stream reasoning. 
 Specifically, the first contribution is an innovative notion of semantic importance.
 It is formalized in an ontology, represented in a priority vector, and works with carefully extended window semantics. 
-The second contribution introduces a general sequential stream reasoning architecture, with the purpose of both showing how semantic importance can be used in stream reasoning systems, and providing pragmatic performance metrics to configure stream reasoning systems for different scale scenarios. 
+The second contribution introduces a general sequential stream reasoning architecture, with the purpose of both showing how semantic importance can be used in stream reasoning systems, and providing pragmatic performance metrics to configure stream reasoning systems in different scale scenarios. 
 Two exemplar real world use cases are implemented and evaluated based on this architecture and semantic importance.
 The third contribution proposes a generalization and benchmark framework for semantic importance. 
 This part focuses on how to reuse and benchmark semantic importance in a generic and quantitative way.
-The semantic importance is generalized by connecting itself to the state of the art stream reasoning techniques, as well as being encoded in a formal ontology. 
-This framework also provides a benchmark interface for a wide range of continuous queries, ontologies, data streams, and a set of built-in data-aware window management strategies enabled by semantic importance. 
+The semantic importance is generalized by connecting itself to the state of the art stream reasoning techniques. 
+This framework also provides a benchmark interface compatible with a wide range of continuous queries, ontologies, data streams, and a set of built-in data-aware window management strategies enabled by semantic importance. 
 The key performance indicators recorded for the benchmark includes precision, response time, memory consumption and throughput. 
 The results are analyzed and visualized so as to facilitate decision-making on how to compose and deploy the suitable semantic importance in real use cases. 
 
