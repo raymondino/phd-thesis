@@ -1,9 +1,9 @@
 \chapter{INTRODUCTION}
 Streaming data is exploding. 
-Applications such as Facebook and Twitter are constantly streaming the data that can be consumed by a wide range of other applications.
-In order to process the data efficiently, it is critical to manage the data by determining what to focus on and what to forget. 
-The core contributions of this dissertation approach the problem of managing data streams with the notion of ``important''.
-It aims to propose an extensible conceptual model for data importance in stream reasoning settings, as well as provide a set of infrastructure to use this model, which is illustrated in Figure \ref{fig:1-tv}.
+Applications such as Facebook and Twitter are constantly streaming the data that can be consumed by a wide range of streaming applications.
+A key task for almost all stream processing systems, from moment to moment, is to figure out which data to remember and which to forget, in a computationally efficient manner. 
+This dissertation approaches this task with the concept of ``data important''.
+The core contributions include an extensible conceptual model called \textbf{semantic importance}, as well as a set of infrastructure for its general applications in stream reasoning contexts, as shown in Figure \ref{fig:1-tv}.
 
 \begin{figure}[!htbp]
 	\centering
@@ -14,21 +14,22 @@ It aims to propose an extensible conceptual model for data importance in stream 
 
 Streaming data is boundless, enormous, and frequently updated \cite{rodriguez2009semantic}.
 It usually has intrinsic orders. 
-Temporarily is a common one.
-For example, streaming data usually carries timestamps that indicate the data recency.
-However, precision, provenance, and trustworthiness are all examples of other data orderings \cite{della2013order}. 
+For example, when a sequence of streaming data items arrive at the system, they are stamped with arrival timestamps.
+This arrival ordering is only scratching the surface, because there are many other data orderings. 
+Data can be ordered by when it is expired, where it comes from, how much it can be trusted, how precise it is, how relevant it is to the query, etc \cite{della2013order}. 
 
 Stream reasoning, defined as ``logical reasoning in real time on gigantic and inevitably noisy data streams in order to support decision process of extremely large number of concurrent users'' \cite{barbieri2010stream}, is a newly identified research area that aims to bridge semantic reasoning with stream processing, so as to extract hidden information out of the streams.
 Stream reasoning processes RDF streams \cite{barbieri2010querying}, defined as ``an infinite ordered sequence of data items'' \cite{srtutorial}, that model data streams by extending RDF.
 The data items in RDF streams can be either triples or graphs, annotated by time-point timestamps or time-interval timestamps.
 
 Stream reasoning has two key notions \cite{barbieri2010stream}, the sliding window \cite{arasu2003stream} and continuous processing \cite{babu2001continuous}.
-A sliding window, or more generally a window, manages the data, and is a finite subset of the data stream.
+A sliding window, or more generally a window, is a finite subset of the data stream, and manages the data.
 Continuous processing repeatedly evaluates the data in the window as the window proceeds. 
 The sliding window has two parameters, a size and a step \cite{stuckenschmidt2010towards}.
 The size indicates how much data an active window can hold.
 The step describes how far a window can move at one time.
-According to the defined sliding window semantics \cite{botan2010secret}, a sliding window's size and step should be both fixed over the same streaming data. 
+According to the defined sliding window semantics \cite{botan2010secret}, a sliding window's size and step should be both fixed over the same stream. 
+
 Windows have different types \cite{barbieri2010querying}:
 a logical or temporal window has its step and size defined in the time domain; 
 a physical or tuple window has a tuple-based step and size.
@@ -40,7 +41,8 @@ The behavior of a window is modeled by window operational semantics \cite{botan2
 It includes four aspects: scope, content, report and tick. 
 Scope not only determines the boundary of an active window, but also affects the starting time ($t_{0}$) of the continuous processing.
 Content describes the subset of the data stream that is currently in an active window.
-Report defines the condition to fire the query, common policies include ``on content change'', ``on window full'', ``non-empty content'' and ``periodic''.
+Report defines the condition to fire the query.
+Common policies include ``on content change'', ``on window full'', ``non-empty content'' and ``periodic''.
 Tick defines how and when to react to the input, which can be either tuple-driven or time-driven.  
 %
 \section{The Silent Temporal Assumption}
@@ -61,15 +63,15 @@ For example,
 ``... recent items are typically more relevant than older ones ...'' \cite{barbieri2010deductive}.
 
 FIFO is computationally efficient, but ultimately problematic depending on the window size and streaming data characteristics. 
-In this dissertation, I will show the problems related to the silent temporal assumption, as well as the approaches to solve the problems and loosen this assumption. 
+This dissertation will show the problems related to the silent temporal assumption, as well as the approaches to solve the problems by loosening this assumption. 
 %
 \section{A Running Example}
 In general, not all of the data items in streams can be used to answer the query \cite{mileo2013streamrule}.
 There are situations where a single data item contains sufficient information (Situation 1), or multiple data items are required (Situation 2), so as to provide query answers. 
-For the sake of convenience, this dissertation uses a term called ``necessary data item'' to refer to the data items that contain necessary information for question answering. 
+For the sake of convenience, this dissertation uses a term called \textbf{necessary data item} to refer to the data items that contain necessary information for question answering. 
 
 The FIFO window management strategy based on the silent temporal assumption can work well in Situation 1. 
-For Situation 2, the query answer will only be given when all of the necessary data items exist in the window at one time-point. 
+For Situation 2, the answer will only be returned when all of the necessary data items exist in the window at one time-point. 
 However, the distance among necessary data items can be arbitrarily apart, and if this distance is longer than the window size, false answers will be generated. 
 In order to illustrate this problem, this dissertation uses a running example of real-life soccer offside offence detection.
 
