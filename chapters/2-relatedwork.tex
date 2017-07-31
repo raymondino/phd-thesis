@@ -7,7 +7,7 @@
 \chapter{RELATED WORK}
 \blfootnote{* Portions of this chapter previously appeared as: Rui Yan, Mark T. Greaves, William P. Smith, Deborah L. McGuinness 2016. ``Remembering the Important Things: Semantic Importance in Stream Reasoning.'' Stream Reasoning 2016 Workshop, International Semantic Web Conference 2016. Rui Yan, Brenda Praggastis, William P. Smith, Deborah L. McGuinness 2016. ``Towards A Cache-Enabled, Order-Aware, Ontology-Based Stream Reasoning Framework.'' Linked Data on the Web Workshop 2016, International World Wide Web Conference 2016. Rui Yan, Brenda Praggastis, William P. Smith, Deborah L. McGuinness 2015. ``Towards Smart Cache Management for Ontology Based, History-Aware Stream Reasoning.'' Linked Science Workshop 2015, International Semantic Web Conference 2015.}
 Streaming data is so ubiquitous nowadays, such that it becomes a lot more critical to process data streams with efficient methods.
-Considering that streaming data is boundless, its size could be infinitely big. 
+Considering that streaming data is boundless, its size could be infinite. 
 Merely storing then querying it within a database is obviously not a feasible solution.
 Stream processing \cite{stephens1997survey} has been researched for a good time.
 The data stream management systems (DSMS) \cite{cugola2012processing}, such as STREAM \cite{arasu2003stream} and Aurora \cite{abadi2003aurora}, are able to process data streams at large volume and high update frequency, which lays the foundation to enable real-time process and query-answering. 
@@ -21,7 +21,7 @@ An example of the logical models are semantic technologies such as ontology \cit
 However, these technologies are initially designed for large scale static data.
 One of their intentions is to structure and link the data on the web, and make it machine readable \cite{berners2001semantic}, such as Open Linked Data \cite{bizer2009linked}.
 
-Before stream reasoning \cite{della2009s} is proposed, a few work has been done to combine semantic reasoning with stream processing. 
+Before stream reasoning \cite{della2009s} is proposed, few work has been done to combine semantic reasoning with stream processing. 
 Stream reasoning aims to ``tame the velocity, veracity and volume of the data streams with both stream processing and semantic reasoning.''\footnote{\url{http://emanueledellavalle.org/Biography/Short-Biography.html}}
 %
 \section{Streaming Data}
@@ -30,14 +30,14 @@ The contents are also varied in images, videos, texts or urls etc.
 The data items have intrinsic orders.
 Temporarily is a popular data ordering. 
 Others include precision, provenance, and trustworthiness \cite{della2013order}.
-Apparently, a specific schema can be only used to deal with one format of streaming data, let alone there are other types. 
+Apparently, a specific schema can be only used to deal with one format of streaming data, let alone other types. 
 For the sake of convenient processing, a unified data model is required.
 A popular data model called Resource Description Framework (RDF) is widely used to endow semantics to the static data.
-Inspired by it, RDF streams \cite{della2009first} are proposed by extending RDF to model data streams. 
+RDF streams \cite{della2009first} are proposed by extending RDF to model data streams. 
 It is envisioned in two alternative formats: the RDF molecules stream, and the RDF statements stream.
 The RDF molecules stream is an unbounded set of tuples that contain RDF molecules \cite{ding2005tracking} and timestamps.
 A timestamp denotes the temporal logic of each molecule's arrival order.
-The RDF statements stream in a RDF statement is a special case of a RDF molecule.
+A RDF statement is a special case of a RDF molecule.
 This format is also an unbounded set of tuples containing a RDF statement and a timestamp. 
 RDF stream can be expressed as $<\rho , \tau>$, where $\rho$ denotes either a RDF molecule or a RDF statement, $\tau$ denotes a timestamp.
 A RDF molecule contains the RDF data that cannot be further decomposed. 
@@ -46,7 +46,7 @@ An RDF molecule is also referred as a data item.
 Normally, a data item can be either a triple or a graph, annotated by a timestamp that can either be a time-point or a timer-interval \cite{srtutorial}. 
 
 Linked stream data, inspired by Linked Open Data, applies Linked Data principles \cite{bizer2008linked} to stream data so that it becomes a part of the Web of Linked Data.
-\cite{sequeda2009linked} applies these principles to sensor-based data, in what they call ``Linked Stream Data'' (LSD). 
+\cite{sequeda2009linked} applies these principles to sensor data, in what they call ``Linked Stream Data'' (LSD). 
 \cite{barbieri2010proposal} proposes the same idea in a different way: 
 the authors leverage C-SPARQL \cite{barbieri2009c} to publish linked data stream.
 
@@ -54,7 +54,7 @@ The research on modeling streaming data with semantic methods has been conducted
 In order to fill this gap, both \cite{beck2015towards} and \cite{beck2015lars} provide a theoretical framework to allow the exact description and comparison for not only streaming data, but also stream reasoning systems.
 %
 \section{Continuous Processing}
-Stream reasoning, defined as "logical reasoning in real time on gigantic and inevitably noisy data streams in order to support the decision process of extremely large numbers of concurrent users" \cite{stuckenschmidt2010towards}, aims to bridge stream processing with semantic reasoning. 
+Stream reasoning, defined as ``logical reasoning in real time on gigantic and inevitably noisy data streams in order to support the decision process of extremely large numbers of concurrent users" \cite{stuckenschmidt2010towards}, aims to bridge stream processing with semantic reasoning. 
 Stream reasoning can provide many benefits in areas that demand generation and analysis of data streams, and can be applied in a variety of domains.
 In smart cities scenarios \cite{tallevi2013real} \cite{lecue2012capturing}, sensor and video data are constantly streamed from different locations.
 The requirements include efficient integration of heterogeneous data, which is also a key foundation upon which advanced services are based. 
@@ -71,7 +71,7 @@ Its built-in translator will translate a C-SPARQL query into static and dynamic 
 The C-SPARQL engine can be used as a linked data stream publisher \cite{barbieri2010proposal}. 
 
 Other works such as EP-SPARQL \cite{anicic2011ep}, TrOWL \cite{thomas2010trowl} and Stream SPARQL \cite{bolles2008streaming} are either extensions of SPARQL from different angles or are built from scratch to fulfill the purpose of continuously processing and reasoning on data streams.
-The IMaRS \cite{barbieri2010incremental} algorithm has been proposed by the same authors of C-SPARQL, and is focused on managing inferred statements (mainly statement deletions) in a logical sliding window.
+The IMaRS \cite{barbieri2010incremental} algorithm has been proposed by the same authors of C-SPARQL, and is focused on managing (mainly statement deletions) inferred statements in a logical sliding window.
 This algorithm assigns an expiration timestamp for each RDF statement entering into the window, labels and updates all the related inferences with this expiration timestamp.
 The expiration timestamp is the time when the explicit data exit the window, and is calculated by adding the data arrival timestamp and the window size.
 A deletion is triggered when the original explicitly stated data exits the window and both explicit and inferred statements will be deleted.
@@ -86,7 +86,7 @@ There are different window types.
 Depending on different measurement units, a window can be either a logical (time-based) window or a physical (tuple-based) window.
 Depending on overlapping successive windows, a window can be either a sliding, tumbling or sampling window. 
 A window has an upper bound and a lower bound. 
-A sliding window will have both bounds move at the same time; while a landmark window will have either bound move at one time.
+A sliding window will have both bounds move at the same time and pace; while a landmark window will fix one bound and move the other bound.
 A window has two parameters, the window step and window size. 
 The size defines how much data one active window can hold. 
 The step defines how much the window can move at one time.
@@ -97,7 +97,7 @@ Albeit a lot of work in stream reasoning shares the same goal, the implementatio
 The paper urges that stream reasoning systems should be implemented with its operational semantics documented. 
 \cite{botan2010secret} and \cite{dindar2013modeling} propose a model called SECRET to formally describe different window operational semantics.
 It includes four aspects: scope, content, report and tick. 
-Scope not only determines the boundary of an active window, but also affects the stating time ($t_{0}$) of the continuous processing.
+Scope not only determines the boundary of an active window, but also affects the starting time ($t_{0}$) of the continuous processing.
 Content describes the subset of the data stream that is currently in an active window.
 Report defines the condition to fire a query, common policies include ``on content change'', ``on window full'', ``non-empty content'' and ``periodic''.
 Tick defines how and when to react to the input, which can be either tuple-driven or time-driven.
@@ -112,7 +112,7 @@ It introduces a set of user-specified rules to do the filtering.
 Delete and re-derive window management algorithm \cite{volz2005incrementally} maintains the data in a rather expensive way. 
 It deletes all the useless data, then perform a reasoning process to re-derive the entailment in the window.
 \cite{nguyen2013eviction} focuses on data eviction in semantic information flow systems. 
-It proposes a strategy for load shredding based on probability of the data contribution.
+It proposes a strategy for load shredding based on the probability of the data future contribution.
 \cite{gao2014clock} leverages a circular buffer to manage the streaming data in a window. 
 %
 \section{Summary}
@@ -124,16 +124,16 @@ It proposes a strategy for load shredding based on probability of the data contr
     \label{fig:2-rwc}
 \end{figure}
 
-I have plotted all the above-mentioned related work in this chapter in Figure \ref{fig:2-rwc} with three dimensions of  ``continuous processing'', ``window'' and ``streaming data''.
-On the \textit{continuous processing} axis: 
-Point C1 denotes ``continuous processing engine'';
-Point C2 denotes ``continuous query language''.
-On the \textit{window} axis:
-Point W1 denotes ``window semantics and window operational semantics'';
-Point W2 denotes ``window management strategies''.
-On the \textit{streaming data} axis:
-Point D1 denotes ``streaming data semantic modeling (RDF stream)'';
-Point D2 denotes ``streaming data orderings''.
+I have plotted all the above-mentioned related work in Figure \ref{fig:2-rwc} with three dimensions of  \textbf{continuous processing}, \textbf{window} and \textbf{streaming data}.
+On the continuous processing axis: 
+Point C1 denotes \textit{continuous processing engine};
+Point C2 denotes \textit{continuous query language}.
+On the window axis:
+Point W1 denotes \textit{window semantics and window operational semantics};
+Point W2 denotes \textit{window management strategies}.
+On the streaming data axis:
+Point D1 denotes \textit{streaming data semantic modeling (RDF stream)};
+Point D2 denotes \textit{streaming data orderings}.
 
 It turns out that this figure is very helpful to illustrate and understand where the related work is. 
 For example, work located in the plane of C1-D1 is about continuous processing engines that process RDF streams. 
