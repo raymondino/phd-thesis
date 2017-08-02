@@ -69,7 +69,7 @@ The background ontology is preloaded in the window triple-store.
 The window receives and keeps the data from the data consumption.
 The query is executed in the window with the triple-store query engine, background ontology and the data.
 The triple-store also provides the ability to explain the results.
-The graph ID manager helps index the data, manage data semantic importance priority vectors and rank the data. 
+The graph ID manager helps index the data, manages data semantic importance priority vectors and ranks the data. 
 Coupled with the window management strategies, the graph ID manager can provide the list of data to be evicted from the triple-store.
 %
 \subsection{Data Consumption}
@@ -84,9 +84,9 @@ In either policy, it will send the query execution request to the next component
 \subsection{Query Execution}
 The query in the stream reasoning scenario should be continuous in order to provide proactive answers. 
 This requires the query to be preregistered in the system before the data arrival.
-SSRA, unlike what existing work does, employs standard SPARQL query.
+SSRA, unlike what existing work does, employs standard SPARQL queries.
 This is for two reasons:
-(1) C-SPARQL \cite{barbieri2009c}, EP-SPARQL \cite{anicic2011ep} and other extended SPARQL require different execution models and syntax that are not compatible.
+(1) C-SPARQL \cite{barbieri2009c}, EP-SPARQL \cite{anicic2011ep} and other extended SPARQL queries require different execution models and syntax that are not compatible.
 Even though RSP-QL \cite{dell2014rsp} was proposed later with the goal to unifying the continuous queries, it currently is meant to be a reference model to explain the heterogeneity of stream reasoning engines. 
 The execution engine is very challenging to develop as it will have to cover all the C-SPARQL/CQELS/other operational semantics which possibly will lose the responsive performance.
 (2) the requirement of ``continuity'' can be easily realized by forming a loop in SSRA, rather than employing some continuous query syntax or execution models. 
@@ -114,20 +114,20 @@ The important data is those unexpired.
 If the data expires, it will be moved to the deletion pool for eviction. 
 For strategies such as FE-LFU-FO, the window updates semantic importance based on the expiration timestamp and query participation frequency.
 If the data is expired, it will be moved to the deletion pool for eviction regardless how frequently it used to participate in the query. 
-If the data is not expired, it will be ranked based on frequency.
+If the data is not expired, it will be ranked based on the frequency.
 Other window management strategies will follow the same pattern to update the semantic importance.
 One thing to notice is that, rules to update semantic importance is only determined by window management strategies, without human-in-the-loop required.
 %
 \subsection{Data Eviction}
 This component evicts the named graphs ranked at the bottom in the window. 
 Depending on different window management strategies, data is evicted differently.
-For example, FEFO collects one statistic -- the expired data count, $E_{d}$. 
+For example, FEFO collects one statistic -- the expired data count ($E_{d}$). 
 $E_{d}$ increments by one if a named graph is expired.
-FE-LRU-FO collects two statistics -- $E_{d}$ and the most recent query participation timestamps, $\tau_{qp}$, for every named graph. 
+FE-LRU-FO collects two statistics -- $E_{d}$ and the most recent query participation timestamps ($\tau_{qp}$), for every named graph. 
 $E_{d}$ increases by one if a named graph is expired.
 Every valid named graph's old $\tau_{qp}$ is replaced with the corresponding new $\tau_{qp}$.
-FE-LFU-FO collects two statistics -- $E_{d}$ and every named graph's query participation frequency counts, $\delta_{qp}$, in the latest cycle.
-$E_{d}$ increments by one if a named graph is expired, and every valid named graph's total query participation frequency counter, $f_{qp}$, adds the corresponding $\delta_{qp}$. 
+FE-LFU-FO collects two statistics -- $E_{d}$ and every named graph's query participation frequency counts ($\delta_{qp}$), in the latest cycle.
+$E_{d}$ increments by one if a named graph is expired, and every valid named graph's total query participation frequency counter ($f_{qp}$), adds the corresponding $\delta_{qp}$. 
 The window re-ranks the data immediately after semantic importance is updated. 
 %
 \section{Implementation}
