@@ -43,9 +43,9 @@ Such data orderings are not limited to logical orderings, but also query partici
 Semantic importance is represented in a priority vector \cite{saaty2003decision}, with elements ordered according to a preference function.
 For example, priority vector $V_{p} = [x, y, z]$ has three elements $x, y,$ and $z$.
 $x$ is preferred to $y$, and $x, y$ is each preferred to $z$.
-The lefter the element is placed, the more priority the element is.  
+The lefter the element is placed, the more preferential the element is.  
 There is no restriction on the number of vector elements. 
-The traits of the priority vector allows us to consider multiple semantic importance metrics simultaneously while preserving the ability to prioritize some selecting metrics. 
+The traits of the priority vector allow us to consider multiple semantic importance metrics simultaneously while preserving the ability to prioritize some selecting metrics. 
 
 Figure \ref{fig:3-si} shows the conceptual model of semantic importance. 
 This conceptual model leverages some concepts from Prov-O \cite{lebo2013prov} to describe the inter-class relationships. 
@@ -167,7 +167,7 @@ For the concepts in the query relevance ontology to be useful, it is usually con
 
 In Figure \ref{fig:3-siqreo}, all the red boxes are concepts encoded in the background domain ontology of soccer, which contains the general knowledge about the overall soccer domain. 
 The background ontology can not only answer the query of ``who commits an offside offence'', but also ``who are attackers'', ``which team is controlling the ball'' and ``who is challenged by whom'', etc. 
-the only concept in the query relevance ontology is marked in green, which is ``OffsideIrrelevantPosition''. 
+the only concept in the query relevance ontology is marked in green, which is \textbf{OffsideIrrelevantPosition}. 
 But the query relevance ontology only provides details of query relevance for one specific query, which in this case is ``who commits an offside offence''. 
 
 In the Query Participation Section, we have already mentioned that not all of the data will be participating in the query.
@@ -176,10 +176,10 @@ In soccer offside detection, humans know that the positions of the offensive pla
 It is easy to ignore such irrelevant data for linesmen during officiating the game since they are aware of this knowledge. 
 However, in order to let the machines acquire this knowledge, users should provide a formalized representation and load it into the system. 
 As what will be shown in Chapter 6, the benefits to deploy query relevance include reducing memory consumption and response time, as well as improving precision and throughput. 
-The reason because it allows the system to concentrate on a smaller portion of the original data, which still contains enough necessary information for query answering. 
-Thus, for query relevance ontology of ``who commits an offside offence'', the concept of OffsideIrrelevantPosition, which is in green, is constructed in Figure \ref{fig:3-siqreo}. 
-This OffsideIrrelevantPosition contains the positions of gloves, referees, defenders other than the second last defender, offensive players at their own half, etc. 
-With this query relevance ontology, instances of OffsideIrrelevantPosition (such as  $\times_{B}$, $\times_{C}$ and $\times_{D}$ in Figure \ref{fig:3-siqre}) can be captured and filtered by the system via executing a filtering SPARQL query. 
+The reason is because it allows the system to concentrate on a smaller portion of the original data, which still contains enough necessary information for query answering. 
+Thus, for query relevance ontology of ``who commits an offside offence'', the concept of \textbf{OffsideIrrelevantPosition}, which is in green, is constructed in Figure \ref{fig:3-siqreo}. 
+This \textbf{OffsideIrrelevantPosition} contains the positions of gloves, referees, defenders other than the second last defender, offensive players at their own half, etc. 
+With this query relevance ontology, instances of \textbf{OffsideIrrelevantPosition} (such as  $\times_{B}$, $\times_{C}$ and $\times_{D}$ in Figure \ref{fig:3-siqre}) can be captured and filtered by the system via executing a filtering SPARQL query. 
 
 \begin{figure}[!htbp]
 	\centering
@@ -188,8 +188,8 @@ With this query relevance ontology, instances of OffsideIrrelevantPosition (such
     \label{fig:3-siqre}
 \end{figure}
 
-The system can be totally blind or literate about streaming data query relevance, depending on whether or not a query relevance ontology is deployed, as well as how comprehensive the knowledge is about the streaming data is encoded. 
-For example, in Figure \ref{fig:3-siqre}, $\largesquare_{D}$ is also irrelevant as a defender can never commit an offside offence. 
+The system can be totally blind or literate about streaming data query relevance, depending on whether or not a query relevance query/ontology is deployed, as well as how comprehensive the knowledge of the streaming data is encoded. 
+For example, in Figure \ref{fig:3-siqre}, $\largesquare_{D}$ is irrelevant as a defender can never commit an offside offence. 
 If such knowledge is also included in the query relevance ontology, the query relevance ontology becomes more comprehensive, and more irrelevant data can be filtered out. 
 As the consequences of the query relevance ontology, data items pointed by arrows are not relevant to the current query and thus can be filtered out of the window.
 %
@@ -308,7 +308,7 @@ Its priority vector is $[\tau_{e}]$.
     \label{fig:3-sifefo}
 \end{figure}
 
-In Figure \ref{fig:3-sifefo}, at $t^{sys}_{1}$, data \textbf{arrives} in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, \textbf{expires}\footnote{We use the ``$==$'' semantics from Table \ref{tab:cos}. Note that the value of $\tau^{A}_{e}$, $\tau^{J}_{e}$ and $\tau^{H}_{e}$ are not necessarily equal.} in a logical order such that $\tau^{G}_{e} < t^{sys}_{1} < \tau^{B}_{e} < t^{sys}_{2} < \tau^{A}_{e} == \tau^{J}_{e} == \tau^{H}_{e}$.
+In Figure \ref{fig:3-sifefo}, at $t^{sys}_{1}$, data \textbf{arrives} in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, \textbf{expires}\footnote{We use the ``$==$'' semantics from Table \ref{tab:cos}. Note that the value of $\tau^{A}_{e}$, $\tau^{J}_{e}$ and $\tau^{H}_{e}$ are not necessarily numerically equal.} in a logical order such that $\tau^{G}_{e} < t^{sys}_{1} < \tau^{B}_{e} < t^{sys}_{2} < \tau^{A}_{e} == \tau^{J}_{e} == \tau^{H}_{e}$.
 At $t^{sys}_{1}$, items A, G, H, and J are in the window, G is expired.
 At $t^{sys}_{2}$, G is evicted to consume B, which will be evicted next. 
 Note that even though G arrives later than A, G is evicted because of FEFO management strategy,
@@ -330,7 +330,7 @@ rank & data & $\tau_{e}$ & rank & data & $\tau_{e}$ \\ \hhline{|=|=|=#=|=|=|}
 \end{table}
 
 \textbf{LFU}:
-Least Frequently Used (LFU) is a classic caching algorithm\footnote{https://en.wikipedia.org/wiki/Cache\_replacement\_policies}, but not commonly used in window management.
+Least Frequently Used (LFU) is a classic caching algorithm\footnote{https://en.wikipedia.org/wiki/Cache\_replacement\_policies}, but not commonly used in the window management.
 LFU describes the data importance with a single query participation frequency ($f_{qp}$) from the query participation aspect. 
 Its priority vector is $[f_{qp}]$.
 
@@ -368,7 +368,7 @@ rank & data & $f_{qp}$ & rank & data & $f_{qp}$ \\ \hhline{|=|=|=#=|=|=|}
 \end{table}
 
 \textbf{FE-LFU-FO}:
-First Expired Least Frequently Use First Out (FE-LFU-FO) is a more complex window management strategy. 
+First Expired Least Frequently Used First Out (FE-LFU-FO) is a more complex window management strategy. 
 It describes the data importance with the expiration timestamp ($\tau_{e}$) and the query participation frequency ($f_{qp}$).
 Its priority vector is $[\tau_{e}, f_{qp}]$, which emphasizes $\tau_{e}$ over $f_{qp}$. 
 
@@ -379,7 +379,7 @@ Its priority vector is $[\tau_{e}, f_{qp}]$, which emphasizes $\tau_{e}$ over $f
     \label{fig:3-sifelfufo}
 \end{figure}
 
-In Figure \ref{fig:3-sifelfufo}, data arrives in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, and expires in an order such that $\tau^{H}_{e} < t^{sys}_{1} < t^{sys}_{2} < \tau^{G}_{e} == \tau^{J}_{e} == \tau^{A}_{e} == \tau^{B}_{e}$.
+In Figure \ref{fig:3-sifelfufo}, assuming that data arrives in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, and expires in an order such that $\tau^{H}_{e} < t^{sys}_{1} < t^{sys}_{2} < \tau^{G}_{e} == \tau^{J}_{e} == \tau^{A}_{e} == \tau^{B}_{e}$.
 At $t^{sys}_{1}$, we can compare data items priority vector according to the comparison rule. 
 Since $[\tau^{H}_{e}, 4] < [t^{sys}_{1}, -] < [\tau^{G}_{e}, 0] < [\tau^{J}_{e}, 2] < [\tau^{A}_{e}, 3]$, H ranks at the bottom thus evicted even though it participated most in the query. 
 At $t^{sys}_{2}$, $[t^{sys}_{2}, -] < [\tau^{G}_{e}, 0] == [\tau^{B}_{e}, 0] < [\tau^{J}_{e}, 3] < [\tau^{A}_{e}, 4]$.
@@ -412,11 +412,11 @@ Its priority vector $[f_{qp}, \tau_{e}]$, albeit has the same elements as FE-LFU
     \label{fig:3-silfufefo}
 \end{figure}
 
-In Figure \ref{fig:3-silfufefo}, data arrives in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, and expires in a logical order such that $\tau^{H}_{e} < t^{sys}_{1} < t^{sys}_{2} < \tau^{G}_{e} == \tau^{J}_{e} == \tau^{A}_{e} == \tau^{B}_{e}$. 
+In Figure \ref{fig:3-silfufefo}, assuming that data arrives in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, and expires in a logical order such that $\tau^{H}_{e} < t^{sys}_{1} < t^{sys}_{2} < \tau^{G}_{e} == \tau^{J}_{e} == \tau^{A}_{e} == \tau^{B}_{e}$. 
 Together with Table \ref{tab:lfufefo}, at $t^{sys}_{1}$, $[-, t^{sys}_{1}] < [0, \tau^{G}_{e}] < [2, \tau^{J}_{e}] < [3, \tau^{A}_{e}] < [4, \tau^{H}_{e}]$. 
 G is ranked at the bottom thus will be evicted.
 However, H is ranked at the top even though H is expired. 
-What is even worse is that H has the most query participation frequency, that almost guarantees that H will be at the top forever, resulting in invalid results.
+What is even worse is that H has the most query participation frequency, that almost guarantees that H will be at the top forever, resulting in invalid answers.
 At $t^{sys}_{2}$, $[-, t^{sys}_{2}] < [0, \tau^{B}_{e}] < [3, \tau^{J}_{e}] < [4, \tau^{A}_{e}] < [5, \tau^{H}_{e}]$.
 H, A and J's query participation frequencies increase by 1, while B doesn't participate in the query.
 Thus B is ranked at the bottom and will be evicted. 
@@ -449,7 +449,7 @@ Its priority vector is $[\tau_{e}, f_{qp}, \tau_{a}]$, which contains three elem
     \label{fig:3-sifelfufifo}
 \end{figure}
 
-In Figure \ref{fig:3-sifelfufifo}, data arrives in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, and expires in a logical order such that  $\tau^{J}_{e} < t^{sys}_{1} < \tau^{G}_{e} < t^{sys}_{2} < \tau^{H}_{e} == \tau^{A}_{e} == \tau^{B}_{e}$.
+In Figure \ref{fig:3-sifelfufifo}, assuming that data arrives in a logical order such that $\tau^{A}_{a} < \tau^{G}_{a} < \tau^{H}_{a} < \tau^{J}_{a} < \tau^{B}_{a}$, and expires in a logical order such that  $\tau^{J}_{e} < t^{sys}_{1} < \tau^{G}_{e} < t^{sys}_{2} < \tau^{H}_{e} == \tau^{A}_{e} == \tau^{B}_{e}$.
 At $t^{sys}_{1}$, $[\tau^{J}_{e}, 6, \tau^{J}_{a}] < [t^{sys}_{1}, -, -] < [\tau^{G}_{e}, 0, \tau^{G}_{a}] < [\tau^{H}_{e}, 1, \tau^{H}_{a}] < [\tau^{A}_{e}, 4, \tau^{A}_{a}]$. 
 At $t^{sys}_{2}$, $[\tau^{G}_{e}, 0, \tau^{J}_{a}] < [t^{sys}_{2}, -, -] < [\tau^{B}_{e}, 0, \tau^{B}_{a}] < [\tau^{H}_{e}, 2, \tau^{H}_{a}] < [\tau^{A}_{e}, 5, \tau^{A}_{a}]$. 
 With these orderings, data is ranked as in Table \ref{tab:felfufifo}. 
@@ -523,8 +523,8 @@ At this moment, data items G and H are expired (marked in red), thus ranked at t
 However, since the current window semantics defines its step to be 1 and fixed, it can only evict one data item. 
 No matter which data item is evicted, a worse case is that the kept expired data item participated in the query, causing the early expiration problem and resulting invalid query answers. 
 
-The two problems above have shown that existing window semantics cannot work well with semantic importance enabled window management strategy. 
-The primary reason is that these strategies manage data in a ``data item'' granularity, rather than a ``logical'' granularity. 
+The two problems above have shown that existing window semantics cannot work well with semantic importance enabled window management strategies. 
+The primary reason is that these strategies manage data in a ``data item'' granularity, rather than a simple ``logical'' granularity. 
 %
 \subsection{Extended Logical Window Semantics}
 This dissertation will use the definitions of lower bound ($\tau_{l}$), upper bound ($\tau_{u}$), data stream ($S$), current stream contents ($S(\tau)$), current stream instance ($s_{\tau}$), time domain ($T$) and lower-bounded landmark window ($W^{lbl}$) from \cite{patroumpas2006window}.
@@ -554,7 +554,7 @@ We define a logical window step for $W^{lbl}_{\tau}$:
 
 Figure \ref{fig:3-psewsti} shows how the extended logical window semantics can work with semantic importance enabled window management strategies (such as FEFO) when managing data streams. 
 By leveraging the extended logical window semantics from the landmark window, the logical lower-bounded landmark window can continue to proceed after evicting all the expired data.
-This is much flexible than a logical sliding window that will have to remove the oldest data in order to proceed, which results in removing data items that are still valid (such as C and E in Figure \ref{fig:3-wsti}), and keeping data items that are expired (such as G and H in Figure \ref{fig:3-wsti}). 
+This is much flexible than a logical sliding window that will have to remove the oldest data under FIFO in order to proceed, which results in removing data items that are still valid (such as C and E in Figure \ref{fig:3-wsti}), and keeping data items that are expired (such as G and H in Figure \ref{fig:3-wsti}). 
 
 \begin{table}[!htbp]
 	\centering
@@ -570,7 +570,7 @@ This is much flexible than a logical sliding window that will have to remove the
 \end{table}
 
 Table \ref{tab:lwsw} shows the different results of different window semantics. 
-We have used the physical window size definition for landmark window. 
+We have used the physical window size definition for the landmark window. 
 At $t_{u}$ and $t_{u'}$ time in Figure \ref{fig:3-psewsti}, its size is 7 and 9 respectively. 
 For the sliding window under FIFO, its size is logical, which is 2 seconds. 
 At $t_{1}^{sys}$ and $t_{1}^{sys} + 1$ time in Figure \ref{fig:3-psewsti}, the number of tuples in the sliding window is 7 and 9 respectively.
@@ -605,6 +605,7 @@ If all of the data are expired in the window, then evict all of them to consume 
 This flexible window step guarantees that all of the unimportant data items are evicted, so as to solve the problems such as the early expiration. 
 One thing to note is that, with FEFO, data has to be expired to be evicted.
 If all of the data are not expired, the window will not proceed but wait till at least one of them is expired. 
+This indicates that the window management strategies manage data differently, and it is crucial to choose a proper strategy to keep the desired data for query.
 %
 \subsection{Discussion}
 
@@ -616,11 +617,11 @@ If all of the data are not expired, the window will not proceed but wait till at
 \hline
  & \begin{tabular}[c]{@{}c@{}}Sliding Window \\ Semantics\end{tabular} & \begin{tabular}[c]{@{}c@{}}Extended Window \\ Semantics\end{tabular} \\ \hhline{|=#=#=|}
 \begin{tabular}[c]{@{}c@{}}logical \\ window ($W_{\tau}$)\end{tabular} & sliding window & \begin{tabular}[c]{@{}c@{}}lower-bounded \\ landmark window\end{tabular} \\ \hline
-$W_{\tau}$ size & \begin{tabular}[c]{@{}c@{}}fixed\\ defined with logical \\ measurement units (e.g. 2s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}can vary\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} \\ \hline
-$W_{\tau}$ step & \begin{tabular}[c]{@{}c@{}}fixed\\ defined with logical\\  measurement units (e.g. 1s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} \\ \hhline{|=#=#=|}
+$W_{\tau}$ size & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined with logical \\ measurement units (e.g. 2s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}can vary.\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} \\ \hline
+$W_{\tau}$ step & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined with logical\\  measurement units (e.g. 1s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} \\ \hhline{|=#=#=|}
 \begin{tabular}[c]{@{}c@{}}physical\\window ($W_{\#}$)\end{tabular} & sliding window & sliding window \\ \hline
-$W_{\#}$ size & \begin{tabular}[c]{@{}c@{}}fixed\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} \\ \hline
-$W_{\#}$ step & \begin{tabular}[c]{@{}c@{}}fixed\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} & \begin{tabular}[c]{@{}c@{}}variable \\ $n_{\beta} = \{n_{\beta}\ |\ 0 \leq n_{\beta} \leq n_{\tau}\}$\end{tabular} \\ \hline
+$W_{\#}$ size & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} \\ \hline
+$W_{\#}$ step & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} & \begin{tabular}[c]{@{}c@{}}variable. \\ $n_{\beta} = \{n_{\beta}\ |\ 0 \leq n_{\beta} \leq n_{\tau}\}$\end{tabular} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -630,7 +631,7 @@ For logical window ($W_{\tau}$), the extended window type becomes the lower-boun
 $W_{\tau}$ size and step are both re-defined with the number of tuples, as opposed to logical measurement units. 
 For the physical window, although the same sliding window type is used, its step is extended to be a variable that is no bigger than its window size, as opposed to a previous fixed step. 
 
-The extended window semantics is general, which is reflected by not only the examples shown in Figure \ref{fig:3-psewsti} and Figure \ref{fig:3-psewstu}, but also the fact that sliding logical window can be emulated with the extended window semantics with a proper semantic importance enabled window management strategy. 
+The extended window semantics is general, which is reflected by not only the examples shown in Figure \ref{fig:3-psewsti} and Figure \ref{fig:3-psewstu}, but also the fact that sliding logical window can be emulated with the extended window semantics under a proper semantic importance enabled window management strategy. 
 
 \begin{figure}[!htbp]
 	\centering
@@ -660,12 +661,12 @@ All the details are in Appendix I.
 Currently the model is consisted of two major aspects, the domain agnostic aspects and domain literate aspects. 
 Domain agnostic aspects include query participation and provenance.
 This is because queries are often executed independently, regardless of data, backgrounds or domains. 
-Provenance information is often the birth-information, meaning that the data carries it when it is generated. 
+Provenance information is often carried when data is generated. 
 Domain literate aspects include trustworthiness and query relevance.
 Often the trust models are dependent on the domain. 
 For example, you might trust a Japanese friend to be your tour guide in Kobe but probably won't trust this friend to be the guide in New York.
 There are lots of trust models that have been proposed and work well in different scenarios. 
-Query relevance, in our model, is realized by applying query relevance ontology in the system. 
+Query relevance, in our model, is realized by applying query relevance ontology and query in the system. 
 This ontology is different from the background ontology that is usually deployed before the system starts.
 The background ontology encodes the essential knowledge of the domain, and is specifically focused on capturing domain knowledge that impacts querying and reasoning to answer questions. 
 Query relevance ontology is focused on picking the query informed data for query execution. 
