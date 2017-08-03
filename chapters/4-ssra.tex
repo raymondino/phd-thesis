@@ -379,13 +379,13 @@ The benchmark leverages LUBM dataset by streaming it, and constantly looking for
 This can be seen to look for professors on a time line by streaming the LUBM dataset. 
 In order to illustrate how to use semantic importance in stream reasoning with SSRA, four aspects $\tau_{a}$, $\tau_{e}$, $f_{qp}$ and $\tau_{qp}$ are chosen to form three window management strategies:
 FE-FI-FO with its priority vector $[\tau_{a}, \tau_{e}]$, FE-LFU-FO with $[\tau_{e}, f_{qp}, \tau_{a}]$, and FE-LRU-FO with $[\tau_{e}, \tau_{qp}, \tau_{a}]$. 
-The SSRA implementations have demonstrate a physical sliding window, but the temporal window is easy to implement as well according to the extended window semantics.
+The SSRA implementations have demonstrated a physical sliding window, but the temporal window is easy to implement as well according to the extended window semantics.
 The architecture operational semantics is very flexible, as the data consumption component is able to realize different operational semantics. 
 In all three implementations, the report policy is ``on window close''.
 The continuous processing is enabled by the inner loop of the architecture. 
 The query is a pure SPARQL query, which is different from most of the existing work. 
 The window is implemented in the triple-store, with a graph ID manager that indexes graph IDs, and updates data semantic importance priority vectors.
 The benchmark results show that the architecture is scalable, but for strategies involved with query participation aspects, as the window size increases, the result explanation time increases significantly.
-Thus, in order to use query participation aspect, the window size has either to be kept relatively small, which is one of the incentives that semantic importance is proposed, 
+Thus, in order to use query participation aspect, the window size has either to be kept relatively small, which is one of the incentives why semantic importance is proposed, 
 or to use some filtering functionality such as query relevance aspect in the semantic importance model in order to reduce the data in the window. 
 In the next chapter, we will show how to keep the window size small with the architecture and semantic importance, as well as show how the proposed model and infrastructure can be leveraged for real-life use cases.
