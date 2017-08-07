@@ -35,7 +35,7 @@ Offside event detection methods may be based on various technologies, such as im
 In addition to vision-based tools, sensor-enabled equipment is also employed in this scenario \cite{regan2013sports} \cite{garcia2011wireless}.
 An example is the sports vest provided by GPsports\footnote{\url{http://gpsports.com/}}, which has been already used in the professional soccer.
 The GPsports vest is equipped with sensors that track volume, intensity and work rate of matches played or training by recording and analyzing real-time data such as player position, velocity and heart rate.
-According to its official website, this system has been successfully adopted by 150 clients of 10 sports, including prestigious soccer teams such as Real Madrid CF and Chelsea FC.
+According to its official website, this system has been successfully adopted by 150 clients of 10 sports, including prestigious soccer teams such as Real Madrid C.F. and Chelsea F.C.
 
 Overall, sensor-based systems have great advantages by providing real-time, high-frequency, high-speed motion data of all available participants, but they lack the ability to determine the precise positions of players with reference to relevant boundaries required for offside calculations. 
 Vision-based technologies are getting more precise for player boundary proximity detection, but output credibility and cost of computation have been major concerns.
@@ -104,7 +104,7 @@ An \textbf{Attacker} instance can either be the type of \textbf{BallLastToucher}
 \textbf{Defender} is defined as (\textbf{Player} \textit{and} (\textit{playsAgainst some} \textbf{Attacker})),
 where \textit{playsAgainst} is a symmetric property chain as (\textit{isOpponentOf o hasTeammate}).
 Instead of manually labeling play-against relationship for each pair of opponent players, leveraging this property chain and a reasoner, \textit{playsAgainst} is automatically established.
-This saves lots of tedious work, keeps a compact ontology and shows the value of the semantics.
+This saves lots of tedious work, keeps a compact ontology, and shows the value of the semantics.
 \textbf{SecondLastDefender} is one of the key concepts to define the soccer offside.
 It is the subclass of both \textbf{SecondLastPlayer} and \textbf{Defender}.
 We directly annotate a player as \textbf{SecondLastPlayer} for each team by selecting the player who is the second-nearest to his own goal line among his team. 
@@ -151,7 +151,7 @@ The data is then annotated as in Table \ref{tab:dat}.
     \label{tab:dat}
     \begin{tabular}{|c|c|} \hline
         data & annotation \\ \hhline{|==|}
-		\multicolumn{2}{|c|}{Player Annotation} \\ \hhline{|==|}
+		\multicolumn{2}{|c|}{player annotation} \\ \hhline{|==|}
         \textit{playerX} position & \textit{:playerX :hasPosition :playerPosition\_ts} \\ \hline
         \textit{playerX} is in own half & \textit{:playerX a :PlayerInOwnHalf} \\ \hline
         \textit{playerX} is not in own half & \textit{:playerX a PlayerNotInOwnHalf} \\ \hline
@@ -159,11 +159,11 @@ The data is then annotated as in Table \ref{tab:dat}.
         \textit{playerX} is not a second-last player & \textit{:playerX a NotSecondLastPlayer} \\ \hline
         \textit{playerX} touches the ball & \textit{:playerX :isInvolvedIn :ball\_touch} \\ \hline
         \multirow{2}{*}{if \textit{playerX} challenges \textit{playerY}} & \textit{:playerX :isInvolvedIn :opponent\_challenge} \\ & \textit{:playerY :isInvolvedIn :opponent\_challenge} \\ \hhline{|==|}
-        \multicolumn{2}{|c|}{Ball Annotation} \\ \hhline{|==|}
+        \multicolumn{2}{|c|}{ball annotation} \\ \hhline{|==|}
         \textit{ballA} position & \textit{:ballA :hasPosition :ballPosition\_ts} \\ \hline
         \textit{ballA} is in the field & \textit{:ballA a :InFieldBall} \\ \hline
         \textit{ballA} is off the field & \textit{:ballA a :BackupBall} \\ \hhline{|==|}
-        \multicolumn{2}{|c|}{Referee \& Glove Annotation} \\ \hhline{|==|}
+        \multicolumn{2}{|c|}{referee \& glove annotation} \\ \hhline{|==|}
         referee position & \textit{:referee :hasPosition :refereePosition\_ts} \\ \hline
         glove position & \textit{:glove :hasPosition :glovePosition\_ts} \\ \hline
 	\end{tabular}
@@ -267,7 +267,7 @@ WHERE {
 }
 \end{lstlisting}
 
-Being able to preserve necessary data and wait until the next data complement arrives, and then answering the query, is a key feature for *-LRU/LFU-FO families enabled by $\tau_{qp}$ and $f_{qp}$.
+Being able to preserve some partial necessary data and wait until the others arrive, and then answer the query, is a key feature for *-LRU/LFU-FO families enabled by $\tau_{qp}$ and $f_{qp}$.
 It also explains why they have higher accuracy -- the offside offence judgement requires the window to preserve earlier information (player in offside position at the moment his teammate passes the ball) until later information (the player involved in an active play) arrives.
 After query relaxation, semantic importance priority vectors will be updated, and the window data will be re-ranked. 
 Next, the system checks the percentage of $l_{max}$ which the strategy comes with, and performs data eviction accordingly. 
@@ -520,7 +520,7 @@ The decoy-file data contains the files that are deliberately placed in the emplo
 Each dataset has its own data-schema, and is encoded in the comma separated value format.
 
 This dataset provides 4000 users' actions data, in which 5 users are malicious insiders. 
-From the given brief scenarios descriptions in the data set, 4 out 5 malicious insiders are data exfiltration insiders. 
+From the given brief scenarios descriptions in the data set, 4 out of 5 malicious insiders are data exfiltration insiders. 
 For more details about the dataset, please refer to the \cite{glasser2013bridging} and the website: \url{https://www.cert.org/insider-threat/tools/}.
 %
 \subsection{Ontology}
@@ -580,7 +580,7 @@ In the CMU ontology, \textbf{TemporalThing} is the superclass of \textbf{Action}
 For example, \textbf{AfterHourAction} describes an action that happens after hour. 
 The \textbf{SuspiciousAction} is defined as (\textbf{JobHuntingAction} \textit{or} \textbf{SuspiciousEmailSendAction} \textit{or} \textbf{SuspiciousFileAction} \textit{or} \textbf{SuspiciousLoginAction} \textit{or} \textbf{SuspiciousRemovableDeviceUsageAction} \textit{or} \textbf{SuspiciousWWWUploadAction}). 
 This class classifies the defined suspicious actions. 
-The reason to include the \textbf{JobHuntingAction} is because a potential job hunter should be taken careful of. 
+The reason to include the \textbf{JobHuntingAction} is because a potential job hunter should be taken care of. 
 All of the subclasses of \textbf{SuspiciousAction} are defined, which provides the known data exfiltration patterns. 
 
 \textbf{SuspiciousEmailSendAction} is defined as (\textbf{EmailSendAction} \textit{and} ((\textit{bcc some} \textbf{NotInternalEmailAddress}) \textit{or} (\textit{cc some} \textbf{NotInternalEmailAddress}) \textit{or} (\textit{from some} \textbf{NotInternalEmailAddress}) \textit{or} (\textit{to some} \textbf{NotInternalEmailAddress}))) \textit{or} (\textit{hasEmailAttachment some} \textbf{DecoyFile}).
@@ -604,7 +604,7 @@ It describes the data exfiltration event, and is defined as ((((\textit{hasActio
 In its definition, cardinality is used to quantify a threshold to determine a data exfiltration event.
 
 Last but not the least, the ontology has a \textbf{Website} class that models different websites. 
-It has four classes, \textbf{CloudStorageWebsite} that describes sites like dropbox.com; 
+It has four subclasses, \textbf{CloudStorageWebsite} that describes sites like dropbox.com; 
 \textbf{HacktivistWebsite} that describes sites like wikileaks.org;
 \textbf{JobHuntingWebsite} that describes sites like indeed.com;
 and \textbf{NeutralWebsite} that describes sites other than the above three. 
@@ -645,7 +645,7 @@ else, :device\_$<$activity$>$\_$<$id$>$ rdf:type :InHourAction, $<$date$>$. \\
 :device\_$<$activity$>$\_$<$id$>$\_disk, $<$date$>$. 
 
 Email.csv file encodes data with the schema of (id, date, user, pc, to, cc, bcc, from, activity, size, attachments, content), where ``id, date, user, pc'' are the same as above. 
-``to, cc, bcc, from'' respectively indicates the sender's and receivers' email addresses, ``activity'' is either send or view, ``size'' is the attachments size in bytes, ``attachments'' refers to the attached files in the email, ``content'' indicates the contents in the email. 
+``to, cc, bcc, from'' respectively indicates the sender's and receivers' email addresses, ``activity'' is either send or view, ``size'' is the attachment's size in bytes, ``attachments'' refer to the attached files in the email, ``content'' indicates the contents in the email. 
 The data is annotated as follows: \\
 (1) $<$user$>$-event :hasAction :email\_$<$activity$>$\_$<$id$>$, $<$date$>$. \\
 (2) :email\_$<$activity$>$\_$<$id$>$ rdf:type :EmailAction, $<$date$>$. \\
@@ -691,8 +691,8 @@ Data is annotated as: \\
 
 LDAP folder contains 18 files, each of which is a list of employees during that month.
 They record from 2009/12 to 2011/05.
-The employee list is update monthly.
-These files are used as background information. 
+The employee list is updated monthly.
+These files are used as the background information. 
 Each file is with a data schema of (employee\_name, user\_id, email, role, projects, business\_unit, functional\_unit, department, team, supervisor).
 Thus the data is annotated as: \\
 (1) :$<$user\_id$>$ :hasName :$<$employee\_name$>$. \\
@@ -726,7 +726,7 @@ else, :http\_$<$activity$>$\_$<$id$>$ rdf:type :AfterHourAction, $<$date$>$.\\
 The data exfiltration detection system is implemented on the basis of the sequential stream reasoning architecture. 
 A lower-bounded landmark logical window is deployed in the system. 
 The advantage of the landmark window is reflected incisively and vividly in this use case. 
-For data exfiltration detection, the malicious insiders can do harm to the organization in any arbitrary time period, which makes setting the size for the conventional logical sliding window very challenging: a small size probably will not provide good precision, but a big size will result in more data that hinders the system performance. 
+For data exfiltration detection, the malicious insiders can do harm to the organization in any arbitrary time period, which makes determining the size for the conventional logical sliding window very challenging: a small size probably will not provide good precision, but a big size will result in more data that hinders the system performance. 
 A landmark window, on the other hand, can retain the useful data when evicting other data, and can work with various window management strategies. 
 
 The query is to look for suspicious actions, which is shown in Listing 5.5. 
@@ -761,7 +761,7 @@ The reason to choose query relevance is because of the large amount of the strea
 There is really a need to identify, and filter out the unnecessary data to improve system response. 
 Thus, a query relevance ontology is provided. 
 In the previous section, it is mentioned that this query relevance ontology is query-informed.
-However, for this use case, no dedicated query relevance ontology is provided, as the background domain ontology has already provide enough information to filter out the data. 
+However, for this use case, no dedicated query relevance ontology is provided, as the background domain ontology has already provided enough information to filter out the data. 
 In this use case, the background domain ontology can be used as a query relevance ontology. 
 For example, the query in Listing 5.5 really looks for the suspicious actions. 
 As the action data keeps streaming into the system, each action data item will be examined by the query engine, and if that action data item is not classified as a suspicious action, it can be immediately dropped without having to enter into the window.
@@ -802,7 +802,8 @@ QR-T's recall is always better than that of FIFO for the same detection time per
 The precision, undoubtedly, is very low. 
 There are reasons for that. 
 Insider threat is by no means a simple problem that can be solved with only stream reasoning technologies, it should at least include natural language processing, machine learning and possibily some other technologies. 
-The known pattern on data exfiltration is not very discriminative, that a person who uses a removable disk to copy some file and then upload it into dropbox could be either malicious or innocent.
+The known pattern on data exfiltration is not very discriminative.
+That a person who uses a removable disk to copy some file and then upload it into dropbox could be either malicious or innocent.
 Thus the background ontology cannot do a good job in classifying data exfiltration actions.
 
 \begin{table}[!htbp]
@@ -820,7 +821,7 @@ This is because FIFO strategy has more data in the window than QR-T, which slows
 The results have shown that semantic importance enabled window management strategy can improve the system response time. 
 %
 \section{Discussion}
-This section covers the two use case implementations with both semantic importance and sequential stream reasoning architecture.
+This section covers the two use case implementations using both semantic importance and sequential stream reasoning architecture.
 From the result tables, a significant difference can be seen in the system outputs from different window management strategies enabled by different semantic importance aspects. 
 The two use cases, albeit are from two different domains, share similar characters. 
 The streaming data is big for both cases. 
