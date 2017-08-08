@@ -48,14 +48,14 @@ It can be configured to simulate different types of streaming data thus can be u
 %
 \section{Generalization}
 For the concept of semantic importance to be reusable, it must 
-(1) provide a set of infrastructure tools so that the concept can be implemented, extended, and invoked in different applications, 
+(1) provide a set of infrastructural tools so that the concept can be implemented, extended, and invoked in different applications, 
 and (2) connect with the state-of-the-art stream reasoning work, such as RDF stream, continuous queries, window semantics and report operational semantics, etc.
 %
 \subsection{Semantic Importance Ontology}
 Ontologies are portable, expandable, general and expressive.
 All the current semantic importance concepts have been implemented in an OWL-encoded ontology via extending PROV-O \cite{lebo2013prov}.
 Figure \ref{fig:6-sicr} shows the classes and their relationships in the semantic importance ontology. 
-All fonts in blue indicates that they are inherited from PROV-O ontology. 
+The blue font indicates that classes are inherited from PROV-O ontology. 
 Both \textbf{QueryRelevance} and \textbf{Trustworthiness} are \textbf{prov:Entity}, but \textbf{QueryParticipation} is a \textbf{prov:Activity}.
 For more details, please refer to Appendix A.1. 
 
@@ -246,7 +246,7 @@ Table \ref{tab:6-sdgc} summarizes the parameters to configure the default stream
     parameter & \multicolumn{1}{c|}{option} & \multicolumn{1}{c|}{annotation} \\ \hhline{|=#=|=|}
     lubm & \makecell[l]{1: 100545 triples \\ 2: 230063 triples \\ 3: 337129 triples} & LUBM source data \\ \hline
     sm & \makecell[l]{c: constant mode \\ f: fluctuating mode} & stream mode \\ \hline
-    sr & \makecell[l]{10000, 30000, 50000 \\ 70000, 90000} & \makecell[l]{constant in c mode \\ peak in f mode} \\ \hline
+    sr & \makecell[l]{10000, 30000, 50000 \\ 70000, 90000} & \makecell[l]{constant rate in c mode, \\ peak rate in f mode} \\ \hline
     ets & \makecell[l]{1: quick expiration (1s to 3s) \\ 2: normal expiration (3s to 7s) \\ 3: slow expiration (7s to 10s) \\ 4: implicit expiration} & how quickly the data expires \\ \hline
     t & \makecell[l]{1: trust model 1 \\ 2: trust model 2 \\ 3: trust model 3 \\ 4: no trust model} & \makecell[l]{choose a trust model, append a \\trust score to each data item} \\ \hline
     \end{tabular}
@@ -263,14 +263,15 @@ An example is the amount of traffic on a main road during the peak hours and off
 In f mode, the stream rate is actually the peak value. 
 The probability of a peak value is 1/6, the probability of a valley (SIGenBench sets it as 0) is 1/6, the probability of an in-between value is 2/3. 
 The rationales to set probabilities like this are from the traffic model. 
-During 24 hours, rush hours are usually 4 hours; from midnight to 4:00 am there are a few cars on the road; other time will usually have normal amount of traffic. 
+During 24 hours, rush hours are usually 4 hours (usually 7am to 9am and 4pm to 6pm).
+From midnight to 4:00 am there are a few cars on the road; other time will usually have normal amount of traffic. 
 Thus the peak probability is 4/24 = 1/6, ditto for others.
 Streaming data can carry explicit or implicit data expiration stamps.
 Data can expire fast, normally or slowly.
 There three built-in trust models to assign trust scores for data items.
 
 The data generator shuffles the LUBM data, so that the data is randomly distributed.
-Listing 6.4 shows an example of a streaming data item of $<\rho, g, \tau_{a}, \tau_{e}, t^{tm}_{s}>$ format.
+Listing 6.4 shows an example of a streaming data item in $<\rho, g, \tau_{a}, \tau_{e}, t^{tm}_{s}>$ format.
 However, shuffling will possibly lead to no ground truth. 
 Consider Examples in Listing 6.5 and 6.6. 
 In Listing 6.5, graph32513 and graph47329 are both about $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$. 
@@ -368,7 +369,7 @@ By plugging a query relevance filter in front of the window, irrelevant data wil
 
 The hypothesis is that query relevance will help save system response time, which has been validated from the results at Table \ref{tab:6-qrp}. 
 The benefits brought by query relevance are augmented as system precision, memory consumption and throughput have all been improved. 
-However, it is worth to point out that the overall system performance under the query relevance aspect is dependent on the quality of the filter query, as well as the relevance ontology if provided. 
+However, it is worth pointing out that the overall system performance under the query relevance aspect is dependent on the quality of the filter query, as well as the relevance ontology if provided. 
 It is easy to imagine that a careless design and implementation of the filter query or ontology can adversely impact the results, as it has been shown by the below experimental results.
 
 Three queries in different quality levels are included in Listing 6.9, 6.10, and 6.11.
@@ -413,7 +414,7 @@ WHERE {
 This OK query introduces some irrelevant data and sees it as relevant data, from the argument of ``?s rdf:type ?type''.
 This query will still be able to filter out some amount of the irrelevant data which can improve system response time.
 It is likely to use this type of filter query in real world use case though, because the knowledge about the streaming data and target query can be limited. 
-However, the goal is to filter out as much as irrelevant data so that the system performance can be improved.
+However, the goal is to filter out as much irrelevant data as possible so that the system performance can be improved.
 As what will be shown later, streaming data rate also influences the system response time. 
 If the data rate is big, it will take longer time to process the filtering, which can hurt the overall usefulness of system.
 
@@ -518,17 +519,17 @@ Since less data is in the window, the overall system will respond way more quick
 In the good QR example, the system precision is improved because of only the necessary data is preserved. 
 
 For all non-QR strategies, FIFO has the worst precision, which shows that the temporal silent assumption generally does not work well.
-Trust related strategies shows a superior performance in precision and throughput. 
+Trust related strategies show a superior performance in precision and throughput. 
 In fact, non-QR trust related strategies have the best throughput of all.
-This is because of the fast execution of the trust comparison options.
+This is because of the fast execution of the trust comparison operation.
 Basically, all data will be ranked by their trust score first under Trust related strategies. 
-Unlike query relevance where the filter query has to be executed, data filtered by trust score will only take O(N) time, which is way more faster.
+Unlike query relevance where the filter query has to be executed, data filtered by trust score will only take linear time, which is way more faster.
 Another part of reason for non-QR trust related strategies' high precisions is that the data is generated with Trust Model 3. 
 For details about the trust mode, please refer to the trustworthiness section below. 
 
 All QR related strategies have good precision of 1 and relatively high throughputs. 
 Note that the streaming data has a constant rate of 10000 data items per second. 
-All QR related strategies has a throughput bigger than 10000, which means they are able to process that amount of data within one second.
+All QR related strategies has a throughput bigger than 10000, which means that they are able to process that amount of data within one second.
 An eligible stream reasoning system should at least finish processing the data in the window before window consumes next round of data so as to avoid data congestion or any delay. 
 The average response time of all QR-related strategies with good QR filter is 276.19 ms and is smaller than window step, while non-QR strategies has 2099.23 ms. 
 This means non-QR strategies will need more than 2 seconds to process 10000 data items, which makes the system not usable at all. 
@@ -544,7 +545,7 @@ The experimental results illustrate that query relevance filter queries/ontology
 %
 \subsubsection{Temporal Provenance}
 Temporal features are RDF streams' inherent nature. 
-Stream reasoning applications should be able to keep a close track of the validity of all RDF stream items, and evict them if invalid within in the window.
+Stream reasoning applications should be able to keep a close track of the validity of all RDF stream items, and evict them if invalid within the window.
 Most stream reasoning applications use arrival or generation timestamps.
 Chapter 2 has already analyzed the impacts of these two.
 The recency timestamp will be evaluated in query participation section.
@@ -561,7 +562,7 @@ Table \ref{tab:6-dees} shows the experiments setup.
     \label{tab:6-dees}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
-    window & \makecell[l]{logical lower-bounded landmark window \\ initial window size = 1s, 2s, and 3s worth of data items \\ window step = 1s woth of data items \\ report policy = onWindowClose} \\ \hline
+    window & \makecell[l]{logical lower-bounded landmark window \\ initial window size = 1s, 2s, and 3s worth of data items \\ window step = 1s worth of data items \\ report policy = onWindowClose} \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant) \\ sr = 10000 data items/second \\ t = 3 (trust model 3)} \\ \hline
     query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
@@ -670,9 +671,9 @@ Table \ref{tab:6-qpes} shows the experiments setup.
 
 Table \ref{tab:6-qpp} shows the experimental results. 
 It can be seen that data expiration influences strategy precision most, which can be explained with the same rationales from temporal provenance. 
-As data expires slowly, all strategies' precision increase. 
+As data expires slowly, all strategies' precision increases. 
 LFU-FO and LRU-FO has faster response time than FIFO, but smaller throughput. 
-Generally speaking, query participation does not show an obvious improvements for overall system performance.
+Generally speaking, query participation alone does not show an obvious improvements for overall system performance.
 The results indicate that query participation is most useful when data expires fast.
 Technically, none of the tested three strategies are applicable in stream reasoning settings due to their slow response time. 
 However, if QR aspect is added as shown in Table \ref{tab:6-qrp}, query participation related strategies are able to run faster. 
@@ -745,7 +746,7 @@ Table \ref{tab:6-tes} shows the experiment setup.
 Table \ref{tab:6-tp} obviously shows that different trust model can have different impacts for the system performance. 
 The information needed to answer the target query is actually all about ``FullProfessor''.
 This can be deducted from the target query in Listing 6.1 and RDF stream example in Listing 6.6.
-Model 1 assigns the smallest trust score for ``FullProfessor'', which means the necessary data will be evicted quickly in the window by Trust-FO strategy. 
+Model 1 assigns the smallest trust score for ``FullProfessor'', which means that the necessary data will be evicted quickly in the window by Trust-FO strategy. 
 Model 2 Trusts information about professors but other data can also have high trust scores.
 Model 3 Trusts ``FullProfessor'' related data only.
 In order to explain the performance, both the target query and the window management strategies should be considered. 
@@ -767,7 +768,7 @@ In other situations, for example, the traffic in the main street at rush hours w
 
 
 SIGenBench results have shown that, the output will be affected by both stream rate and mode.
-For traditional window and FIFO strategy, this impact will be significant. 
+For traditional window with FIFO strategy, this impact will be significant. 
 However, for window management strategies supported by semantic importance, this impact can be reduced or even minimized. 
 %
 \subsubsection{Streaming Mode and Rate}
@@ -899,7 +900,7 @@ Overall, Trust-FO performs the best.
     \label{fig:6-csmrrt}
 \end{figure}
 
-In f mode though, things become some different. 
+In f mode though, things become different. 
 Since now the streaming rate is the peak value with 1/6 appearance probability, the average data items arrived is surely less than that in c mode. 
 Thus all strategies can perform slightly better than what they do in c mode. 
 
@@ -939,7 +940,7 @@ Table \ref{tab:6-wes} shows the experiments setup.
     \label{tab:6-wes}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
-    window & report policy =``onWindowClose" \\ \hline
+    window & report policy = onWindowClose \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant) \\ sr = 10000 data items/second \\ t = 3 (trust model 3)} \\ \hline
     query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
@@ -1177,7 +1178,9 @@ As the data expires slowly, all strategies can deliver good precision, because t
 \subsubsection{Report Policy}
 Report policies are part of window semantics. 
 They determine the condition to fire the query and report the results.
-They are also part of the reasons to explain the different results reported by different stream reasoning engines \cite{dell2013correctness}. 
+They are also part of the reasons to explain the different results reported by different stream reasoning engines \cite{dell2013correctness}.
+SIGenBench supports four report policies.
+However, the influences of them on stream reasoning systems have already been discussed in the related work \cite{dell2013correctness}.
 %
 \subsubsection{Strategy}
 Different window management strategies are supported by different combinations of semantic importance aspects, which views data importance in different ways, thus can provide different results and performances. 
