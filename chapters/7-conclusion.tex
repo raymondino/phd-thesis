@@ -77,7 +77,15 @@ SIGenBench can also control stream rates and modes, so as to provide more simula
 \section{Future Work}
 Semantic importance currently only has four aspects, among which the provenance and trustworthiness aspects are both very broad. 
 This dissertation only talks about some temporal provenance, and leaves other types of provenance untouched. 
-For example, geolocation is an example of non-temporal provenance, and surely can be useful for some queries that involve geology.
+For example, geographical location is an example of non-temporal provenance, and surely can be useful for some queries that involve geology.
+\textcolor{red}{
+Query relevance is a very interesting aspect. 
+There are several ways to make it more interesting in the future.
+For example, formalize the general principles of preparing the query relevance ontology, although in Section 3.4 I have briefly mentioned this. 
+Since query relevance ontology is static and will only work with one query. 
+This hinders system if a different query is deployed. 
+Another direction is to come with a method to enable query relevance self-evolving ontology.
+Basically it can learn what is going on in the current stream and summarize some potential interesting knowledge. }
 One future work is to explore and expand semantic importance both horizontally and vertically.
 
 SIGenBench is a tool that helps test semantic importance.

@@ -38,7 +38,7 @@ Our goal is to formalize certain parts of this task of judging the relative impo
 To do this, I present semantic importance.
 
 \textbf{Semantic importance is defined as an extensible conceptual model that describes the importance of the streaming data by leveraging various streaming data orderings.}
-
+re
 Such data orderings are not limited to logical orderings, but also query participation, provenance, and trustworthiness, etc. 
 Semantic importance is represented in a priority vector \cite{saaty2003decision}, with elements ordered according to a preference function.
 For example, priority vector $V_{p} = [x, y, z]$ has three elements $x, y,$ and $z$.
@@ -65,9 +65,15 @@ Provenance is a factor in judging the importance of a streaming data item \cite{
 This dissertation takes its definition from a foundation paper \cite{ram2009new} in data provenance, 
 where \textbf{``provenance is defined as a set of n-tuples: what, when, where, how, who, which, and why.''}
 There are several alternate definitions, but this one will suit the dissertation goal since it is a representative definition that includes the extensibility with other definitions. 
-It provides the directions to extend provenance aspect with other perspectives such as ``What'', ``Where'' or ``How''. 
-In the current model, logical provenance is included and is corresponding to ``When'' aspect in the definition.
-This model can certainly go beyond that in the dissertation future work but ``When'' is really what should be started from, because I want to show it for the silent logical assumption.
+It provides the directions to extend provenance aspect with other perspectives such as ``what'', ``where'' or ``how''. 
+In the current model, logical provenance\footnote{It is also referred as temporal provenance.} is included and is corresponding to ``when'' aspect in the definition.
+This model can certainly go beyond that in the dissertation future work but ``when'' is really what should be started from, because I want to show it for the silent logical assumption.
+
+\textcolor{red}{
+Even though this dissertation focuses on ``when'' aspect, other types of provenance can also be expanded. 
+For example, ``where'' can possibly include the geographical information of the data, whereas ``who'' can possibly refer to the agent that performs some actions. 
+In Chapter 5, the soccer offside offense use case leverages positional data as the where-provenance, as well as the players' sensor id as who-provenance. 
+The expansion of the provenance aspect will be as one of the future of this dissertation.}
 
 There are four branches following the logical provenance.
 Generation timestamp ($\tau_{g}$) is assigned by the streaming source, and describes when the data is generated.
@@ -192,6 +198,14 @@ The system can be totally blind or literate about streaming data query relevance
 For example, in Figure \ref{fig:3-siqre}, $\largesquare_{D}$ is irrelevant as a defender can never commit an offside offence. 
 If such knowledge is also included in the query relevance ontology, the query relevance ontology becomes more comprehensive, and more irrelevant data can be filtered out. 
 As the consequences of the query relevance ontology, data items pointed by arrows are not relevant to the current query and thus can be filtered out of the window.
+
+\textcolor{red}{
+There are several general principles in order to prepare query relevance ontologies.
+First, to understand the target and requirements of the use case. 
+Since query relevance ontology is domain-specific, and is possibly dependent on the background ontology, understanding what is expected out of the use case can provide a clear ontology construction goal. 
+Second, to understand the data, meaning to know what data is useful or useless to the use case.
+The patterns of relevant data will then be composed and encoded in the ontology.
+Third, keep in mind that query relevance ontology will not work for different queries, since it is so customized to one query in one use case.}
 %
 \section{Comparison Rule}
 The semantic importance model encodes the aspects to provide a multi dimensional view on importance.
@@ -487,7 +501,7 @@ What will be shown later illustrates why it is important to extend the window se
 The method is to re-define the window size and step, as well as to extend the sliding logical window semantics with the lower-bounded landmark window whose lower bound is fixed permanently, and upper bound proceeds. 
 This extended window semantics can work well with the semantic importance. 
 %
-\subsection{Problems in Existing Winidow Semantics}
+\subsection{Problems in Existing Window Semantics}
 ``\textbf{A window W over a stream S is a finite subset of S}'' \cite{dindar2013modeling}.
 A sliding window has two parameters, size and step, both have been mentioned and defined in related work \cite{beck2015lars} \cite{dindar2013modeling} \cite{prud2008sparql} \cite{botan2010secret} \cite{arasu2006cql}.
 \cite{dindar2013modeling} requires that all windows defined over a stream must have the same size and step, with a restriction that the step could be any value that must be no bigger than the size.
@@ -608,7 +622,6 @@ If all of the data are not expired, the window will not proceed but wait till at
 This indicates that the window management strategies manage data differently, and it is crucial to choose a proper strategy to keep the desired data for query.
 %
 \subsection{Discussion}
-
 \begin{table}[!htbp]
 \centering
 \caption{Window Semantics Comparison}
@@ -677,7 +690,9 @@ If data comes with trust scores, it is generally recommended to perform trust fi
 Again, this is to guarantee that all the data enters into the query phase is trusted.
 
 Using priority vector to encode semantic importance guarantees an efficient and multi-fold ranking.
-The comparison rule allows the ranking to consider different aspects comprehensively.
+Together with the comparison rule, semantic importance allows the ranking to consider different aspects comprehensively.
+\textcolor{red}{
+Weighting is a simple and intuitive way to enable ordering. However, the semantic importance is embodied in the priority vector, whose ordering is realized by the position of the item. The leftier a semantic importance item is placed in the priority vector, the more significant it is compared to other items on its right. The comparison rule in Section 3.2 has provided both theory and examples on comparing semantic importance. Weighting is parallel to priority vector. There is also a way to use weighting instead of priority vector to enable ordering, where different weights can be assigned by users who assigns their preferences over semantic importance items, then reduce it into a single value, which can be used to compare and rank data importance. Since the weighting schema is a different way, this dissertation will not focus on it. }
 
 Different window management strategies can be enabled by semantic importance. 
 Work such as \cite{dell2013correctness} considers the operation semantics in stream reasoning systems. 
