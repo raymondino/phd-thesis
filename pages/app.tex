@@ -32,8 +32,8 @@ SIO is designed as a descriptive ontology.
     \caption{SIO Class Definition}
     \begin{tabular}{|c||l|} \hline
          class name & \multicolumn{1}{c|}{definition}  \\ \hhline{|=#=|}
-         QueryParticipation & \makecell[l]{(\textit{used some} \textbf{QueryEngine}) \textit{and} \\ (\textit{used some} \textbf{StreamingDataGraph}) \textit{and} \\(\textit{used some} \textbf{BackgroundOntology}) \textit{and} \\(\textit{generated some} \textbf{QueryResult})} \\ \hline 
-         QueryRelevance & \textit{wasDerivedFrom some} \textbf{QueryRelevanceOntology} \\ \hline
+         QueryParticipation & \makecell[l]{(\textit{used some} \textbf{QueryEngine}) \textit{and} \\ (\textit{used some} \textbf{StreamingDataGraph}) \textit{and} \\(\textit{used some} \textbf{BackgroundOntologyFile}) \textit{and} \\(\textit{generated some} \textbf{QueryResult})} \\ \hline 
+         QueryRelevance & \textit{wasDerivedFrom some} \textbf{QueryRelevanceOntologyFile} \\ \hline
         \multicolumn{2}{|l|}{\makecell{other classes do not need to be defined with OWL since they are not \\compound concepts, and can be described in natural languages.}} \\ \hline
     \end{tabular}
     \label{tab:app-socd}
@@ -84,13 +84,13 @@ An example is to use the streaming source as the graph ID and all the generated 
 	\endfoot
 	\hline
 	\endlastfoot
-	\makecell{Background\\Ontology} & \makecell{soccer\_offside\_\\background\_ontology} & \makecell[l]{soccer offside background ontology \\ provides necessary knowledge \\ for defining \& determining \\soccer offside.} \\ \hline
+	\makecell{Background\\OntologyFile} & \makecell{soccer\_offside\_\\background\_ontology} & \makecell[l]{soccer offside background ontology \\ provides necessary knowledge \\ for defining \& determining \\soccer offside.} \\ \hline
 	\makecell{DataTrust-\\worthiness} & \makecell{right\_foot\_position\_\\is\_trusted\_\\left\_foot\_position\_\\is\_untrusted} & \makecell[l]{right foot position is trusted, \\left foot position is not trusted} \\ \hline
 	Query & \makecell{who\_commits\_an\_\\offside\_offence} & \makecell[l]{the query ``who commits an offside \\offence'' is the target query and \\registered in the system} \\ \hline
 	QueryEngine & \makecell{stardog\_triplestore\_\\SPARQL\_engine} & \makecell[l]{in soccer offside use case, Stardog \\triplestore is used thus its SPARQL \\query engine is used.} \\ \hline
 	\makecell{Query\\Participation\\Frequency} & \makecell{graph1\_query\_\\participation\_\\frequency\_value} & \makecell[l]{graph1 refers to\\``graph1\_PlayerA\_a\_Attacker''\\ (see StreamingDataGraph \\individuals for details)} \\ \hline
 	\makecell{Query\\Participation\\Recency} & \makecell{graph1\_query\_\\participation\_\\recency\_timestamp} & \makecell[l]{the timestamp when graph1 \\participates in the query.} \\ \hline
-	\makecell{Query\\Relevance\\Ontology} & \makecell{soccer\_offside\_query\_\\relevance\_ontology} & \makecell[l]{the query relevance ontology to \\help filter irrelevant data out} \\ \hline
+	\makecell{Query\\Relevance\\OntologyFile} & \makecell{soccer\_offside\_query\_\\relevance\_ontology} & \makecell[l]{the query relevance ontology to \\help filter irrelevant data out} \\ \hline
 	\makecell{QueryResult} & \makecell{PlayerA\_commits\_\\an\_offside\_offence} & \makecell[l]{the query result indicates \\that PlayerA commits \\an offside offence} \\ \hline
 	\makecell{Streaming\\DataGraph} & \makecell{graph1\_PlayerA\_a\_\\Attacker.\\graph2\_PlayerA\_a\_\\BallLastToucher.\\graph3\_PlayerA\_a\_\\PlayerAtOffsidePosition.\\graph4\_PlayerB\_a\_\\Attacker.} & \makecell[l]{``graph1\_PlayerA\_a\_Attacker'' \\indicates that the triple \\``PlayerA a Attacker''\\ is in graph1. In this example, \\every graph only has 1 triple. \\(It could have more, \\but we set it to only have 1)} \\ \hline
 	TrustModel & \makecell{left\_foot\_position\_\\has\_trust\_score\_\\of\_1\_right\_has\_0} & \makecell[l]{trust model stamps \\trust scores to data} \\ \hline

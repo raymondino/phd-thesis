@@ -369,19 +369,20 @@ By plugging a query relevance filter in front of the window, irrelevant data wil
 
 The hypothesis is that query relevance will help save system response time, which has been validated from the results at Table \ref{tab:6-qrp}. 
 The benefits brought by query relevance are augmented as system precision, memory consumption and throughput have all been improved. 
-However, it is worth pointing out that the overall system performance under the query relevance aspect is dependent on the quality of the filter query, as well as the relevance ontology if provided. 
-It is easy to imagine that a careless design and implementation of the filter query or ontology can adversely impact the results, as it has been shown by the below experimental results.
+However, query relevance ontology is not the only factor to decide the performance. 
+The actual filtering query also has the power to influence the system performance. 
+% However, it is worth pointing out that the overall system performance under the query relevance aspect is dependent on the quality of the filter query, as well as the relevance ontology if provided. 
+% It is easy to imagine that a careless design and implementation of the filter query or ontology can adversely impact the results, as it has been shown by the below experimental results.
+In order to show this, this thesis has used three different queries as in Listing 6.9, 6.10, and 6.11.
+Listing 6.9 shows a filtering query that keeps only the necessary data items.
+% To write good quality filter query, it is important to obtain enough knowledge about the streaming data and the target query. 
+% Being able to understand what data carries is a first step to a good quality filter query.
+% This requires to do research on the streaming data. 
+% The second step is to understand the target query, which helps to determine what data to keep and what data to evict. 
+Listing 6.10 shows a filtering query that keeps both all the necessary data items and some unnecessary data items.
+Listing 6.11 shows a filtering query that fails to capture all necessary data items.
 
-Three queries in different quality levels are included in Listing 6.9, 6.10, and 6.11.
-Listing 6.9 shows a good query relevance filtering query, where only the necessary data items are kept.
-To write good quality filter query, it is important to obtain enough knowledge about the streaming data and the target query. 
-Being able to understand what data carries is a first step to a good quality filter query.
-This requires to do research on the streaming data. 
-The second step is to understand the target query, which helps to determine what data to keep and what data to evict. 
-Listing 6.10 shows an OK query relevance filtering query, albeit all the necessary data items are kept, it also introduces some unnecessary data items.
-Listing 6.11 shows a bad filter query that fails to capture all necessary data items.
-
-\begin{lstlisting}[language=SPARQL,caption={Good Query Relevance Filtering Query},basicstyle=\small,frame=single]
+\begin{lstlisting}[language=SPARQL,caption={Query Relevance Filtering Query 1},basicstyle=\small,frame=single]
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?g
 WHERE {
@@ -399,7 +400,7 @@ Filter query in Listing 6.9 will only let the system to keep the relevant data.
 Typically, query relevance filter query can have two ways to filter the data: use some SPARQL Delete or Drop argument in the filter query itself to get rid of the irrelevant data, or use SPARQL graph pattern match to query the relevant data to keep. 
 This dissertation adopts the second way, because the implementation is easier and faster.
 
-\begin{lstlisting}[language=SPARQL,caption={OK Query Relevance Filtering Query},basicstyle=\small,frame=single]
+\begin{lstlisting}[language=SPARQL,caption={Query Relevance Filtering Query 2},basicstyle=\small,frame=single]
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?g
 WHERE { 
@@ -411,14 +412,14 @@ WHERE {
 }
 \end{lstlisting}
 
-This OK query introduces some irrelevant data and sees it as relevant data, from the argument of ``?s rdf:type ?type''.
+This query introduces some irrelevant data and sees it as relevant data, from the argument of ``?s rdf:type ?type''.
 This query will still be able to filter out some amount of the irrelevant data which can improve system response time.
 It is likely to use this type of filter query in real world use case though, because the knowledge about the streaming data and target query can be limited. 
 However, the goal is to filter out as much irrelevant data as possible so that the system performance can be improved.
 As what will be shown later, streaming data rate also influences the system response time. 
 If the data rate is big, it will take longer time to process the filtering, which can hurt the overall usefulness of system.
 
-\begin{lstlisting}[language=SPARQL,caption={Bad Query Relevance Filtering Query},basicstyle=\small,frame=single]
+\begin{lstlisting}[language=SPARQL,caption={Query Relevance Filtering Query 3},basicstyle=\small,frame=single]
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?g
 WHERE {
@@ -428,7 +429,7 @@ WHERE {
 }
 \end{lstlisting}
 
-Listing 6.11 shows a badly designed filter query, where the relevant data of \textbf{ub:FullProfessor} is filtered out.
+Listing 6.11 shows a filtering query where the relevant data of \textbf{ub:FullProfessor} is filtered out.
 Predictably, the target query will not provide any results. 
 In general applications, one should avoid this type of query to be deployed in the system. 
 Table \ref{tab:6-fqqi} summarizes the impacts of the above three queries. 
@@ -443,7 +444,7 @@ Table \ref{tab:6-fqqi} summarizes the impacts of the above three queries.
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant mode) \\ sr = 10000 data items/second \\ ets = 1 quick expiration (1s to 3s) \\ t = 3 (trust model 3)} \\ \hline 
     query & CSPARQL query \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
-    QR filter quality & \makecell[l]{good as in Listing 6.9 \\ OK as in Listing 6.10 \\ bad as in Listing 6.11} \\ \hline
+    QR filter & \makecell[l]{Listing 6.9, 6.10, and 6.11} \\ \hline
     \end{tabular}
 \end{table}
 
@@ -454,7 +455,7 @@ In the following section, we will see that a bigger window size will impact the 
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Good Query Relevance Performance}
+    \caption{Query Relevance Filter Query 1 Performance}
     \label{tab:6-qrp}
     \begin{tabular}{|l||c|c|c|c|} \hline
          \multicolumn{1}{|c||}{strategy} & memory & response time & precision & throughput \\ \hhline{|=#=|=|=|=|}
@@ -494,14 +495,14 @@ QR-Trust-FE-LRU-FI-FO & 27.94 & 277.98 & 1 & 37607.35\\ \hline
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Filter Query Quality Experiment Results}
+    \caption{Different Filter Query Experiment Results}
     \label{tab:6-fqqi}
     \begin{tabular}{|c||c|c|c|c|} \hline
-    quality & ave. memory & ave. response time & ave. precision & ave. throughput \\ \hhline{|=#=|=|=|=|}
+    query & ave. memory & ave. response time & ave. precision & ave. throughput \\ \hhline{|=#=|=|=|=|}
     none & 8755.66 & 2099.23 & 0.42 & 19526.59 \\ \hline
-    good & 34.51 & 276.19 & 1.00 & 36279.83\\ \hline
-    OK & 1882.19 & 739.97 & 0.92 & 19140.17\\ \hline
-    bad & 5.62 & 250.33 & 0 & 41018.93\\ \hline
+    Query 1 & 34.51 & 276.19 & 1.00 & 36279.83\\ \hline
+    Query 2 & 1882.19 & 739.97 & 0.92 & 19140.17\\ \hline
+    Query 3 & 5.62 & 250.33 & 0 & 41018.93\\ \hline
     \end{tabular}
     \begin{tablenotes}
  		\item memory unit: number of data items
@@ -510,10 +511,10 @@ QR-Trust-FE-LRU-FI-FO & 27.94 & 277.98 & 1 & 37607.35\\ \hline
     \end{tablenotes}
 \end{table}
 
-Table \ref{tab:6-qrp} shows the system performance under all 26 built-in strategies with good query relevance filter query.
+Table \ref{tab:6-qrp} shows the system performance under all 26 built-in strategies with query relevance filter query 1.
 It is obvious that QR aspect alone can improve system performance significantly. 
 For example, for FIFO and QR-FI-FO, the memory consumption is 11202.70 vs 18.78, which is almost 600x improvement. 
-Table \ref{tab:6-fqqi} shows that compared with all non-QR strategies, on average good query relevance can reduce memory consumption by 253.71 times, improve response time by 7.6 times, improve precision by 2.38 times, and improve throughput by 1.86 times. 
+Table \ref{tab:6-fqqi} shows that compared with all non-QR strategies, on average Query 1 can reduce memory consumption by 253.71 times, improve response time by 7.6 times, improve precision by 2.38 times, and improve throughput by 1.86 times. 
 With a reduced memory consumption, the system is able to be deployed in a resource-constrained environment, or an environment that can allocate less resource to store streaming data. 
 Since less data is in the window, the overall system will respond way more quickly, which can also increase the system throughput. 
 In the good QR example, the system precision is improved because of only the necessary data is preserved. 
@@ -535,8 +536,8 @@ The average response time of all QR-related strategies with good QR filter is 27
 This means non-QR strategies will need more than 2 seconds to process 10000 data items, which makes the system not usable at all. 
 The only exception in non-QR strategies is those non-QR Trust related strategies. 
 
-Table \ref{tab:6-fqqi} shows the impacts from different filter query qualities. 
-OK filter query impact is called ``under filter impact''; bad filter query impact is called ``over filter impact''.
+Table \ref{tab:6-fqqi} shows the impacts from different filter query influences. 
+Query 2's impact is called ``under filter impact''; Query 3's filter query impact is called ``over filter impact''.
 In the under filter situation, more data are kept in the window thus system response time is slower than good QR's, but faster than the window step thus the precision is still good.
 Its throughput drops but still bigger than the stream rate thus capable of processing data stream. 
 Nonetheless, in the over filter situation, not only all irrelevant data, but also some relevant data is filtered out, resulting in a very small memory consumption. 
@@ -564,7 +565,7 @@ Table \ref{tab:6-dees} shows the experiments setup.
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
     window & \makecell[l]{logical lower-bounded landmark window \\ initial window size = 1s, 2s, and 3s worth of data items \\ window step = 1s worth of data items \\ report policy = onWindowClose} \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant) \\ sr = 10000 data items/second \\ t = 3 (trust model 3)} \\ \hline
-    query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
+    query & \makecell[l]{CSPARQL target query \\ query relevance filter query 1 as in Listing 6.9} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
     data expire & \makecell[l]{ets = 1 quick expiration (1s to 3s) \\ ets = 2 normal expiration (3s to 7s) \\ ets = 3 slow expiration (7s to 10s)} \\ \hline
     strategy & \makecell[l]{FIFO, FE-FO, FE-FI-FO} \\ \hline
@@ -636,7 +637,7 @@ Table \ref{tab:6-qpes} shows the experiments setup.
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
     window & \makecell[l]{logical lower-bounded landmark window \\ initial window size = 1s, 2s, and 3s worth of data items \\ window step = 1s worth of data items \\ report policy = onWindowClose} \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant) \\ sr = 10000 data items/second \\ t = 3 (trust model 3)} \\ \hline
-    query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
+    query & \makecell[l]{CSPARQL target query \\ query relevance filter query 1 as in Listing 6.9} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
     data expiration & \makecell[l]{ets = 1 quick expiration (1s to 3s) \\ ets = 2 normal expiration (3s to 7s) \\ ets = 3 slow expiration (7s to 10s) \\ ets = 4 implicit} \\ \hline
     strategy & \makecell[l]{FIFO, LFU-FO, LRU-FO} \\ \hline
@@ -716,7 +717,7 @@ Table \ref{tab:6-tes} shows the experiment setup.
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
     window & \makecell[l]{logical lowerbounded landmark window \\ initial window size = 1s, 2s, and 3s worth of data items \\ window step = 1s worth of data items \\ report policy = onWindowClose} \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant) \\ sr = 10000 data items/second \\ ets = 1 quick expiration (1s to 3s)} \\ \hline
-    query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
+    query & \makecell[l]{CSPARQL target query \\ query relevance filter query 1 as in Listing 6.9} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
     trust model & \makecell[l]{t = 1 (trust model 1) \\ t = 2 (trust model 2) \\ t = 3 (trust model 3)} \\ \hline
     strategy & FIFO, Trust-FO  \\ \hline
@@ -785,7 +786,7 @@ Table \ref{tab:6-smres} shows the experiments setup.
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
     window & \makecell[l]{logical lower-bounded landmark window \\ initial window size = 1s worth of data items \\ window step = 1s worth of data items \\ report policy = onWindowClose} \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ ets = 1 quick expiration (1s to 3s) \\ t = 3 (trust model 3)} \\ \hline
-    query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
+    query & \makecell[l]{CSPARQL target query \\ query relevance filter query 1 as in Listing 6.9} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
     stream mode & constant, fluctuating \\ \hline
     stream rate & \makecell[l]{10000, 30000, 50000, 70000, 90000} \\ \hline
@@ -942,7 +943,7 @@ Table \ref{tab:6-wes} shows the experiments setup.
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
     window & report policy = onWindowClose \\ \hline
     data stream & \makecell[l]{lubm = 1 \\ sm = c (constant) \\ sr = 10000 data items/second \\ t = 3 (trust model 3)} \\ \hline
-    query & \makecell[l]{CSPARQL target query \\ good query relevance filter query} \\ \hline
+    query & \makecell[l]{CSPARQL target query \\ query relevance filter query 1 as in Listing 6.9} \\ \hline
     \multicolumn{2}{|c|}{\textbf{experiment variable}} \\ \hline
     window & \makecell[l]{logical sliding window \\ window size = 1s, 3s, 5s, 7s, 9s \\ window step = 1s \\ strategy: FIFO, QR-FI-FO} \\ \cline{2-2}
            & \makecell[l]{logical lower-bounded landmark window \\ initial window size = 1s, 3s, 5s, 7s, 9s worth of data items \\ window step = 1s worth of data items \\ strategy: FIFO, QR-FI-FO, FE-FO, LFU-FO, Trust-FO \\ QR-Trust-FE-LFU-FI-FO} \\ \hline
@@ -1194,8 +1195,9 @@ The above experiments have already shown all the strategies' performances under 
 \section{Summary}
 The above experiments have illustrated that SIGenBench is both powerful and flexible to generalize and benchmark semantic importance. 
 Query relevance can significantly increase the strategy performance as in Table \ref{tab:6-qrp}.
-A good query relevance can comprehensively improve stream reasoning systems.
-Even an OK or bad query relevance can still improve system response time. 
+From the experimental results it can also be seen that different filtering queries can definitely affect system performance. 
+For example, Query 1 can comprehensively improve stream reasoning systems.
+Even Query 2 or 3 query relevance can still improve system response time. 
 However, it can also be seen that as streaming rate increases, query relevance can reach the limitation where filtering time can take too long, which can negatively impact the response time and precision. 
 Temporal provenance, especially the expiration timestamp, is suitable where data carries explicit expiration timestamps. 
 They are good at picking up expired data to avoid invalid query results. 
