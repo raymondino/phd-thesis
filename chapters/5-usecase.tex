@@ -831,7 +831,6 @@ Also, it requires complex DL reasoning in both cases.
 Streaming data alone, although provides the basic semantics from the ontology annotation, is not able to provide the desired results. 
 From the results, we can see that semantic importance is able to improve the system precision, memory consumption, and response time.
 
-\textcolor{red}{
 Event calculus \cite{khandelwal2013furthering} is for reasoning about changes, which is a different way to implement soccer offside use case. 
 However, in order to make event calculus useful, the stream should contain events. 
 The original streaming data is only about primitive positional data, there should be some sort of “event detector” plugged in the system, so that different events can be detected, 
@@ -841,7 +840,7 @@ Motif detection \cite{chen2015context} is also another potential way to implemen
 Since soccer offside offence has a pattern and will recur during the game if it happens, motif detection methods can also be used.
 I used sampling to reduce the amount of each sensor’s position data streamed into the system with the premise that sampling does not affect the system output. 
 The sampling algorithm is called systematic sampling, which basically means randomly pick up the first element, then pick the next element every k elements away afterwards. 
-We use this simple sampling algorithm to reduce the data update frequency but is able to maintain a good sampling result for the use case implementation.}
+We use this simple sampling algorithm to reduce the data update frequency but is able to maintain a good sampling result for the use case implementation.
 
 However, one should also see that the implementations of both use cases are dependent upon very specific assumptions that are only applicable in specific scenarios.
 This limits the generalization of semantic importance. 

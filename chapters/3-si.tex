@@ -69,11 +69,10 @@ It provides the directions to extend provenance aspect with other perspectives s
 In the current model, logical provenance\footnote{It is also referred as temporal provenance.} is included and is corresponding to ``when'' aspect in the definition.
 This model can certainly go beyond that in the dissertation future work but ``when'' is really what should be started from, because I want to show it for the silent logical assumption.
 
-\textcolor{red}{
 Even though this dissertation focuses on ``when'' aspect, other types of provenance can also be expanded. 
 For example, ``where'' can possibly include the geographical information of the data, whereas ``who'' can possibly refer to the agent that performs some actions. 
 In Chapter 5, the soccer offside offense use case leverages positional data as the where-provenance, as well as the players' sensor id as who-provenance. 
-The expansion of the provenance aspect will be as one of the future of this dissertation.}
+The expansion of the provenance aspect will be as one of the future of this dissertation.
 
 There are four branches following the logical provenance.
 Generation timestamp ($\tau_{g}$) is assigned by the streaming source, and describes when the data is generated.
@@ -199,13 +198,13 @@ For example, in Figure \ref{fig:3-siqre}, $\largesquare_{D}$ is irrelevant as a 
 If such knowledge is also included in the query relevance ontology, the query relevance ontology becomes more comprehensive, and more irrelevant data can be filtered out. 
 As the consequences of the query relevance ontology, data items pointed by arrows are not relevant to the current query and thus can be filtered out of the window.
 
-\textcolor{red}{
+
 There are several general principles in order to prepare query relevance ontologies.
 First, to understand the target and requirements of the use case. 
 Since query relevance ontology is domain-specific, and is possibly dependent on the background ontology, understanding what is expected out of the use case can provide a clear ontology construction goal. 
 Second, to understand the data, meaning to know what data is useful or useless to the use case.
 The patterns of relevant data will then be composed and encoded in the ontology.
-Third, keep in mind that query relevance ontology will not work for different queries, since it is so customized to one query in one use case.}
+Third, keep in mind that query relevance ontology will not work for different queries, since it is so customized to one query in one use case.
 %
 \section{Comparison Rule}
 The semantic importance model encodes the aspects to provide a multi dimensional view on importance.
@@ -691,8 +690,7 @@ Again, this is to guarantee that all the data enters into the query phase is tru
 
 Using priority vector to encode semantic importance guarantees an efficient and multi-fold ranking.
 Together with the comparison rule, semantic importance allows the ranking to consider different aspects comprehensively.
-\textcolor{red}{
-Weighting is a simple and intuitive way to enable ordering. However, the semantic importance is embodied in the priority vector, whose ordering is realized by the position of the item. The leftier a semantic importance item is placed in the priority vector, the more significant it is compared to other items on its right. The comparison rule in Section 3.2 has provided both theory and examples on comparing semantic importance. Weighting is parallel to priority vector. There is also a way to use weighting instead of priority vector to enable ordering, where different weights can be assigned by users who assigns their preferences over semantic importance items, then reduce it into a single value, which can be used to compare and rank data importance. Since the weighting schema is a different way, this dissertation will not focus on it. }
+Weighting is a simple and intuitive way to enable ordering. However, the semantic importance is embodied in the priority vector, whose ordering is realized by the position of the item. The leftier a semantic importance item is placed in the priority vector, the more significant it is compared to other items on its right. The comparison rule in Section 3.2 has provided both theory and examples on comparing semantic importance. Weighting is parallel to priority vector. There is also a way to use weighting instead of priority vector to enable ordering, where different weights can be assigned by users who assigns their preferences over semantic importance items, then reduce it into a single value, which can be used to compare and rank data importance. Since the weighting schema is a different way, this dissertation will not focus on it. 
 
 Different window management strategies can be enabled by semantic importance. 
 Work such as \cite{dell2013correctness} considers the operation semantics in stream reasoning systems. 
