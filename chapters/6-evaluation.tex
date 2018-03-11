@@ -886,7 +886,8 @@ The reason is due to their slow processing speed.
 Trust-FO, QR-FI-FO, and QR-Trust-FE-LFU-FI-FO are able to keep a small memory and relatively fast response time, and good precision. 
 However, both QR related strategies still failed to keep their response time within 1 second which is the window step. 
 As it can be seen that, both QR-FI-FO and QR-Trust-FE-LFU-FI-FO's throughputs are gradually smaller than the data rate as the data rate increases, which also indicates a limit of these strategies as the data scale increases. 
-Figure \ref{fig:6-csmrrt} shows the response time of all strategies in c mode and 90000 data rate. 
+Figure \ref{fig:6-csmrrt1} to Figure \ref{fig:6-csmrrt9} shows the response time of different single-aspect strategies as the constant streaming rate increases. 
+Figure \ref{fig:6-csmrrt9} shows the response time of all strategies in c mode and 90000 data rate. 
 QR related strategies takes very long time to perform the query relevance filter. 
 While Trust-FO is still able to keep a very fast response time. 
 This indicates that query relevance filter aspect does have its limit in front of the big streaming rate. 
@@ -896,9 +897,37 @@ Overall, Trust-FO performs the best.
 
 \begin{figure}[!htbp]
 	\centering
+    \includegraphics[width=6.5in]{img/6-1wt.png}
+    \caption{Constant Stream Mode 10k Rate Response Time}
+    \label{fig:6-csmrrt1}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+    \includegraphics[width=6.5in]{img/6-3wt.png}
+    \caption{Constant Stream Mode 30k Rate Response Time}
+    \label{fig:6-csmrrt3}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+    \includegraphics[width=6.5in]{img/6-5wt.png}
+    \caption{Constant Stream Mode 50k Rate Response Time}
+    \label{fig:6-csmrrt5}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+    \includegraphics[width=6.5in]{img/6-7wt.png}
+    \caption{Constant Stream Mode 70k Rate Response Time}
+    \label{fig:6-csmrrt7}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
     \includegraphics[width=6.5in]{img/6-9wt.png}
     \caption{Constant Stream Mode 90k Rate Response Time}
-    \label{fig:6-csmrrt}
+    \label{fig:6-csmrrt9}
 \end{figure}
 
 In f mode though, things become different. 
