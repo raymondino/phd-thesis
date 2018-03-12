@@ -22,15 +22,20 @@ This chapter concludes this dissertation, and provides future insights on where 
 \end{figure}
 %
 \subsection{Thesis Brief Review}
+\textcolor{red}{
 Figure \ref{fig:7-trm} shows the overview of this thesis road map. 
 Generally speaking, this thesis is guided by these three questions, 
 "why semantic importance", "why should people case", as well as "how can people use it?"。
 This thesis has rooted itself deeply into stream reasoning, and targets on the problem of smart and flexible streaming data management. 
+}
 
+\textcolor{red}{
 Chapter 3 covers my first contribution, semantic importance, which is motivated the observations that the silent temporal assumption is popular across many stream reasoning research work \cite{barbieri2010stream} \cite{stuckenschmidt2010towards} \cite{golab2003processing} \cite{barbieri2010deductive}, and that temporality alone will not work in the situations where the early eviction or expiration problem happens. 
 Semantic importance models data importance by considering aspects beyond temporality, such as query participation, query relevance and trustworthiness, and provides a representative schema (priority vector), as well as a set of defined comparison rule to enable data ordering. 
 This answers the first question.
+}
 
+\textcolor{red}{
 Chapter 4 introduces sequential stream reasoning architecture (SSRA). 
 It is motivated by the fact that stream reasoning engines such as CSPARQL and CQELS are implemented upon the silent assumption, and didn't leave any interface to deploy semantic importance. 
 I have implemented and evaluated SSRA comprehensively. 
@@ -39,7 +44,9 @@ In order to ground both semantic importance and SSRA, I have implemented two use
 This thesis has covered detailed implementations and evaluations, and the results show that semantic importance can work under fairly diverse scenario, and can provide good performance for precision and response time. 
 However, both of the use cases has shown some limitations, and I have investigated and explained them in this thesis. 
 People should care about semantic importance because it can work better than FIFO in the cases where temporality alone is not enough, it can also provide good system performance as well. 
+}
 
+\textcolor{red}{
 Chapter 6 covers the work to generalize and benchmark semantic importance (SIGenBench).
 Albeit the use case results have indicated that semantic importance is useful, but it is not generalized so that stream reasoning applications can use it in an easy way.
 Its benefits and limitations are still not quantified, either. 
@@ -47,15 +54,21 @@ SIGenBench connects semantic importance to the state-of-the-art stream reasoning
 It also comes with a default streaming data generator, that simulates streaming data scenarios. 
 Extensive experiments have been done, and results have been analyzed. 
 SIGenBench answers how people can use semantic importance.
+}
 %
 \subsection{Thesis Wrap-up}
+\textcolor{red}{
 Started in Chapter 1, I have been using a running example of soccer offside detection.
 The purpose of this example is to illustrate the two problems of streaming data management, i.e. early eviction and early expiration, if temporality is only considered to manage the data.
+}
 
+\textcolor{red}{
 A window in a stream reasoning application will always evict the oldest data item in order to consume the latest data item, based on the silent temporal assumption, which means that the data is managed by its arrival timestamp: the older it is, the less important it is, thus evicted eventually. 
 However, temporality is certainly not the only criterion to determine data importance, which motivated the proposal of semantic importance. 
 In the running example, where players' status and positions are so important for the result, the ``who'' (who is attacker or defender?) and ``where'' (where are the players, onsite or offside position?) provenance aspects should definitely be considered to manage the data. 
+}
 
+\textcolor{red}{
 Thus, my first contribution -- semantic importance is able to provide a multi-dimension view to model the data importance and enable order-aware window management strategies, so that the important data can be captured.
 Examples of the important data includes: Player A is an attacker, Player A is at the offside position, Player A touches the ball after his teammate passed the ball, etc. 
 Please note that these important data do not come adjacently, in fact there could be lots of other data arriving in between.
@@ -63,14 +76,18 @@ However, with semantic importance, the important data will be captured.
 This is a good solution as the window size can be kept smaller, ideally only to contain the important data item for question-answering, thus it helps save storage space, and increase response time.
 Table \ref{tb:accuracy} has already shown that semantic importance enabled strategies (*-LFU-FO, *-LRU-FO, and QR-*) are able to maintain a good precision and relatively low response time than common strategy FIFO, even if the window size shrinks.
 This has already shown the benefits to introduce semantic importance into stream reasoning. 
+}
 
+\textcolor{red}{
 In stead of using C-Sparql or CQELS engine to implement the soccer use case, I used my sequential stream reasoning architecture (SSRA).
 This is because I need to enhance streaming data (or window) management with semantic importance, which is not supported in C-Sparql or CQELS. 
 SSRA is an example of deploying semantic importance in stream reasoning use cases. 
 Its implementation imitates the behavior of other stream reasoning engines.
 The soccer offside detection use case is implemented based on SSRA, and Table \ref{tab:ev} shows all the experimental results.
 SSRA, as my second contribution, shows how semantic importance can be integrated, working and performant in a real life scenario. 
+}
 
+\textcolor{red}{
 My third contribution, SIGenBench, essentially targets on a more general application, including but not limited to the soccer offside detection. 
 The goal is to enable a broad view for semantic importance in the stream reasoning settings. 
 The results from soccer offside use case has already proven that semantic importance is better. 
@@ -80,27 +97,95 @@ I have tested every single aspect of current semantic importance, the results ar
 SIGenBench comes with a default streaming data generator that can simulate different streaming data scenarios by configuring parameters such as stream mode and rate. 
 The experiments indicate that trustworthiness and query relevance are both able to tolerate large and fluctuating data streaming rate, yet query relevance does drops its performance when reaching a relatively large data rate. 
 However, a compound strategy composed by multiple semantic importance aspects such as QR-Trust-FE-LFU-FI-FO is able to provide good precision.
+}
 %
 \subsection{Thesis Key Takeaway Message}
+\textcolor{red}{
 The key message to take away is that, this thesis raises the awareness of the silent temporal assumption, and shows the problems associated with it. 
-In order to loosen this assumption, this thesis provides a structure -- semantic importance, as well as a set of infrastructure -- SSRA and SIGenbench to use this structure. 
+In order to loosen this assumption, this thesis provides a structure -- semantic importance, as well as a set of infrastructure -- SSRA and SIGenBench to use this structure. 
 The experiments results have shown that smart and flexible window management can be enabled by modeling streaming data importance using semantic importance, as well as that the stream reasoning systems' precision, response time, memory consumption and throughput can be improved.
+}
 %
 \subsection{Thesis Limitations}
+\textcolor{red}{
 Considering that streaming data is huge and can potentially flood the system, the sequential way to process the data clearly has a limit. 
-Parallel processing has lots of benefits, one of them is to boost response time, there are already some examples to leverage distributed systems in stream reasoning \ref{hoeksema2011high} \ref{liu2014efficient}. 
+Parallel processing has lots of benefits, one of them is to boost response time, there are already some examples to leverage distributed systems in stream reasoning \cite{hoeksema2011high} \cite{liu2014efficient}. 
+}
 
+\textcolor{red}{
 This thesis only deals with RDF streams, which is only a kind of all streaming data.
 However, in traffic surveillance scenario, the streaming data is usually video format. 
 This thesis doesn't propose a method for it. 
+}
 
+\textcolor{red}{
 The query relevance is able to provide good response time and precision, however, as we can see, as the data rate goes up from Figure \ref{fig:6-csmrrt1} - \ref{fig:6-csmrrt9}, query relevance spends way too much time filtering the data and eventually causes a delayed answer. 
 This is a major limitation for query relevance while being used in the sequential processing. 
 However, I presume that this situation will be alleviated in a parallel system, which can be a future work. 
+}
 %
 \section{Future Work}
+\textcolor{red}{
+This thesis has covered three contributions for managing streaming data in window for stream reasoning applications.
+There are still lots of potential to extend and enhance this work. 
+This section highlights some of these future work.
+}
+%
+\subsection{Short Term}
+\textcolor{red}{
+This thesis has focused on the temporal provenance, albeit according to \cite{ram2009new}, there are six more including ``what, where, how, who, which, and why''.
+The soccer offside has leveraged where and who provenance, thus this thesis has shown some examples to extend different types of provenance.
+I would like to extend the other aspects of provenance because they provide a broader view and more flexible way to model data importance.
+}
 
+\textcolor{red}{
+Query relevance is an interesting aspect of semantic importance.
+The experimental results have indicated its effectiveness. 
+For the short term future work, I would like to investigate the general principles to prepare both the query relevance ontology and query relevance filter query. 
+SIGenBench has shown that different query relevance filter queries do have different affects on system performance. 
+If such general principle for preparing query relevance is proposed, the stream reasoning system can be benefited, as well as the users will be benefited from its guidance. 
+}
+%
+\subsection{Middle Term}
+\textcolor{red}{
+SIGenBench is built upon SSRA, which is of course sequential.
+In the future, I would like to explore some parallel architecture and enhance it with distributed processing systems.
+}
 
+\textcolor{red}{
+SIGenBench is implemented in Java, which is static typed language.
+All the 26 strategies are implemented as Java classes and hard-coded in the code. 
+If a user wants to use a new strategy, he/she has to dive into my code and add a strategy class manually. 
+There are two planned future work to improve this. 
+First of all, I would like to re-implement SIGenBench by exploiting a dynamic typed language, so that different strategy classes can be generated during the run-time. 
+Secondly, I want to build an ontology loader that can load the semantic importance ontology.
+By reading semantic importance aspect classes, different strategies will be generated proactively. 
+In that way, semantic importance ontology will no longer be a merely descriptive ontology, but actually be used to create strategies.
+}
+
+\textcolor{red}{
+Long short-term memory (LSTM) \cite{DBLP:journals/neco/HochreiterS97} is a recurrent neural network (RNN), whose cell can ``remember'' values over arbitrary time intervals \footnote{https://en.wikipedia.org/wiki/Long\_short\-term\_memory}.
+LSTM is potentially another way to implement window management strategy, which essentially can capture data items that are arbitrary apart, to alleviate early eviction problem. 
+This is because how much data needs to keep is a similar requirement. 
+I also would like to explore the possibilities to employ LSTM for window management. 
+}
+
+\textcolor{red}{
+As we can see from the results in SIGenBench, when data rates increases, some previously working strategies start to fail.
+This can also be found when the data fluctuates a lot.
+I would like to investigate the possibilities to automatically switch strategies in the window so that the data management can be more resilient in different streaming scenarios. 
+}
+%
+\subsection{Long Term}
+\textcolor{red}{
+In this thesis, with only 4 aspects, I have created 26 strategies.
+It can be predicted that as the semantic importance ontology is extended, more aspects will create more strategies. 
+Certainly not all of the strategy will help build the use case. 
+I would like to build a strategy selector in the long time run, with which the users can easily select their desired strategies. 
+In order to realize this, I need to firstly collect data on users' use cases requirements and different strategies performance, which can be done with SIGenBench.
+Then I will use supervised machine learning algorithms to train a model that can recommend strategies for users give their new use case requirements. 
+This future work is dependent upon the general use of semantic importance. 
+}
 % \section{Conclusion}
 % The core contribution of this dissertation is the notion of semantic importance, along with a set of infrastructure to enable its usage in the stream reasoning settings.
 % Exemplar use case implementations have shown show how semantic importance can be leveraged in real-world scenarios.
