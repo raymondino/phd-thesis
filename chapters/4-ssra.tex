@@ -58,7 +58,7 @@ The execution flow forms a loop to process data streams and to produce query res
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[angle=90,height=7.5in]{img/4-ssra.png}
-	\caption{Sequential Stream Reasoning Architecture.}
+	\caption{\textbf{Sequential Stream Reasoning Architecture}}
 	\label{fig:4-ssra}
 \end{figure}
 
@@ -102,7 +102,7 @@ One example is materialization \cite{barbieri2010incremental},  which is perform
 \subsection{Result Explanation}
 If query participation (QP) is specified, the window needs to know the query participation status of every named graph after the query result is delivered.
 Result Explanation Component works in a way to trace back to the provenance of the query result; that is to find which named graphs participated in the query process. 
-The result is explained by proof trees\footnote{For an example, please refer to \url{http://docs.stardog.com/\#\_proof\_trees}}.
+The result is explained by proof trees\footnote{For an example, please refer to http://docs.stardog.com/\#\_proof\_trees (Date Last Accessed: Mar. 20, 2018)}.
 
 A(n) (inferred) result can be obtained by both explicit triples and intermediate inferences. 
 Only the query participation statistics of those graph IDs belonging to explicit triples will be recorded.
@@ -136,11 +136,11 @@ All of the components are constantly interacting with the window.
 SSRA implements and configures the window as follows.
 
 \textbf{Triple-store}:
-SSAR has been implemented using two off-the-shelf triple-stores: AllegroGraph v5.0.2\footnote{http://franz.com/agraph/allegrograph/} and Stardog v4.0 RC3\footnote{http://stardog.com/}. 
+SSAR has been implemented using two off-the-shelf triple-stores: AllegroGraph v5.0.2\footnote{http://franz.com/agraph/allegrograph/ (Date Last Accessed: Mar. 20, 2018)} and Stardog v4.0 RC3\footnote{http://stardog.com/ (Date Last Accessed: Mar. 20, 2018)}. 
 Both provide Java APIs and step-by-step tutorials. 
-AllegroGraph is an efficient modern graph database by Franz Inc\footnote{http://franz.com/}. 
+AllegroGraph is an efficient modern graph database by Franz Inc\footnote{http://franz.com/ (Date Last Accessed: Mar. 20, 2018)}. 
 It supports up to OWL2 RL reasoning and full SPARQL 1.1. 
-Stardog is a graph database by Complexible Inc\footnote{http://complexible.com/}. 
+Stardog is a graph database by Complexible Inc\footnote{http://complexible.com/ (Date Last Accessed: Mar. 20, 2018)}. 
 It supports up to OWL2 DL \& rule-based reasoning and SPARQL 1.1.
 Stardog supports reasoning explanation via proof trees, but AllegroGraph does not. 
 Free versions of both products are used.
@@ -180,7 +180,7 @@ LUBM data generator produced 6,031,109 ABox triples.
 A data source generates streaming data by disk-reading this generated data line-by-line from a static n-triples file.
 The streaming data is configured  as follows:
 (1) the streaming source packs either 1, 10 or 100 triples per named graph ($T_{pg}$);
-(2) each graph is assigned a unique graph id and expiration timestamp by the streaming source\footnote{\url{http://streamreasoning.org/slides/2015/10/sr4ld2015-02-rsp-extensions.pdf}, Slide 7, from ``Streaming Reasoning for Linked Data 2015`` by J-P Calbimonte, D. Dell'Aglio, E. Della Valle, M. I. Ali and A. Mileo.};
+(2) each graph is assigned a unique graph id and expiration timestamp by the streaming source \cite{jp2015stream};
 (3) the system assigns an arrival timestamp to each arriving named graph in a monotonically non-decreasing order.
 
 The streaming data is then streamed to our three prototypes, where the window is configured as follows:
@@ -189,7 +189,7 @@ The streaming data is then streamed to our three prototypes, where the window is
 (3) the preregistered query, as shown in Listing 4.1, requires RDFS reasoning;
 (4) the background ontology is preloaded into the system.
 
-\begin{lstlisting}[language=SPARQL,caption=SPARQL Query,basicstyle=\small,frame=single]
+\begin{lstlisting}[caption=\textbf{SPARQL Query},basicstyle=\small,frame=single]
 PREFIX rdf:<http://www.w3.org/1888/02/22-rdf-syntax-ns#>
 PREFIX lubm:<http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT DISTINCT ?s
@@ -208,7 +208,7 @@ Using these results we ask the following questions:
     \item What are the trade-offs to consider when deploying SSRA in different scenarios?
 \end{enumerate}
 
-We show two figures of the total 46 visualizations\footnote{Please refer to our github repository for all visualizations: \url{https://github.com/raymondino/SequentialStreamReasoningArchitecture}} generated from the results to answer the first two questions. 
+We show two figures of the total 46 visualizations\footnote{Please refer to our github repository for all visualizations: https://github.com/raymondino/SequentialStreamReasoningArchitecture (Date Last Accessed: Mar. 20, 2018)} generated from the results to answer the first two questions. 
 The third one will be discussed shortly. 
 For the sake of convenience, the following abbreviation is used: 
 prototypes are abbreviated such that SM denotes Stardog memory-based window, SD denotes Stardog disk-based window and AD denotes AllegroGraph disk-based window. 
@@ -218,7 +218,7 @@ For example, SD\_FE-FI-FO\_1 denotes a Stardog disk-based window with the FE-FI-
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/4-ff.png}
-	\caption{F-measure of Different Windows with FEFO}
+	\caption{\textbf{F-measure of Different Windows with FEFO}}
 	\label{fig:fefo}
 \end{figure}
 
@@ -237,7 +237,7 @@ For example, AD\_FE-FI-FO gives the best F-measure, but does it take more time t
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/4-fds.png}
-	\caption{F-measure of SM Window with Different Strategies}
+	\caption{\textbf{F-measure of SM Window with Different Strategies}}
 	\label{fig:diff}
 \end{figure}
 
@@ -281,10 +281,10 @@ Together with Table \ref{tab:tradeoff}, we present a thorough comparison among t
 
 \begin{table*}[!htbp]
 \centering
-\caption{The Trade-off Table}
+\caption{\textbf{The Trade-off Table}}
 \label{tab:tradeoff}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|l|r|r|r|r|r|}
+\begin{tabular}{|c||c|l|r|r|r|r|r|}
 \hline
 Scenario & Tuple \# in window & window Config. & \multicolumn{1}{c|}{SPARQL (ms)} & \multicolumn{1}{c|}{F-measure} & \multicolumn{1}{c|}{Explain (ms)} & \multicolumn{1}{c|}{Eviction (ms)} & \multicolumn{1}{c|}{Memory (MB)} \\ \hline
 \multirow{14}{*}{Small} & \multirow{7}{*}{10} &AllegroGraph& 20.25 & 4.35E-05 & - & 69.25 & 22.00 \\
@@ -300,7 +300,7 @@ Scenario & Tuple \# in window & window Config. & \multicolumn{1}{c|}{SPARQL (ms)
 && Memory & 4.92 & 3.84E-04 & 8178.63 & 20.17 & 41.08 \\ \cline{3-8} 
 && FE-FI-FO & 5.41 & 2.27E-04 & 0 & 28.75 & 36.00 \\
 && FE-LRU-FO & 5.41 & 4.17E-04 & 7846.44 & 21.38 & 37.19 \\
-&& FE-LFU-FO & 5.00 & 4.44E-04 & 8391.00 & 21.25 & 36.19 \\ \hline
+&& FE-LFU-FO & 5.00 & 4.44E-04 & 8391.00 & 21.25 & 36.19 \\ \hhline{|=#=|=|=|=|=|=|=|}
 \multirow{14}{*}{Medium} & \multirow{7}{*}{1,000} &AllegroGraph& 12.17 & 1.53E-03 & - & 89.42 & 59.08 \\
 &&Stardog& 6.46 & 1.55E-03 & - & 164.96 & 36.21 \\ \cline{3-8} 
 && Disk & 8.35 & 1.68E-03 & 25372.54 & 129.35 & 40.52 \\
@@ -314,7 +314,7 @@ Scenario & Tuple \# in window & window Config. & \multicolumn{1}{c|}{SPARQL (ms)
 && Memory & 9.22 & 6.77E-03 & 144213.08 & 1150.50 & 36.28 \\ \cline{3-8} 
 && FE-FI-FO & 11.58 & 6.75E-03 & 0 & 1080.25 & 36.42 \\
 && FE-LRU-FO & 9.50 & 6.18E-03 & 113897.38 & 1556.94 & 40.81 \\
-&& FE-LFU-FO & 9.81 & 6.89E-03 & 113782.88 & 1004.19 & 32.13 \\ \hline
+&& FE-LFU-FO & 9.81 & 6.89E-03 & 113782.88 & 1004.19 & 32.13 \\ \hhline{|=#=|=|=|=|=|=|=|}
 \multirow{7}{*}{Large} & \multirow{7}{*}{100,000} &AllegroGraph& 127.75 & 5.72E-02 & - & 187.25 & 23.50 \\
 &&Stardog& 76.13 & 4.60E-02 & - & 27949.00 & 36.13 \\ \cline{3-8} 
 && Disk & 134.31 & 4.64E-02 & 261564.75 & 17122.81 & 31.13 \\

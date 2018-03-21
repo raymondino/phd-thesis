@@ -21,7 +21,7 @@ The instances are based on the soccer use case.
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=2.5in]{img/app-sio.png}
-    \caption{Semantic Importance Ontology Class Hierarchy}
+    \caption{\textbf{Semantic Importance Ontology Class Hierarchy}}
     \label{fig:app-sio}
 \end{figure}
 
@@ -33,7 +33,7 @@ SIO is designed as a descriptive ontology.
 
 \begin{table}[!htbp]
     \centering
-    \caption{SIO Class Definition}
+    \caption{\textbf{SIO Class Definition}}
     \begin{tabular}{|c||l|} \hline
          class name & \multicolumn{1}{c|}{definition}  \\ \hhline{|=#=|}
          QueryParticipation & \makecell[l]{(\textit{used some} \textbf{QueryEngine}) \textit{and} \\ (\textit{used some} \textbf{StreamingDataGraph}) \textit{and} \\(\textit{used some} \textbf{BackgroundOntologyFile}) \textit{and} \\(\textit{generated some} \textbf{QueryResult})} \\ \hline 
@@ -75,7 +75,7 @@ An example is to use the streaming source as the graph ID and all the generated 
 
 \begin{center}
 \begin{longtable}{|c||c||c|}
-	\caption[SIO Class Instances]{SIO Class Instances} \label{tab:app-gi} \\
+	\caption{\textbf{SIO Class Instances}} \label{tab:app-gi} \\
 	\hline \multicolumn{1}{|c||}{class name} & \multicolumn{1}{c||}{instance example} & \multicolumn{1}{c|}{annotation} \\ \hhline{|=#=#=|}
 	\endfirsthead
 	\multicolumn{3}{c}%
@@ -113,7 +113,7 @@ This relationship is established via properties.
 
 \begin{center}
 \begin{longtable}{|c||c||c|}
-\caption[SIO Instance Property Assertions]{SIO Instance Property Assertions} \label{tab:app-ipa} \\
+\caption{\textbf{SIO Instance Property Assertions}} \label{tab:app-ipa} \\
 
 \hline \multicolumn{1}{|c||}{\textbf{Class Name}} & \multicolumn{1}{c||}{\textbf{Instance Example}} & \multicolumn{1}{c|}{\textbf{Property Assertion}} \\ \hhline{|=#=#=|}
 \endfirsthead
@@ -149,7 +149,7 @@ Data items participate in a query if they contain necessary information used by 
 When a data item particpates in a query, related meta-data such as the timestamp and frequency value can be collected. 
 Consider a snapshot of streaming data as follows:
 
-\begin{lstlisting}[caption={Example Streaming Data},basicstyle=\small,frame=single]
+\begin{lstlisting}[caption={\textbf{Example Streaming Data}},basicstyle=\small]
 PlayerA a Attacker, graph1
 PlayerA a BallLastToucher, graph2
 PlayerA a PlayerAtOffsidePosition, graph3

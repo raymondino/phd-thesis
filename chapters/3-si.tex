@@ -25,7 +25,7 @@ It also covers how window management strategies can be created with semantic imp
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/3-si.pdf}
-	\caption{Semantic Importance Conceptual Model}
+	\caption{\textbf{Semantic Importance Conceptual Model}}
 	\label{fig:3-si} 
 \end{figure}
 
@@ -57,7 +57,7 @@ Each aspect will be introduced in details below.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-sip.pdf}
-    \caption{Semantic Importance - Provenance}
+    \caption{\textbf{Semantic Importance - Provenance}}
     \label{fig:3-sip}
 \end{figure}
 
@@ -87,7 +87,7 @@ $[\tau_{e}, \tau_{qp}, \tau_{a}]$ uses three aspects to describe the data import
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-siqp.pdf}
-    \caption{Semantic Importance - Query Participation}
+    \caption{\textbf{Semantic Importance - Query Participation}}
     \label{fig:3-siqp}
 \end{figure}
 
@@ -99,7 +99,7 @@ and recency ($\tau_{qp}$) is a timestamp that describes the most recent time-poi
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-siqpe.pdf}
-    \caption{Query Participation Example}
+    \caption{\textbf{Query Participation Example}}
     \label{fig:3-siqpe}
 \end{figure}
 
@@ -116,7 +116,7 @@ Thus, we say that $\largetriangleup_{A}$, $\times^{\circ}_{A}$ and $\largecircle
     \caption{\textbf{Updated Query Participation Frequency and Recency}}
     \label{tab:uqpfr}
     \begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|} \hline
-    	data item & $\largetriangleup_{A}$ & $\largetriangleup_{B}$ & $\largesquare_{C}$ & $\largesquare_{D}$ & $\largesquare_{Z}$ & $\times^{\circ}_{A}$ & $\times_{B}$ & $\times_{C}$ & $\times_{D}$ & $\times_{Z}$ & $\largecircle_{A}$ \\ \hhline{|============|}
+    	data item & $\largetriangleup_{A}$ & $\largetriangleup_{B}$ & $\largesquare_{C}$ & $\largesquare_{D}$ & $\largesquare_{Z}$ & $\times^{\circ}_{A}$ & $\times_{B}$ & $\times_{C}$ & $\times_{D}$ & $\times_{Z}$ & $\largecircle_{A}$ \\ \hhline{|=#=|=|=|=|=|=|=|=|=|=|=|}
 		$f_{qp}$ & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 \\ \hline
         $\tau_{qp}$ & $\tau_{qp1}$ & - & - & - & - & $\tau_{qp1}$ & - & - & - & - & $\tau_{qp1}$ \\ \hline 
     \end{tabular}
@@ -133,7 +133,7 @@ Other data items' $f_{qp}$ and $\tau_{qp}$ remain unchanged.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-sit.pdf}
-    \caption{Semantic Importance - Trustworthiness}
+    \caption{\textbf{Semantic Importance - Trustworthiness}}
     \label{fig:3-sit}
 \end{figure}
 
@@ -141,7 +141,7 @@ Different work models trustworthiness in different ways.
 For example, in \cite{bertino2009challenge}, trustworthiness is modeled as ``the probability of one data item to be correct''. 
 Other work models data trustworthiness from perspectives of data quality \cite{juran1999quality} \cite{kahn2002information} \cite{prince2004semiotic} \cite{wand1996anchoring}, semantic integrity \cite{date2004database} and reputation techniques \cite{kamvar2003eigentrust} \cite{levien2009attack}. 
 The concept of trustworthiness can be very broad, which makes it very suitable to be included in the semantic importance conceptual model. 
-In this dissertation, \textbf{trustworthiness is defined as ``worthy of confidence''}.\footnote{https://www.merriam-webster.com/dictionary/trustworthy}
+In this dissertation, \textbf{trustworthiness is defined as ``worthy of confidence''}.\footnote{https://www.merriam-webster.com/dictionary/trustworthy (Date Last Accessed: Mar. 20, 2018)}
 However, in order to let the concept of trustworthiness to be useful and comparable, this work relies on the related literatures on trustworthiness modeling. 
 
 Semantic importance doesn't emphasize on any specific trust models.
@@ -152,7 +152,7 @@ But for the sake of convenient processing, data items should be stamped with a n
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-siqr.pdf}
-    \caption{Semantic Importance - Query Relevance}
+    \caption{\textbf{Semantic Importance - Query Relevance}}
     \label{fig:3-siqr}
 \end{figure}
 Query relevance ties specific knowledge about queries and data into window management using formal semantics. 
@@ -166,7 +166,7 @@ For the concepts in the query relevance ontology to be useful, it is usually con
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-siqreo.pdf}
-    \caption{Query Relevance Ontology}
+    \caption{\textbf{Query Relevance Ontology}}
     \label{fig:3-siqreo}
 \end{figure}
 
@@ -189,7 +189,7 @@ With this query relevance ontology, instances of \textbf{OffsideIrrelevantPositi
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-siqre.pdf}
-    \caption{Query Relevance Example}
+    \caption{\textbf{Query Relevance Example}}
     \label{fig:3-siqre}
 \end{figure}
 
@@ -216,11 +216,11 @@ The semantics of these comparable operators are defined in Table \ref{tab:cos}.
 
 \begin{table*}[!htbp]
 	\centering
-	\caption{Comparable Operator Semantics}
+	\caption{\textbf{Comparable Operator Semantics}}
 	\label{tab:cos}
 	\begin{tabular}{|c|c|c|c|} \hline
 		SI & $<$ & $>$ & $==$ \\ \hline
-        $\tau_{g}$ & \makecell{if $\tau^{1}_{g}$ is before than $\tau^{2}_{g}$ \\ $\Rightarrow \tau^{1}_{g} < \tau^{2}_{g}$} & \makecell{if $\tau^{1}_{g}$ is after than $\tau^{2}_{g}$ \\ $\Rightarrow \tau^{1}_{g} > \tau^{2}_{g}$} & \makecell{$\tau^{1}_{g}$ is equal to $\tau^{2}_{g}$ \\ $\Rightarrow \tau^{1}_{g} == \tau^{2}_{g}$} \\ \hline
+        $\tau_{g}$ & \makecell{if $\tau^{1}_{g}$ is before than $\tau^{2}_{g}$ \\ $\Rightarrow \tau^{1}_{g} < \tau^{2}_{g}$} & \makecell{if $\tau^{1}_{g}$ is after than $\tau^{2}_{g}$ \\ $\Rightarrow \tau^{1}_{g} > \tau^{2}_{g}$} & \makecell{$\tau^{1}_{g}$ is equal to $\tau^{2}_{g}$ \\ $\Rightarrow \tau^{1}_{g} == \tau^{2}_{g}$} \\ \hhline{|=#=|=|=|}
 		$\tau_{a}$ & \makecell{if $\tau^{1}_{a}$ is before than $\tau^{2}_{a}$ \\ $\Rightarrow \tau^{1}_{a} < \tau^{2}_{a}$} & \makecell{if $\tau^{1}_{a}$ is after than $\tau^{2}_{a}$ \\$\Rightarrow \tau^{1}_{a} > \tau^{2}_{a}$} & \makecell{if $\tau^{1}_{a}$ is equal to $\tau^{2}_{a}$ \\$\Rightarrow \tau^{1}_{a} == \tau^{2}_{a}$} \\ \hline
 		$\tau_{e}$ & \makecell{if $\tau^{1}_{e}$ is before than $\tau^{sys}$ \\ if $\tau^{2}_{e}$ is before than $\tau^{sys}$ \\$\Rightarrow \tau^{1}_{e} < \tau^{2}_{e}$}& \makecell{if $\tau^{1}_{e}$ is after than $\tau^{sys}$ \\ if $\tau^{2}_{e}$ is before than $\tau^{sys}$\\$\Rightarrow \tau^{1}_{e} > \tau^{2}_{e}$} & \makecell{if $\tau^{1}_{e}$ is before than $\tau^{sys}$ \\ if $\tau^{2}_{e}$ is before than $\tau^{sys}$ \\ $\Rightarrow \tau^{1}_{e} == \tau^{2}_{e}$ \\if $\tau^{1}_{e}$ is after than $\tau^{sys}$\\if $\tau^{2}_{e}$ is after than $\tau^{sys}$\\$\Rightarrow \tau^{1}_{e} == \tau^{2}_{e}$} \\ \hline
         $\tau_{qp}$ & \makecell{if $\tau^{1}_{qp}$ is before than $\tau^{2}_{qp}$\\ $\Rightarrow \tau^{1}_{qp} < \tau^{2}_{qp}$} & \makecell{if $\tau^{1}_{qp}$ is after than $\tau^{2}_{qp}$ \\ $\Rightarrow \tau^{1}_{qp} > \tau^{2}_{qp}$} & \makecell{if $\tau^{1}_{qp}$ is equal to $\tau^{2}_{qp}$ \\ $\Rightarrow \tau^{1}_{qp} == \tau^{2}_{qp}$} \\ \hline
@@ -259,7 +259,7 @@ By explicitly characterizing the importance for each data item in the stream, or
   \uIf{i == n} { 
   	return $v_{1} == v_{2}$ \;  
   }
-\caption{Semantic Importance Comparison Algorithm}
+\caption{\textbf{Semantic Importance Comparison Algorithm}}
 \end{algorithm}
 %
 \section{Window Management Strategies}
@@ -285,7 +285,7 @@ Its priority vector is $[\tau_{a}]$.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-sififo.pdf}
-    \caption{FIFO Management Strategy}
+    \caption{\textbf{FIFO Management Strategy}}
     \label{fig:3-sififo}
 \end{figure}
 
@@ -297,11 +297,11 @@ Data gets re-ranked as window moves, and data ranked at the bottom will be evict
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Ranking Under FIFO}
+\caption{\textbf{Data Ranking Under FIFO}}
 \label{tab:fifo}
 \begin{tabular}{|c|c|c||c|c|c|}
 \hline
-\multicolumn{3}{|c||}{$t^{sys}_{1}$} & \multicolumn{3}{c|}{$t^{sys}_{2}$} \\ \hhline{|======|}
+\multicolumn{3}{|c||}{$t^{sys}_{1}$} & \multicolumn{3}{c|}{$t^{sys}_{2}$} \\ \hhline{|===#===|}
 rank & data & $\tau_{a}$ & rank & data & $\tau_{a}$ \\ \hhline{|=|=|=#=|=|=|}
 1 & J & $\tau^{J}_{a}$ & 1 & B & $\tau^{B}_{a}$ \\ \hline
 2 & H & $\tau^{H}_{a}$ & 2 & J & $\tau^{J}_{a}$ \\ \hline
@@ -317,7 +317,7 @@ Its priority vector is $[\tau_{e}]$.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-sifefo.pdf}
-    \caption{FEFO Management Strategy}
+    \caption{\textbf{FEFO Management Strategy}}
     \label{fig:3-sifefo}
 \end{figure}
 
@@ -331,11 +331,11 @@ The data item ranks at the bottom will be evicted.
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Ranking Under FEFO}
+\caption{\textbf{Data Ranking Under FEFO}}
 \label{tab:fefo}
 \begin{tabular}{|c|c|c||c|c|c|}
 \hline
-\multicolumn{3}{|c||}{$t^{sys}_{1}$} & \multicolumn{3}{c|}{$t^{sys}_{2}$} \\ \hhline{|======|}
+\multicolumn{3}{|c||}{$t^{sys}_{1}$} & \multicolumn{3}{c|}{$t^{sys}_{2}$} \\ \hhline{|===#===|}
 rank & data & $\tau_{e}$ & rank & data & $\tau_{e}$ \\ \hhline{|=|=|=#=|=|=|}
 1 & H, J, A & $\tau^{H}_{e}$, $\tau^{J}_{e}$, $\tau^{A}_{e}$ & 1 & H, J, A & $\tau^{H}_{e}$, $\tau^{J}_{e}$, $\tau^{A}_{e}$ \\ \hline
 2 & G & $\tau^{G}_{e}$ & 2 & B & $\tau^{B}_{e}$ \\ \hline
@@ -350,7 +350,7 @@ Its priority vector is $[f_{qp}]$.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-silfu.pdf}
-    \caption{LFU Management Strategy}
+    \caption{\textbf{LFU Management Strategy}}
     \label{fig:3-silfu}
 \end{figure}
 
@@ -367,11 +367,11 @@ Since $f^{H}_{qp}$ is 0 and the smallest, data item H will be ranked at the bott
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Ranking Under LFU}
+\caption{\textbf{Data Ranking Under LFU}}
 \label{tab:lfu}
 \begin{tabular}{|c|c|c||c|c|c|}
 \hline
-\multicolumn{3}{|c||}{$t^{sys}_{1}$} & \multicolumn{3}{c|}{$t^{sys}_{2}$} \\ \hhline{|======|}
+\multicolumn{3}{|c||}{$t^{sys}_{1}$} & \multicolumn{3}{c|}{$t^{sys}_{2}$} \\ \hhline{|===#===|}
 rank & data & $f_{qp}$ & rank & data & $f_{qp}$ \\ \hhline{|=|=|=#=|=|=|}
 1 & A & 3 & 1 & A & 4 \\ \hline
 2 & G & 2 & 2 & G & 3 \\ \hline
@@ -388,7 +388,7 @@ Its priority vector is $[\tau_{e}, f_{qp}]$, which emphasizes $\tau_{e}$ over $f
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-sifelfufo.pdf}
-    \caption{FE-LFU-FO Management Strategy}
+    \caption{\textbf{FE-LFU-FO Management Strategy}}
     \label{fig:3-sifelfufo}
 \end{figure}
 
@@ -401,11 +401,11 @@ At $t^{sys}_{2}$, both B and G are ranked at the bottom, thus either will be evi
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Ranking Under FE-LFU-FO}
+\caption{\textbf{Data Ranking Under FE-LFU-FO}}
 \label{tab:felfufo}
 \begin{tabular}{|c|c|c|c||c|c|c|c|}
 \hline
-\multicolumn{4}{|c||}{$t^{sys}_{1}$} & \multicolumn{4}{c|}{$t^{sys}_{2}$} \\ \hhline{|========|}
+\multicolumn{4}{|c||}{$t^{sys}_{1}$} & \multicolumn{4}{c|}{$t^{sys}_{2}$} \\ \hhline{|====#====|}
 rank & data & $\tau_{e}$ & $f_{qp}$ & rank & data & $\tau_{e}$ & $f_{qp}$ \\ \hhline{|=|=|=|=#=|=|=|=|}
 1 & A & $\tau^{A}_{e}$ & 3 & 1 & A & $\tau^{A}_{e}$ & 4 \\ \hline
 2 & J & $\tau^{J}_{e}$ & 2 & 2 & J & $\tau^{J}_{e}$ & 3 \\ \hline
@@ -421,7 +421,7 @@ Its priority vector $[f_{qp}, \tau_{e}]$, albeit has the same elements as FE-LFU
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-silfufefo.pdf}
-    \caption{LFU-FE-FO Management Strategy}
+    \caption{\textbf{LFU-FE-FO Management Strategy}}
     \label{fig:3-silfufefo}
 \end{figure}
 
@@ -438,11 +438,11 @@ From this example, we can see that even though the window management strategies 
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Ranking Under LFU-FE-FO}
+\caption{\textbf{Data Ranking Under LFU-FE-FO}}
 \label{tab:lfufefo}
 \begin{tabular}{|c|c|c|c||c|c|c|c|}
 \hline
-\multicolumn{4}{|c||}{$t^{sys}_{1}$} & \multicolumn{4}{c|}{$t^{sys}_{2}$} \\ \hhline{|========|}
+\multicolumn{4}{|c||}{$t^{sys}_{1}$} & \multicolumn{4}{c|}{$t^{sys}_{2}$} \\ \hhline{|====#====|}
 rank & data & $f_{qp}$ & $\tau_{e}$ & rank & data & $f_{qp}$ & $\tau_{e}$ \\ \hhline{|=|=|=|=#=|=|=|=|}
 1 & H & 4 & $\tau^{H}_{e}$ & 1 & H & 5 & $\tau^{H}_{e}$ \\ \hline
 2 & A & 3 & $\tau^{A}_{e}$ & 2 & A & 4 & $\tau^{A}_{e}$ \\ \hline
@@ -458,7 +458,7 @@ Its priority vector is $[\tau_{e}, f_{qp}, \tau_{a}]$, which contains three elem
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-sifelfufifo.pdf}
-    \caption{FE-LFU-FI-FO Management Strategy}
+    \caption{\textbf{FE-LFU-FI-FO Management Strategy}}
     \label{fig:3-sifelfufifo}
 \end{figure}
 
@@ -470,11 +470,11 @@ Data ranked at the bottom will be evicted.
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Ranking Under FE-LFU-FI-FO}
+\caption{\textbf{Data Ranking Under FE-LFU-FI-FO}}
 \label{tab:felfufifo}
 \begin{tabular}{|c|c|c|c|c||c|c|c|c|c|}
 \hline
-\multicolumn{5}{|c||}{$t^{sys}_{1}$} & \multicolumn{5}{c|}{$t^{sys}_{2}$} \\ \hhline{|==========|}
+\multicolumn{5}{|c||}{$t^{sys}_{1}$} & \multicolumn{5}{c|}{$t^{sys}_{2}$} \\ \hhline{|=====#=====|}
 rank & data & $\tau_{e}$ & $f_{qp}$ & $\tau_{a}$ & rank & data & $\tau_{e}$ & $f_{qp}$ & $\tau_{a}$ \\ \hhline{|=|=|=|=|=#=|=|=|=|=|}
 1 & A & $\tau^{A}_{e}$ & 4 & $\tau^{A}_{a}$ & 1 & A & $\tau^{A}_{e}$ & 5 & $\tau^{A}_{a}$ \\ \hline
 2 & H & $\tau^{H}_{e}$ & 1 & $\tau^{H}_{a}$ & 2 & H & $\tau^{H}_{e}$ & 2 & $\tau^{H}_{a}$ \\ \hline
@@ -515,7 +515,7 @@ As a result, existing window semantics need to be extended.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-wsti.pdf}
-    \caption{Logical Sliding Window Under FEFO}
+    \caption{\textbf{Logical Sliding Window Under FEFO}}
     \label{fig:3-wsti}
 \end{figure}
 
@@ -527,7 +527,7 @@ As a consequence, the sliding window will not move as it is still full according
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-wstu.pdf}
-    \caption{Physical Sliding Window Under FEFO}
+    \caption{\textbf{Physical Sliding Window Under FEFO}}
     \label{fig:3-wstu}
 \end{figure}
 
@@ -548,7 +548,7 @@ Figure \ref{fig:3-lw} shows an example of $W^{lbl}_{\tau}$.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-lw.pdf}
-    \caption{Logical Lower-bounded Landmark Window Example}
+    \caption{\textbf{Logical Lower-bounded Landmark Window Example}}
     \label{fig:3-lw}
 \end{figure}
 
@@ -561,7 +561,7 @@ We define a logical window step for $W^{lbl}_{\tau}$:
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-psewsti.pdf}
-    \caption{Extended Logical Window Semantics Example}
+    \caption{\textbf{Extended Logical Window Semantics Example}}
     \label{fig:3-psewsti}
 \end{figure}
 
@@ -571,7 +571,7 @@ This is much flexible than a logical sliding window that will have to remove the
 
 \begin{table}[!htbp]
 	\centering
-	\caption{Window Semantics Example}
+	\caption{\textbf{Window Semantics Example}}
 	\label{tab:lwsw}
 	\begin{tabular}{|c||c|c|}
 	\hline
@@ -607,7 +607,7 @@ The only part to be extended from the sliding physical window semantics is the s
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-psewstu.pdf}
-    \caption{Extended Physical Window Semantics Under FEFO}
+    \caption{\textbf{Extended Physical Window Semantics Under FEFO}}
     \label{fig:3-psewstu}
 \end{figure}
 
@@ -623,14 +623,14 @@ This indicates that the window management strategies manage data differently, an
 \subsection{Discussion}
 \begin{table}[!htbp]
 \centering
-\caption{Window Semantics Comparison}
+\caption{\textbf{Window Semantics Comparison}}
 \label{tab:wsc}
-\begin{tabular}{|c||c||c|}
+\begin{tabular}{|c||c|c|}
 \hline
- & \begin{tabular}[c]{@{}c@{}}Sliding Window \\ Semantics\end{tabular} & \begin{tabular}[c]{@{}c@{}}Extended Window \\ Semantics\end{tabular} \\ \hhline{|=#=#=|}
+ & \begin{tabular}[c]{@{}c@{}}Sliding Window \\ Semantics\end{tabular} & \begin{tabular}[c]{@{}c@{}}Extended Window \\ Semantics\end{tabular} \\ \hhline{|=#=|=|}
 \begin{tabular}[c]{@{}c@{}}logical \\ window ($W_{\tau}$)\end{tabular} & sliding window & \begin{tabular}[c]{@{}c@{}}lower-bounded \\ landmark window\end{tabular} \\ \hline
 $W_{\tau}$ size & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined with logical \\ measurement units (e.g. 2s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}can vary.\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} \\ \hline
-$W_{\tau}$ step & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined with logical\\  measurement units (e.g. 1s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} \\ \hhline{|=#=#=|}
+$W_{\tau}$ step & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined with logical\\  measurement units (e.g. 1s)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} \\ \hhline{|=#=|=|}
 \begin{tabular}[c]{@{}c@{}}physical\\window ($W_{\#}$)\end{tabular} & sliding window & sliding window \\ \hline
 $W_{\#}$ size & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\tau}$, number \\ of tuples at an instantaneous \\ time-point (e.g. 23)\end{tabular} \\ \hline
 $W_{\#}$ step & \begin{tabular}[c]{@{}c@{}}fixed.\\ defined as $n_{\beta}$, number \\ of tuples within next $\beta$ \\ measurement units.(e.g. 15)\end{tabular} & \begin{tabular}[c]{@{}c@{}}variable. \\ $n_{\beta} = \{n_{\beta}\ |\ 0 \leq n_{\beta} \leq n_{\tau}\}$\end{tabular} \\ \hline
@@ -648,7 +648,7 @@ The extended window semantics is general, which is reflected by not only the exa
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/3-lwcsw.pdf}
-    \caption{Landmark Window Emulating Sliding Window} 
+    \caption{\textbf{Landmark Window Emulating Sliding Window}} 
     \label{fig:lwesw}
 \end{figure}
 

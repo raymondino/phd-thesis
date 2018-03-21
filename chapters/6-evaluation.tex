@@ -26,7 +26,7 @@ Benchmark refers to usefulness, i.e. how semantic importance can be useful in va
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/6-sib.pdf}
-    \caption{SIGenBench Architecture}
+    \caption{\textbf{SIGenBench Architecture}}
     \label{fig:6-sib}
 \end{figure}
 
@@ -63,7 +63,7 @@ For more details, please refer to Appendix A.1.
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=5in]{img/6-sicr.pdf}
-    \caption{Semantic Importance Ontology}
+    \caption{\textbf{Semantic Importance Ontology}}
     \label{fig:6-sicr}
 \end{figure}
 %
@@ -120,7 +120,7 @@ Table \ref{tab:6-wc} lists the parameters to configure a window in SIGenBench
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Window Configuration}
+    \caption{\textbf{Window Configuration}}
     \label{tab:6-wc}
     \begin{tabular}{|c||l|l|} \hline
     parameter & \multicolumn{1}{c|}{option} & \multicolumn{1}{c|}{annotation} \\ \hhline{|=#=|=|}
@@ -134,7 +134,7 @@ Table \ref{tab:6-wc} lists the parameters to configure a window in SIGenBench
 %
 \begin{table}[!htbp]
 	\centering
-    \caption{SIGenBench Built-in Window Management Strategies}
+    \caption{\textbf{SIGenBench Built-in Window Management Strategies}}
     \label{tab:6-26s}
     \begin{tabular}{|c||l|l|} \hline
          \# & \multicolumn{1}{c|}{Strategy Name} & \multicolumn{1}{c|}{Semantic Importance Priority Vector} \\ \hhline{|=#=|=|}
@@ -188,7 +188,7 @@ Listing 6.2 shows a CQELS query that contains the window definition as [RANGE 2s
 It defines both the window size and step as 2 seconds.
 Both queries can be parsed by their dedicated parsers into a standard SPARQL query shown in Listing 6.3.
 
-\begin{lstlisting}[language=SPARQL, caption={CSPARQL Query Example},basicstyle=\small,frame=single]
+\begin{lstlisting}[caption={\textbf{CSPARQL Query Example}},basicstyle=\small]
 REGISTER QUERY test AS
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
@@ -199,7 +199,7 @@ WHERE {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[language=SPARQL,caption={CQELS Query Example},basicstyle=\small,frame=single]
+\begin{lstlisting}[caption={\textbf{CQELS Query Example}},basicstyle=\small]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?s 
@@ -211,7 +211,7 @@ WHERE {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[language=SPARQL, caption={Parsed Standard SPARQL Query},basicstyle=\small,frame=single]
+\begin{lstlisting}[ caption={\textbf{Parsed Standard SPARQL Query}},basicstyle=\small]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?s
@@ -246,7 +246,7 @@ Table \ref{tab:6-sdgc} summarizes the parameters to configure the default stream
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Streaming Data Generator Configuration}
+    \caption{\textbf{Streaming Data Generator Configuration}}
     \label{tab:6-sdgc}
     \begin{tabular}{|c||l|l|} \hline
     parameter & \multicolumn{1}{c|}{option} & \multicolumn{1}{c|}{annotation} \\ \hhline{|=#=|=|}
@@ -276,18 +276,7 @@ Streaming data can carry explicit or implicit data expiration stamps.
 Data can expire fast, normally or slowly.
 There three built-in trust models to assign trust scores for data items.
 
-The data generator shuffles the LUBM data, so that the data is randomly distributed.
-Listing 6.4 shows an example of a streaming data item in $<\rho, g, \tau_{a}, \tau_{e}, t^{tm}_{s}>$ format.
-However, shuffling will possibly lead to no ground truth. 
-Consider Examples in Listing 6.5 and 6.6. 
-In Listing 6.5, graph32513 and graph47329 are both about $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$. 
-They have an overlapping time period from 11:24:10.411 to 11:24:11.930.
-Thus they can generate the result that $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$ is a \textbf{ub:Chair}.
-However, Listing 6.6 provides another data where graph47329 and graph56649 do not have an overlapping period, thus $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$ will not be inferred as \textbf{ub:Chair}.
-These two examples are also corresponding to the early eviction and early expiration problems introduced in previous sections. 
-If not enough ground truth is produced, the generator will run again till enough ground truth is produced.
-
-\begin{lstlisting}[caption={Generated RDF Stream Example 1},basicstyle=\tiny,frame=single]
+\begin{lstlisting}[caption={\textbf{Generated RDF Stream Example 1}},basicstyle=\tiny]
 <http://www.Department2.University0.edu/AssistantProfessor0/Publication7> 
 <http://swat.cse.lehigh.edu/onto/univ-bench.owl#publicationAuthor>
 <http://www.Department2.University0.edu/GraduateStudent33> 
@@ -295,7 +284,7 @@ If not enough ground truth is produced, the generator will run again till enough
 11:24:05.679 11:24:08.679 0.7318180206732977
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Generated RDF Stream Example 2},basicstyle=\tiny,frame=single]
+\begin{lstlisting}[caption={\textbf{Generated RDF Stream Example 2}},basicstyle=\tiny]
 <http://www.Department5.University0.edu/FullProfessor4>
 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
 <http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor>
@@ -307,7 +296,7 @@ If not enough ground truth is produced, the generator will run again till enough
 <http://tw.rpi.pnnl.org/sigenbench/graph47329> 11:24:10.411 11:24:12.411 9.5384934592904
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Generated RDF Stream Example 3},basicstyle=\tiny,frame=single]
+\begin{lstlisting}[caption={\textbf{Generated RDF Stream Example 3}},basicstyle=\tiny]
 <http://www.Department10.University0.edu/FullProfessor5>
 <http://swat.cse.lehigh.edu/onto/univ-bench.owl#headOf>
 <http://www.Department10.University0.edu>
@@ -318,6 +307,18 @@ If not enough ground truth is produced, the generator will run again till enough
 <http://swat.cse.lehigh.edu/onto/univ-bench.owl#FullProfessor>
 <http://tw.rpi.pnnl.org/sigenbench/graph72474> 11:24:12.926 11:24:14.926 9.015205125311985
 \end{lstlisting}
+
+The data generator shuffles the LUBM data, so that the data is randomly distributed.
+Listing 6.4 shows an example of a streaming data item in $<\rho, g, \tau_{a}, \tau_{e}, t^{tm}_{s}>$ format.
+However, shuffling will possibly lead to no ground truth. 
+Consider Examples in Listing 6.5 and 6.6. 
+In Listing 6.5, graph32513 and graph47329 are both about $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$. 
+They have an overlapping time period from 11:24:10.411 to 11:24:11.930.
+Thus they can generate the result that $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$ is a \textbf{ub:Chair}.
+However, Listing 6.6 provides another data where graph47329 and graph56649 do not have an overlapping period, thus $<$\url{http://www.Department5.University0.edu/FullProfessor4}$>$ will not be inferred as \textbf{ub:Chair}.
+These two examples are also corresponding to the early eviction and early expiration problems introduced in previous sections. 
+If not enough ground truth is produced, the generator will run again till enough ground truth is produced.
+
 %
 \subsection{Ontology}
 SIGenBench can work with all ontologies encoded in OWL.
@@ -345,14 +346,14 @@ The discussion of the performance of query relaxation in general is out of the r
 The purpose is to leverage some query relaxation techniques that can work well with SIGenBench. 
 A future work would be to modularize the query relaxation component and allow users to specify they relaxation algorithms to use.
 
-\begin{lstlisting}[language=SPARQL, caption={Relaxed Query 1},basicstyle=\small,frame=single]
+\begin{lstlisting}[ caption={\textbf{Relaxed Query 1}},basicstyle=\small]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?s
 WHERE {	?s rdf:type ub:DepartmentHead.}
 \end{lstlisting}
 
-\begin{lstlisting}[language=SPARQL, caption={Relaxed Query 2},basicstyle=\small,frame=single]
+\begin{lstlisting}[ caption={\textbf{Relaxed Query 2}},basicstyle=\small]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?s
@@ -382,7 +383,7 @@ Listing 6.9 shows a filtering query that keeps only the necessary data items.
 Listing 6.10 shows a filtering query that keeps both all the necessary data items and some unnecessary data items.
 Listing 6.11 shows a filtering query that fails to capture all necessary data items.
 
-\begin{lstlisting}[language=SPARQL,caption={Query Relevance Filtering Query 1},basicstyle=\small,frame=single]
+\begin{lstlisting}[caption={\textbf{Query Relevance Filtering Query 1}},basicstyle=\small]
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?g
 WHERE {
@@ -400,7 +401,7 @@ Filter query in Listing 6.9 will only let the system to keep the relevant data.
 Typically, query relevance filter query can have two ways to filter the data: use some SPARQL Delete or Drop argument in the filter query itself to get rid of the irrelevant data, or use SPARQL graph pattern match to query the relevant data to keep. 
 This dissertation adopts the second way, because the implementation is easier and faster.
 
-\begin{lstlisting}[language=SPARQL,caption={Query Relevance Filtering Query 2},basicstyle=\small,frame=single]
+\begin{lstlisting}[caption={\textbf{Query Relevance Filtering Query 2}},basicstyle=\small]
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?g
 WHERE { 
@@ -419,7 +420,12 @@ However, the goal is to filter out as much irrelevant data as possible so that t
 As what will be shown later, streaming data rate also influences the system response time. 
 If the data rate is big, it will take longer time to process the filtering, which can hurt the overall usefulness of system.
 
-\begin{lstlisting}[language=SPARQL,caption={Query Relevance Filtering Query 3},basicstyle=\small,frame=single]
+Listing 6.11 shows a filtering query where the relevant data of \textbf{ub:FullProfessor} is filtered out.
+Predictably, the target query will not provide any results. 
+In general applications, one should avoid this type of query to be deployed in the system. 
+Table \ref{tab:6-fqqi} summarizes the impacts of the above three queries. 
+
+\begin{lstlisting}[caption={\textbf{Query Relevance Filtering Query 3}},basicstyle=\small]
 PREFIX ub: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#>
 SELECT ?g
 WHERE {
@@ -429,14 +435,9 @@ WHERE {
 }
 \end{lstlisting}
 
-Listing 6.11 shows a filtering query where the relevant data of \textbf{ub:FullProfessor} is filtered out.
-Predictably, the target query will not provide any results. 
-In general applications, one should avoid this type of query to be deployed in the system. 
-Table \ref{tab:6-fqqi} summarizes the impacts of the above three queries. 
-
 \begin{table}[!htbp]
 	\centering
-    \caption{Query Relevance Experiments Setup}
+    \caption{\textbf{Query Relevance Experiments Setup}}
     \label{tab:6-qres} 
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
@@ -455,7 +456,7 @@ In the following section, we will see that a bigger window size will impact the 
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Query Relevance Filter Query 1 Performance}
+    \caption{\textbf{Query Relevance Filter Query 1 Performance}}
     \label{tab:6-qrp}
     \begin{tabular}{|l||c|c|c|c|} \hline
          \multicolumn{1}{|c||}{strategy} & memory & response time & precision & throughput \\ \hhline{|=#=|=|=|=|}
@@ -495,7 +496,7 @@ QR-Trust-FE-LRU-FI-FO & 27.94 & 277.98 & 1 & 37607.35\\ \hline
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Different Filter Query Experimental Results}
+    \caption{\textbf{Different Filter Query Experimental Results}}
     \label{tab:6-fqqi}
     \begin{tabular}{|c||c|c|c|c|} \hline
     query & ave. memory & ave. response time & ave. precision & ave. throughput \\ \hhline{|=#=|=|=|=|}
@@ -562,7 +563,7 @@ Table \ref{tab:6-dees} shows the experiments setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Data Expiration Experiments Setup}
+    \caption{\textbf{Data Expiration Experiments Setup}}
     \label{tab:6-dees}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
@@ -577,7 +578,7 @@ Table \ref{tab:6-dees} shows the experiments setup.
 
 \begin{table}[!htbp]
 \centering
-\caption{Data Expiration Experimental Results}
+\caption{\textbf{Data Expiration Experimental Results}}
 \label{tab:6-dei}
 \begin{tabular}{|c||c||c|c|c|c|}
 \hline
@@ -634,7 +635,7 @@ Table \ref{tab:6-qpes} shows the experiments setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Query Participation Experiments Setup}
+    \caption{\textbf{\textbf{Query Participation Experiments Setup}}}
     \label{tab:6-qpes}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
@@ -649,7 +650,7 @@ Table \ref{tab:6-qpes} shows the experiments setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Query Participation Experimental Results}
+    \caption{\textbf{\textbf{Query Participation Experimental Results}}}
     \label{tab:6-qpp}
     \begin{tabular}{|c||c||c|c|c|c|} \hline
     expiration & strategy & memory & response time & precision & throughput \\ \hhline{|=#=#=|=|=|=|}
@@ -705,7 +706,7 @@ Table \ref{tab:6-tes} shows the experiment setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Trust Models Example}
+    \caption{\textbf{Trust Models Example}}
     \label{tab:6-tme}
     \begin{tabular}{|l||c|c|c|} \hline
     	& trust model 1 & trust model 2 & trust model 3 \\ \hline
@@ -723,7 +724,7 @@ Table \ref{tab:6-tes} shows the experiment setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Trustworthiness Experiments Setup}
+    \caption{\textbf{Trustworthiness Experiments Setup}}
     \label{tab:6-tes}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
@@ -738,7 +739,7 @@ Table \ref{tab:6-tes} shows the experiment setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Trustworthiness Experimental Results}
+    \caption{\textbf{Trustworthiness Experimental Results}}
     \label{tab:6-tp}
     \begin{tabular}{|c||c|c|c|c|c|} \hline
     trust model & strategy & memory & response time & precision & throughput \\ \hhline{|=#=|=|=|=|=|}
@@ -792,7 +793,7 @@ Table \ref{tab:6-smres} shows the experiments setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Streaming Mode and Rate Experiment Setup}
+    \caption{\textbf{Streaming Mode and Rate Experiment Setup}}
     \label{tab:6-smres}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
@@ -808,7 +809,7 @@ Table \ref{tab:6-smres} shows the experiments setup.
 
 \begin{center}
 	\begin{longtable}{|c||c||c|c|c|c|c|}
-	\caption[Streaming Mode \& Rate Experimental Results]{Streaming Mode \& Rate Experimental Results} \label{tab:6-smri} \\
+	\caption{\textbf{Streaming Mode \& Rate Experimental Results}} \label{tab:6-smri} \\
 	\hline \makecell{rate/ \\ peak} & strategy & \makecell{mode} & memory & \makecell{response \\time} & precision & throughput \\ \hhline{|=#=#=|=|=|=|=|}
 	\endfirsthead
 	\multicolumn{7}{c} {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
@@ -910,35 +911,35 @@ Overall, Trust-FO performs the best.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=6.5in]{img/6-1wt.png}
-    \caption{Constant Stream Mode 10k Rate Response Time}
+    \caption{\textbf{Constant Stream Mode 10k Rate Response Time}}
     \label{fig:6-csmrrt1}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=6.5in]{img/6-3wt.png}
-    \caption{Constant Stream Mode 30k Rate Response Time}
+    \caption{\textbf{Constant Stream Mode 30k Rate Response Time}}
     \label{fig:6-csmrrt3}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=6.5in]{img/6-5wt.png}
-    \caption{Constant Stream Mode 50k Rate Response Time}
+    \caption{\textbf{Constant Stream Mode 50k Rate Response Time}}
     \label{fig:6-csmrrt5}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=6.5in]{img/6-7wt.png}
-    \caption{Constant Stream Mode 70k Rate Response Time}
+    \caption{\textbf{Constant Stream Mode 70k Rate Response Time}}
     \label{fig:6-csmrrt7}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=6.5in]{img/6-9wt.png}
-    \caption{Constant Stream Mode 90k Rate Response Time}
+    \caption{\textbf{Constant Stream Mode 90k Rate Response Time}}
     \label{fig:6-csmrrt9}
 \end{figure}
 
@@ -949,14 +950,14 @@ Thus all strategies can perform slightly better than what they do in c mode.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/6-fluctuating.png}
-    \caption{FIFO Response Time Fluctuates with Stream Rate}
+    \caption{\textbf{FIFO Response Time Fluctuates with Stream Rate}}
     \label{fig:6-fluc}
 \end{figure}
 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/6-flat.png}
-    \caption{QR-Trust-FE-LFU-FI-FO Response Time is Stable}
+    \caption{\textbf{QR-Trust-FE-LFU-FI-FO Response Time is Stable}}
    	\label{fig:6-flat}
 \end{figure}
 
@@ -978,7 +979,7 @@ Table \ref{tab:6-wes} shows the experiments setup.
 
 \begin{table}[!htbp]
 	\centering
-    \caption{Window Experiment Setup}
+    \caption{\textbf{Window Experiment Setup}}
     \label{tab:6-wes}
     \begin{tabular}{|c|l|} \hline
     \multicolumn{2}{|c|}{\textbf{experiment configuration}} \\ \hline
@@ -994,7 +995,7 @@ Table \ref{tab:6-wes} shows the experiments setup.
 
 \begin{center}
 	\begin{longtable}{|c||c||c|c|c|c|c|}
-	\caption[Sliding Window Size Performance]{Sliding Window Size Performance} \label{tab:6-swsp} \\
+	\caption{\textbf{Sliding Window Size Performance}} \label{tab:6-swsp} \\
 	\hline expiration & strategy & \makecell{window \\ size} & memory & \makecell{response \\ time} & precision & \makecell{through-\\put} \\ \hhline{|=#=#=|=|=|=|=|}
 	\endfirsthead
 	\multicolumn{7}{c} {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
@@ -1054,7 +1055,7 @@ Table \ref{tab:6-wes} shows the experiments setup.
 
 \begin{center}
 	\begin{longtable}{|c||c||c|c|c|c|c|}
-	\caption[Landmark Window Size Performance]{Landmark Window Size Performance} \label{tab:6-lwsp} \\
+	\caption{\textbf{Landmark Window Size Performance}} \label{tab:6-lwsp} \\
 	\hline expiration & strategy & \makecell{window \\ size} & memory & \makecell{response \\ time} & precision & \makecell{through-\\put} \\ \hhline{|=#=#=|=|=|=|=|}
 	\endfirsthead
 	\multicolumn{7}{c} {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
