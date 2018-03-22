@@ -267,11 +267,11 @@ In c mode, the streaming rate indicates the actual data items streamed per secon
 F mode simulates bursts in streams with peaks and valleys. 
 An example is the amount of traffic on a main road during the peak hours and off-peak hours. 
 In f mode, the stream rate is actually the peak value. 
-The probability of a peak value is 1/6, the probability of a valley (SIGenBench sets it as 0) is 1/6, the probability of an in-between value is 2/3. 
-The rationales to set probabilities like this are from the traffic model. 
-During 24 hours, rush hours are usually 4 hours (usually 7am to 9am and 4pm to 6pm).
-From midnight to 4:00 am there are a few cars on the road; other time will usually have normal amount of traffic. 
-Thus the peak probability is 4/24 = 1/6, ditto for others.
+% The probability of a peak value is 1/6, the probability of a valley (SIGenBench sets it as 0) is 1/6, the probability of an in-between value is 2/3. 
+% The rationales to set probabilities like this are from the traffic model. 
+% During 24 hours, rush hours are usually 4 hours (usually 7am to 9am and 4pm to 6pm).
+% From midnight to 4:00 am there are a few cars on the road; other time will usually have normal amount of traffic. 
+% Thus the peak probability is 4/24 = 1/6, ditto for others.
 Streaming data can carry explicit or implicit data expiration stamps.
 Data can expire fast, normally or slowly.
 There three built-in trust models to assign trust scores for data items.
