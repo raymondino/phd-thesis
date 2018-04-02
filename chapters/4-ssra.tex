@@ -169,12 +169,10 @@ More recently CityBench\cite{ali2015citybench} was proposed to target smart city
 Other work includes Heaven \cite{tommasini2015heaven} and YABench \cite{benchmarkdemo}.
 
 Just like Heaven benchmark, LUBM benchmark\cite{guo2005lubm} data is used in this work. 
-\textcolor{red}{
 LUBM data set is firstly loaded into a triplestore and converted into triples. 
 Then each triples is stamped with graph ids and timestamps to form a RDF stream.
 LUBM provides a well-constructed ontology describing the relations among universities, professors and students etc.
 It also features a data generator which accepts customized parameters to generate arbitrary ABox data.
-}
 
 LUBM data generator produced 6,031,109 ABox triples. 
 A data source generates streaming data by disk-reading this generated data line-by-line from a static n-triples file.
