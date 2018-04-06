@@ -5,7 +5,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \chapter{RELATED WORK}
-\blfootnote{* Portions of this chapter previously appeared as: Rui Yan, Mark T. Greaves, William P. Smith, Deborah L. McGuinness 2016. ``Remembering the Important Things: Semantic Importance in Stream Reasoning.'' Stream Reasoning 2016 Workshop, International Semantic Web Conference 2016. Rui Yan, Brenda Praggastis, William P. Smith, Deborah L. McGuinness 2016. ``Towards A Cache-Enabled, Order-Aware, Ontology-Based Stream Reasoning Framework.'' Linked Data on the Web Workshop 2016, International World Wide Web Conference 2016. Rui Yan, Brenda Praggastis, William P. Smith, Deborah L. McGuinness 2015. ``Towards Smart Cache Management for Ontology Based, History-Aware Stream Reasoning.'' Linked Science Workshop 2015, International Semantic Web Conference 2015.}
+\blfootnote{Portions of this chapter previously appeared as: \\
+Rui Yan, Mark T. Greaves, William P. Smith, Deborah L. McGuinness 2016. ``Remembering the Important Things: Semantic Importance in Stream Reasoning.'' Stream Reasoning 2016 Workshop, International Semantic Web Conference 2016. \\
+Rui Yan, Brenda Praggastis, William P. Smith, Deborah L. McGuinness 2016. ``Towards A Cache-Enabled, Order-Aware, Ontology-Based Stream Reasoning Framework.'' Linked Data on the Web Workshop 2016, International World Wide Web Conference 2016.  \\
+Rui Yan, Brenda Praggastis, William P. Smith, Deborah L. McGuinness 2015. ``Towards Smart Cache Management for Ontology Based, History-Aware Stream Reasoning.'' Linked Science Workshop 2015, International Semantic Web Conference 2015.}
 Streaming data is so ubiquitous nowadays, such that it becomes a lot more critical to process data streams with efficient methods.
 Considering that streaming data is boundless, its size could be infinite. 
 Merely storing then querying it within a database is obviously not a feasible solution.
@@ -16,13 +19,13 @@ Researchers start to look for methods that can gain insights as well as hidden k
 
 Both statistical and logical models can provide reasoning abilities. 
 Statistical models extract data features to tune parameters in their math models for classification. 
-Logical models encode human knowledge into a formal logic so that a logical reasoner can perform reasoning tasks\footnote{http://www.obitko.com/tutorials/ontologies\-semantic\-web/reasoning.html (Date Last Accessed: Mar. 20, 2018)}.
+Logical models encode human knowledge into a formal logic so that a logical reasoner can perform reasoning tasks \cite{marek2007reasoning}.
 An example of the logical models are semantic technologies such as ontology \cite{noy2001ontology}, OWL \cite{bechhofer2009owl}, and RDF \cite{lassila1999resource}.
 However, these technologies are initially designed for large scale static data.
 One of their intentions is to structure and link the data on the web, and make it machine readable \cite{berners2001semantic}, such as Open Linked Data \cite{bizer2009linked}.
 
 Before stream reasoning \cite{della2009s} is proposed, few work has been done to combine semantic reasoning with stream processing. 
-Stream reasoning aims to ``tame the velocity, veracity and volume of the data streams with both stream processing and semantic reasoning.''\footnote{http://emanueledellavalle.org/ (Date Last Accessed: Mar. 20, 2018)}
+Stream reasoning aims to ``tame the velocity, veracity and volume of the data streams with both stream processing and semantic reasoning.'' \cite{edellavalle2018itsa}
 %
 \section{Streaming Data}
 Streaming data is heterogeneous in physical formats, models, and semantics.
@@ -56,14 +59,14 @@ In order to fill this gap, both \cite{beck2015towards} and \cite{beck2015lars} p
 \section{Continuous Processing}
 Stream reasoning, defined as ``logical reasoning in real time on gigantic and inevitably noisy data streams in order to support the decision process of extremely large numbers of concurrent users" \cite{stuckenschmidt2010towards}, aims to bridge stream processing with semantic reasoning. 
 Stream reasoning can provide many benefits in areas that demand generation and analysis of data streams, and can be applied in a variety of domains.
-In smart cities scenarios \cite{tallevi2013real} \cite{lecue2012capturing}, sensor and video data are constantly streamed from different locations.
+In smart cities scenarios \cite{tallevi2013real}, \cite{lecue2012capturing}, sensor and video data are constantly streamed from different locations.
 The requirements include efficient integration of heterogeneous data, which is also a key foundation upon which advanced services are based. 
 Social network analysis \cite{barbieri2009continuous} keep up with the latest trends from the communities on the web.
 Facebook feeds and Twitter tweets have already been the objects of research on streaming data.
 Financial market \cite{stonebraker20058} produces tons of streaming trade data, and the decision requires to be made within milliseconds.
 The vision of the Internet of Things \cite{atzori2010internet} even stresses the challenges to stream reasoning: imagine all the objects that are connected with each other can be seen as stream sources, the streaming data are just enormous. 
 
-C-SPARQL \cite{barbieri2009c}, among the initial RDF stream processing (RSP)\footnote{https://www.w3.org/community/rsp/ (Date Last Accessed: Mar. 20, 2018)} languages, is a continuous extension of the standard SPARQL. 
+C-SPARQL \cite{barbieri2009c}, among the initial RDF stream processing (RSP) \cite{rsp2013rdf} languages, is a continuous extension of the standard SPARQL. 
 It is tailored to semantically process data streams and facilitate reasoning. 
 A C-SPARQL query is registered in a form of either a stream or a query, prior to the arrival of data streams.
 Its execution model is inherited from CQL \cite{arasu2006cql}, including operators of stream-to-relation, relation-to-relation and relation-to-stream. 
@@ -120,7 +123,7 @@ It proposes a strategy for load shredding based on the probability of the data f
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/2-rwc.pdf}
-    \caption{\textbf{Contributions in Related Work Space}}
+    \caption{Contributions in Related Work Space}
     \label{fig:2-rwc}
 \end{figure}
 

@@ -15,7 +15,7 @@ This use case detects soccer offside offence with a particular focus on the accu
 \subsection{Background}
 Soccer (a.k.a. association football) is one of the most influential and competitive sports across the globe. 
 In soccer games, one common offence among others is called ``offside offence''. 
-FIFA\footnote{https://www.fifa.com/ (Date Last Accessed: Mar. 20, 2018)} defines it in a comprehensive way.
+FIFA defines it in a comprehensive way.
 For details, please refer to Rule 11 in FIFA laws of the game \cite{federation2016laws}.
 However, it is worth to mention a key point: that a player is at an offside position is determined at the moment when the ball is played by this player's teammate; once identified, this status will be retained until the ball is touched again. 
 For example, when Player A2 passes the ball to his teammate Player A1 who is at an offside position, even if Player A1 relocates himself to touch the ball in an onside position, it is still considered as an offside offence. 
@@ -32,8 +32,8 @@ The study also reveals higher rate of non-flag errors (9.6\%) than flag errors (
 
 A 2013 report \cite{fowler2010feasible} analyzes several offside detection systems, and proposes a number of evaluation criterion such as accuracy, fairness, system delays, feasibility, cost and intrusiveness of the system development and deployment.
 Offside event detection methods may be based on various technologies, such as image processing \& computer vision \cite{naidoo2006soccer}, and stereo vision tracking  \cite{borg2007detecting}.
-In addition to vision-based tools, sensor-enabled equipment is also employed in this scenario \cite{regan2013sports} \cite{garcia2011wireless}.
-An example is the sports vest provided by GPsports\footnote{http://gpsports.com/ (Date Last Accessed: Mar. 20, 2018)}, which has been already used in the professional soccer.
+In addition to vision-based tools, sensor-enabled equipment is also employed in this scenario \cite{regan2013sports}, \cite{garcia2011wireless}.
+An example is the sports vest provided by GPsports \cite{gpsports}, which has been already used in the professional soccer.
 The GPsports vest is equipped with sensors that track volume, intensity and work rate of matches played or training by recording and analyzing real-time data such as player position, velocity and heart rate.
 According to its official website, this system has been successfully adopted by 150 clients of 10 sports, including prestigious soccer teams such as Real Madrid C.F. and Chelsea F.C.
 
@@ -77,7 +77,7 @@ For this use case, the overall ontologies are modularized into three sub-ontolog
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/5-matchOnto}
-	\caption{\textbf{Individual Ontology}}
+	\caption{Individual Ontology}
 	\label{fig:matchOnto}
 \end{figure}
 
@@ -91,13 +91,13 @@ Both \textit{hasTeammate} and \textit{isOpponentOf} are symmetric properties wit
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/5-soccerOnto}%
-	\caption{\textbf{Offside Offence Background Domain Ontology}}
+	\caption{Offside Offence Background Domain Ontology}
 	\label{fig:soccerOnto}
 \end{figure}
 
 Figure \ref{fig:soccerOnto} shows the major classes and relations in order to describe the concept of the offside offence.
 When developing this ontology, FIFA laws of the game \cite{federation2016laws} is used as the text corpus to extract a list of the offside relevant terms.
-The term list was then carefully examined and curated to create a conceptual model, which was refined and extended to create the offside offence ontology\footnote{Please refer to https://tw.rpi.edu/web/Courses/Ontologies/2016/projects/soccer (Date Last Accessed: Mar. 20, 2018) for more details.}.
+The term list was then carefully examined and curated to create a conceptual model, which was refined and extended to create the offside offence ontology \cite{onto2016soccer}.
 In a soccer game, usually the player who is touching the ball is considered to be an attacker, along with his teammates.
 The concept to describe a player touching the ball is modeled as \textbf{BallLastToucher}, and the attackers as \textbf{Attacker}. 
 An \textbf{Attacker} instance can either be the type of \textbf{BallLastToucher} or (\textit{hasTeammate some} \textbf{BallLastToucher}).
@@ -117,7 +117,7 @@ According to the symplified definition of the soccer offside offence in Chapter 
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/5-qronto}
-	\caption{\textbf{Soccer Offence Query Relevance Ontology}}
+	\caption{Soccer Offence Query Relevance Ontology}
 	\label{fig:dlonto}
 \end{figure}
 
@@ -147,7 +147,7 @@ The data is then annotated as in Table \ref{tab:dat}.
 
 \begin{table}[!htbp]
     \centering
-	\caption{\textbf{Data Annotation Table}}
+	\caption{Data Annotation Table}
     \label{tab:dat}
     \begin{tabular}{|c|c|} \hline
         data & annotation \\ \hhline{|==|}
@@ -175,7 +175,7 @@ The detection system is implemented with SSRA, where a SPARQL query in Listing 5
 This query is simple, but requires Description Logic (DL) reasoning. 
 
 The sensor frequency is high such that the amount of data entered at the system is very big. 
-Thus we have leveraged systematic sampling \footnote{https://en.wikipedia.org/wiki/Systematic\_sampling (Date Last Accessed: Mar. 20, 2018)} to reduce the balls' data update frequency to 20Hz, and the players' data to 10Hz.
+Thus we have leveraged systematic sampling \cite{systemsample} to reduce the balls' data update frequency to 20Hz, and the players' data to 10Hz.
 Sampling will not affect the result as both balls and players move only a short distance every 0.05 and 0.1 second.
 
 \begin{lstlisting}[caption={\textbf{Offside Offence Detection Query}},basicstyle=\small]
@@ -190,7 +190,7 @@ Thus the maximum physical window size ($l_{max}$) is set to be 70.
 
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Strategy Table}}
+\caption{Strategy Table}
 \label{tab:sct}
 \begin{tabular}{|l|c|}
 \hline
@@ -236,7 +236,7 @@ Executing query based on time will potentially allow inconsistent data items, su
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/5-strategyexe.pdf}
-	\caption{\textbf{Strategy Execution Flowchart}}
+	\caption{Strategy Execution Flowchart}
 	\label{fig:strExe}
 \end{figure}
 
@@ -285,7 +285,7 @@ For example, we calculate FE-FI-FO-25\% accuracy as 11/20 = 0.55 because it give
 \begin{table}[!htbp]
 	\scriptsize
 	\centering
-	\caption{\textbf{Offside Detection Results}}
+	\caption{Offside Detection Results}
 	\label{tab:ev}
 	\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
 Time&2:53&4:26&7:04&12:21&12:44&15:28&20:40&21:11&22:07&23:04\\ \hhline{|=|=|=|=|=|=|=|=|=|=|=|}
@@ -405,7 +405,7 @@ In sum, that Player A6 commits an offside offence is true, but this judgment sho
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/5-fpa}
-	\caption{\textbf{False-positive \& Wrong Foundation Judging Analysis}}
+	\caption{False-positive \& Wrong Foundation Judging Analysis}
 	\label{fig:fpa}
 \end{figure}
 
@@ -417,7 +417,7 @@ This potential sensor failure is not mentioned in DEBS 2013 grand challenge \cit
 
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Strategy Running Performance}}
+\caption{Strategy Running Performance}
 \label{tb:rp}
 \begin{tabular}{|l||c|c|c|c|}
 \hline
@@ -433,7 +433,7 @@ Total Execution Time (s) & 0.97 & 0.87 & 0.97 & 0.81 \\ \hline
 
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Strategy Accuracy Analysis}}
+\caption{Strategy Accuracy Analysis}
 \label{tb:accuracy}
 \begin{tabular}{|c||c|c|c|c|}
 \hline
@@ -453,7 +453,7 @@ It is worth mentioning that, out of the total 20 cases, there are five judgments
 
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Strategy Error Analysis}}
+\caption{Strategy Error Analysis}
 \label{tab:error}
 \begin{tabular}{|c||c|c|c|c|l|}
 \hline
@@ -471,13 +471,13 @@ The trade-off is a relatively lower throughput as a result of the overhead of re
 Query relevance filtering has the fastest execution time and also has the most potential to scale.
 %
 \section{Data Exfiltration Detection}
-According to Wikipedia, ``an insider threat is a malicious threat to an organization that comes from people within the organization''\footnote{https://en.wikipedia.org/wiki/Insider\_threat (Date Last Accessed: Mar. 20, 2018)}. 
+According to Wikipedia, ``an insider threat is a malicious threat to an organization that comes from people within the organization'' \cite{insiderthreat}. 
 Compared to the outside threat, the organization tends to be more vulnerable when facing insider threat. 
 This is because the insiders have access to the internal infrastructure, data, or network.
 It is very easy for them to steal the organizational intellectual properties.
 What makes it even worse is that, the insider threat is much more harder to detect than the outside threat. 
-A malicious insider is defined as ``a current or former employee, contractor, or business partner who has or had authorized access to an organization's network, system or data or has intentionally exceeded or intentionally used that access in a manner that negatively affected the confidentiality, integrity, or availability of the organization's information or information systems" \cite{CERT-onto} \cite{silowash2012common}.
-This use case aims to detect data exfiltration\footnote{Please refer to https://github.com/raymondino/InsiderThreat-StreamReasoningUseCase (Date Last Accessed: Mar. 20, 2018) for more details.}, a sub-category of insider threat.
+A malicious insider is defined as ``a current or former employee, contractor, or business partner who has or had authorized access to an organization's network, system or data or has intentionally exceeded or intentionally used that access in a manner that negatively affected the confidentiality, integrity, or availability of the organization's information or information systems'' \cite{CERT-onto}, \cite{silowash2012common}.
+This use case aims to detect data exfiltration \cite{insiderthreatgithub}, a sub-category of insider threat.
 %
 \subsection{Background}
 This use case will focus on one type of insider threat attacks, the data exfiltration. 
@@ -495,7 +495,7 @@ Different from the above related work, this use case will be implemented with co
 A stream reasoning system will be realized to identify and preserve all previous suspicious actions as evidence to determine data exfiltration.
 Since the malicious actions can happen across arbitrary interval of time, a logical window will be leveraged. 
 This poses a challenge in such a way that the bigger the window size is, the more data will be in the window to negatively affect the system responsiveness. 
-In order to enable reasoning, the plan is to leverage and extend the existing insider threat ontology developed by CMU  CERT\footnote{http://www.cert.org/ (Date Last Accessed: Mar. 20, 2018)}. 
+In order to enable reasoning, the plan is to leverage and extend the existing insider threat ontology developed by CMU CERT.
 Semantic importance aspects in provenance and trustworthiness will be selected to support two window management strategies, FIFO and QR-T (query relevance - trustworthiness). 
 In order to enable trustworthiness, a simple trust model is established, which will be elaborated in the following section. 
 %
@@ -506,7 +506,7 @@ However, \cite{glasser2013bridging} provides a synthesized streaming data set th
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/5-dxd.pdf}
-    \caption{\textbf{Synthesized Data for Insider Threat Detection}}
+    \caption{Synthesized Data for Insider Threat Detection}
     \label{fig:dxd}
 \end{figure}
 
@@ -540,7 +540,7 @@ The ontology of this use case is modeled as the figures below.
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/5-dxoactor.pdf}
-    \caption{\textbf{Data Exfiltration Background Ontology: Actor}}
+    \caption{Data Exfiltration Background Ontology: Actor}
     \label{fig:actor}
 \end{figure}
 
@@ -560,7 +560,7 @@ This class is defined as (\textit{isInvolvedIn some} \textbf{DataExfiltrationEve
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/5-dxoasset.pdf}
-    \caption{\textbf{Data Exfiltration Background Ontology: Asset}}
+    \caption{Data Exfiltration Background Ontology: Asset}
     \label{fig:asset}
 \end{figure}
 
@@ -573,7 +573,7 @@ Being able to record which employee uses which computer is also necessary since 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/5-dxott.pdf}
-    \caption{\textbf{Data Exfiltration Background Ontology: Temporal Thing}}
+    \caption{Data Exfiltration Background Ontology: Temporal Thing}
     \label{fig:tt}
 \end{figure}
 
@@ -790,7 +790,7 @@ Two strategies are deployed, and evaluated via recording the precision, recall, 
 
 \begin{table}[!htbp]
 	\centering
-    \caption{\textbf{Strategy Performance}}
+    \caption{Strategy Performance}
     \label{tab:sp}
     \begin{tabular}{|c||c|c|} \hline
     	& precision & recall \\ \hhline{|=#=|=|}
@@ -815,7 +815,7 @@ Thus the background ontology cannot do a good job in classifying data exfiltrati
 
 \begin{table}[!htbp]
 	\centering
-    \caption{\textbf{Strategy Running Time}}
+    \caption{Strategy Running Time}
     \label{tab:srt}
     \begin{tabular}{|c||c|c|} \hline
 	    & FIFO & QR-T \\ \hhline{|=#=|=|}

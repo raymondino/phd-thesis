@@ -17,7 +17,7 @@ This chapter concludes this dissertation, and provides future insights on where 
 \begin{figure}[!htbp]
 	\centering
     \includegraphics[width=5in]{img/7-trm.pdf}
-    \caption{\textbf{Thesis Road Map Overview}}
+    \caption{Thesis Road Map Overview}
     \label{fig:7-trm}
 \end{figure}
 %
@@ -26,7 +26,7 @@ Figure \ref{fig:7-trm} shows the road map overview of this thesis, which is gene
 ``why semantic importance'', ``why should people care'', and ``how can people use it?''。
 This thesis has rooted itself deeply into the stream reasoning, and targets on smart and flexible streaming data management. 
 
-Chapter 3 covers my first contribution, semantic importance, which is motivated by the observations that the ``silent temporal assumption'' is popular across lots of stream reasoning research work \cite{barbieri2010stream} \cite{stuckenschmidt2010towards} \cite{golab2003processing} \cite{barbieri2010deductive}, and that temporality alone will not work under the situations where the early eviction or expiration problem happens. 
+Chapter 3 covers my first contribution, semantic importance, which is motivated by the observations that the ``silent temporal assumption'' is popular across lots of stream reasoning research work \cite{barbieri2010stream}, \cite{stuckenschmidt2010towards}, \cite{golab2003processing}, \cite{barbieri2010deductive}, and that temporality alone will not work under the situations where the early eviction or expiration problem happens. 
 Semantic importance models the data importance by considering aspects beyond just temporality, such as query participation, query relevance and trustworthiness. 
 It provides a representative schema (using the priority vector technique), as well as a set of defined comparison rules to enable data orderings. 
 This answers the first question, ``why semantic importance''.
@@ -88,7 +88,7 @@ The experimental results have shown that the smart and flexible window managemen
 %
 \subsection{Thesis Limitations}
 Considering that streaming data is huge and can potentially flood the system, the sequential way to process the data clearly has a limit. 
-Parallel processing has lots of benefits, one of them is to boost response time, there are already some examples to leverage distributed systems in stream reasoning \cite{hoeksema2011high} \cite{liu2014efficient}. 
+Parallel processing has lots of benefits, one of them is to boost response time, there are already some examples to leverage distributed systems in stream reasoning \cite{hoeksema2011high}, \cite{liu2014efficient}. 
 
 This thesis only deals with RDF streams, which is only a kind of all the streaming data.
 However, in the traffic surveillance scenario, the streaming data is usually video format. 
@@ -127,7 +127,7 @@ Secondly, I want to build an ontology loader that can load the semantic importan
 By combining semantic importance aspect classes, different strategies will be generated proactively. 
 In that way, the semantic importance ontology will no longer be a merely descriptive ontology, but actually be used to create strategies.
 
-Long short-term memory (LSTM) \cite{DBLP:journals/neco/HochreiterS97} is a recurrent neural network (RNN), whose cells can ``remember'' values over arbitrary time intervals \footnote{https://en.wikipedia.org/wiki/Long\_short\-term\_memory (Date Last Accessed: Mar. 20, 2018)}.
+Long short-term memory (LSTM) \cite{DBLP:journals/neco/HochreiterS97} is a recurrent neural network (RNN), whose cells can ``remember'' values over arbitrary time intervals \cite{lstmwiki}.
 LSTM is potentially another way to implement window management strategy, which essentially can capture data items that are arbitrary apart, to alleviate early eviction problem. 
 This is because how much data needs to keep is a similar requirement. 
 I also would like to explore the possibilities to employ LSTM for the streaming data management. 
@@ -255,13 +255,13 @@ This future work is dependent upon the general use of semantic importance.
 % \begin{figure}[!htbp]
 % 	\centering
 %     \includegraphics[width=5in]{img/7-trm.pdf}
-%     \caption{\textbf{Thesis Road Map Overview}}
+%     \caption{Thesis Road Map Overview}
 %     \label{fig:7-trm}
 % \end{figure}
 % %
 % \subsection{Thesis Brief Review}
 % \textcolor{red}{
-% Figure \ref{fig:7-trm} shows the road map overview of this thesis, which is generally guided by these three questions: 
+% Figuhre \ref{fig:7-trm} shows the road map overview of this thesis, which is generally guided by these three questions: 
 % ``why semantic importance'', ``why should people case'', and ``how can people use it?''。
 % This thesis has rooted itself deeply into the stream reasoning, and targets on smart and flexible streaming data management. 
 % }

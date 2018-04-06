@@ -10,7 +10,7 @@ Most existing stream reasoning systems employ the silent temporal assumption whe
 In this chapter, a sequential stream reasoning architecture (SSRA) is proposed to provide an infrastructure to deploy the semantic importance model in stream reasoning systems.
 
 \section{Assumptions}
-SSRA shares the common assumptions on ontologies and streaming data, under which existing systems work \cite{barbieri2009c} \cite{barbieri2010c} \cite{barbieri2010execution} \cite{barbieri2010incremental} \cite{anicic2011ep}.
+SSRA shares the common assumptions on ontologies and streaming data, under which existing systems work \cite{barbieri2009c}, \cite{barbieri2010c}, \cite{barbieri2010execution}, \cite{barbieri2010incremental}, \cite{anicic2011ep}.
 %
 \subsection{Ontology}
 SSRA follows assumptions for background ontologies:
@@ -20,14 +20,14 @@ SSRA follows assumptions for background ontologies:
 (4) the background ontology doesn't change during the processing. 
 
 A stream reasoning system doesn't necessarily have to employ ontologies to provide reasoning foundations. 
-Existing systems \cite{do2011answer} \cite{gebser2012stream} leverage answer set programming (ASP) \cite{gelfond1991classical} to support reasoning.
+Existing systems \cite{do2011answer}, \cite{gebser2012stream} leverage answer set programming (ASP) \cite{gelfond1991classical} to support reasoning.
 \cite{mileo2013streamrule} encodes customized rules to enable reasoning.   
 However, SSRA chooses to use ontologies for reasoning because they provide a flexible and expressive way to encode knowledge. 
 Domain experts are key to composing the ontologies. 
 The complexity of the ontology should be determined by the use case requirements. 
 The correctness of the ontology is very crucial to determine the query results, as the knowledge for executing the query is solely provided by the background ontology. 
 The domain knowledge in the ontologies usually doesn't change (frequently). 
-Previous work including \cite{gao2016planning} \cite{ren2010towards} considers the change of the background knowledge.
+Previous work including \cite{gao2016planning}, \cite{ren2010towards} considers the change of the background knowledge.
 Their method is to update the background ontology over time.
 Between two adjacent updates, the background ontology remains static.
 Overall, the assumptions on the background ontologies are reasonable and can be loosened with minimum efforts. 
@@ -40,7 +40,7 @@ SSRA follows assumptions for the streaming data:
 
 RDF streams \cite{della2009first} are RDF data annotated with timestamps that are either time-points or time-intervals.
 The RDF stream format can be represented as $<\rho, \tau>$, where $\rho$ is an RDF molecule \cite{ding2005tracking}, and $\tau$ is a timestamp denoting the arrival time of $\rho$.
-An RDF stream is defined as an ordered sequence of pairs \cite{barbieri2010proposal} \cite{barbieri2009c}, each of which consists of an RDF triple and a monotonically non-decreasing timestamp $\tau$, identified by a unique IRI that is a streaming source locater, and published in a named graph \cite{carroll2005named}.
+An RDF stream is defined as an ordered sequence of pairs \cite{barbieri2010proposal}, \cite{barbieri2009c}, each of which consists of an RDF triple and a monotonically non-decreasing timestamp $\tau$, identified by a unique IRI that is a streaming source locater, and published in a named graph \cite{carroll2005named}.
 The above work justifies the assumption of leveraging named graphs in the RDF streams. 
 
 SSRA extends the RDF stream format by adding another timestamp and a unique graph ID.
@@ -58,7 +58,7 @@ The execution flow forms a loop to process data streams and to produce query res
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[angle=90,height=7.5in]{img/4-ssra.png}
-	\caption{\textbf{Sequential Stream Reasoning Architecture}}
+	\caption{Sequential Stream Reasoning Architecture}
 	\label{fig:4-ssra}
 \end{figure}
 
@@ -102,7 +102,7 @@ One example is materialization \cite{barbieri2010incremental},  which is perform
 \subsection{Result Explanation}
 If query participation (QP) is specified, the window needs to know the query participation status of every named graph after the query result is delivered.
 Result Explanation Component works in a way to trace back to the provenance of the query result; that is to find which named graphs participated in the query process. 
-The result is explained by proof trees\footnote{For an example, please refer to http://docs.stardog.com/\#\_proof\_trees (Date Last Accessed: Mar. 20, 2018)}.
+The result is explained by proof trees \cite{stardogprooftree}.
 
 A(n) (inferred) result can be obtained by both explicit triples and intermediate inferences. 
 Only the query participation statistics of those graph IDs belonging to explicit triples will be recorded.
@@ -136,11 +136,11 @@ All of the components are constantly interacting with the window.
 SSRA implements and configures the window as follows.
 
 \textbf{Triple-store}:
-SSAR has been implemented using two off-the-shelf triple-stores: AllegroGraph v5.0.2\footnote{http://franz.com/agraph/allegrograph/ (Date Last Accessed: Mar. 20, 2018)} and Stardog v4.0 RC3\footnote{http://stardog.com/ (Date Last Accessed: Mar. 20, 2018)}. 
+SSAR has been implemented using two off-the-shelf triple-stores: AllegroGraph v5.0.2 and Stardog v4.0 RC3. 
 Both provide Java APIs and step-by-step tutorials. 
-AllegroGraph is an efficient modern graph database by Franz Inc\footnote{http://franz.com/ (Date Last Accessed: Mar. 20, 2018)}. 
+AllegroGraph is an efficient modern graph database by Franz Inc. 
 It supports up to OWL2 RL reasoning and full SPARQL 1.1. 
-Stardog is a graph database by Complexible Inc\footnote{http://complexible.com/ (Date Last Accessed: Mar. 20, 2018)}. 
+Stardog is a graph database by Complexible Inc. 
 It supports up to OWL2 DL \& rule-based reasoning and SPARQL 1.1.
 Stardog supports reasoning explanation via proof trees, but AllegroGraph does not. 
 Free versions of both products are used.
@@ -206,7 +206,7 @@ Using these results we ask the following questions:
     \item What are the trade-offs to consider when deploying SSRA in different scenarios?
 \end{enumerate}
 
-We show two figures of the total 46 visualizations\footnote{Please refer to our github repository for all visualizations: https://github.com/raymondino/SequentialStreamReasoningArchitecture (Date Last Accessed: Mar. 20, 2018)} generated from the results to answer the first two questions. 
+We show two figures of the total 46 visualizations \cite{ssragithub} generated from the results to answer the first two questions. 
 The third one will be discussed shortly. 
 For the sake of convenience, the following abbreviation is used: 
 prototypes are abbreviated such that SM denotes Stardog memory-based window, SD denotes Stardog disk-based window and AD denotes AllegroGraph disk-based window. 
@@ -216,7 +216,7 @@ For example, SD\_FE-FI-FO\_1 denotes a Stardog disk-based window with the FE-FI-
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/4-ff.png}
-	\caption{\textbf{F-measure of Different Windows with FEFO}}
+	\caption{F-measure of Different Windows with FEFO}
 	\label{fig:fefo}
 \end{figure}
 
@@ -235,7 +235,7 @@ For example, AD\_FE-FI-FO gives the best F-measure, but does it take more time t
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=5in]{img/4-fds.png}
-	\caption{\textbf{F-measure of SM Window with Different Strategies}}
+	\caption{F-measure of SM Window with Different Strategies}
 	\label{fig:diff}
 \end{figure}
 
@@ -279,7 +279,7 @@ Together with Table \ref{tab:tradeoff}, we present a thorough comparison among t
 
 \begin{table*}[!htbp]
 \centering
-\caption{\textbf{The Trade-off Table}}
+\caption{The Trade-off Table}
 \label{tab:tradeoff}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c||c|l|r|r|r|r|r|}
